@@ -1,0 +1,104 @@
+﻿using UnityEngine;
+using UnityEngine.SocialPlatforms.Impl;
+using TMPro;
+using UnityEngine.SceneManagement;
+
+public class GameManager : MonoBehaviour
+{
+    private int score = 0;
+    [SerializeField] private TextMeshProUGUI scoreText;
+    [SerializeField] private GameObject gameOverUi;
+    [SerializeField] private GameObject gameWinUi;
+    private bool isGameOver = false;
+
+    void Start()
+    {
+        UpdateScore();
+        gameOverUi.SetActive(false);
+        gameWinUi.SetActive(false);
+
+        // thêm nhẹ để chắc chắn vào scene mới không bị đứng do timeScale = 0 từ scene trước
+        Time.timeScale = 1;
+    }
+
+    // Update is called once per frame
+    void Update()
+    {
+
+    }
+
+    public void AddScore(int points)
+    {
+        score += points;
+        UpdateScore();
+    }
+
+    private void UpdateScore()
+    {
+        scoreText.text = score.ToString();
+    }
+
+    public void GameOver()
+    {
+        if (isGameOver) return; // chặn gọi lặp
+        isGameOver = true;
+
+        AudioManager.Instance.SFX_Die();
+
+        score = 0;
+        Time.timeScale = 0;
+        gameOverUi.SetActive(true);
+    }
+
+
+    public void GameWin()
+    {
+        AudioManager.Instance.SFX_Win();
+
+        score = 0;
+        Time.timeScale = 0;
+        gameWinUi.SetActive(true);
+    }
+
+
+    public void Replay()
+    {
+        isGameOver = false;
+        score = 0;
+        UpdateScore();
+        //ko nhận inputs
+        Time.timeScale = 1;
+        SceneManager.LoadScene("map 1");
+    }
+
+    public void MainMenu()
+    {
+        isGameOver = false;
+        score = 0;
+        UpdateScore();
+        //ko nhận inputs
+        Time.timeScale = 1;
+        SceneManager.LoadScene("MainMenu");
+    }
+
+    public void Continue()
+    {
+        isGameOver = false;
+        score = 0;
+        UpdateScore();
+        //ko nhận inputs
+        Time.timeScale = 1;
+        gameWinUi.SetActive(false);
+
+        int nextIndex = SceneManager.GetActiveScene().buildIndex + 1;
+
+        if (nextIndex >= SceneManager.sceneCountInBuildSettings)
+        {
+            SceneManager.LoadScene("MainMenu");
+        }
+        else
+        {
+            SceneManager.LoadScene(nextIndex);
+        }
+    }
+}
