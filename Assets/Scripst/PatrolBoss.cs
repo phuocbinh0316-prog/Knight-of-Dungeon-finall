@@ -1,4 +1,4 @@
-﻿using UnityEngine;
+using UnityEngine;
 using UnityEngine.UI;
 using Unity.Mathematics;
 public class PatrolBoss : MonoBehaviour
@@ -113,6 +113,7 @@ public class PatrolBoss : MonoBehaviour
     }
     public void takeDamageE(float damage)
     {
+        GameFeel.OnHit(transform.position, damage, gameObject);
     
         if(die == false) return;
         animator.SetTrigger("Hurt");

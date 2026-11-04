@@ -1,4 +1,4 @@
-﻿using UnityEngine;
+using UnityEngine;
 using UnityEngine.UI;
 using Unity.Mathematics;
 
@@ -114,6 +114,7 @@ public class PatrolEnemy1 : MonoBehaviour
     }
     public void takeDamageE(float damage)
     {
+        GameFeel.OnHit(transform.position, damage, gameObject);
 
         animator.SetTrigger("Hurt");
         currentHp -= damage;

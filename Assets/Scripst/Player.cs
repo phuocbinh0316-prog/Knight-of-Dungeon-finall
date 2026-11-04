@@ -173,6 +173,7 @@ public class Player : MonoBehaviour
 
     public void TakeDamageP(float damage)
     {
+        GameFeel.OnHit(transform.position, damage, gameObject);
         animator.SetTrigger("Hurt");
         AudioManager.Instance.SFX_Hit();
 
