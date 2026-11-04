@@ -11,6 +11,7 @@ public class EnemyTelegraph : MonoBehaviour
     [Header("Telegraph Settings")]
     [SerializeField] private float telegraphOffset = 1.3f;
     [SerializeField] private Color warningColor = new Color(1f, 0.85f, 0.1f); // Vàng rực neon
+    [SerializeField] private Color stunColor = new Color(1f, 0.15f, 0.15f);   // ĐỎ RỰC
 
     private GameObject indicatorObj;
     private TextMeshPro tmp;
@@ -49,6 +50,18 @@ public class EnemyTelegraph : MonoBehaviour
         if (stunTimer > 0f)
         {
             stunTimer -= Time.deltaTime;
+
+            if (indicatorObj != null)
+            {
+                indicatorObj.SetActive(true);
+                tmp.text = "STUN";
+                tmp.fontSize = 6.5f;
+                tmp.color = stunColor;
+                // Hiệu ứng rung/nhấp nháy nhẹ của chữ STUN màu đỏ
+                float pulse = 1f + 0.15f * Mathf.Sin(Time.time * 20f);
+                indicatorObj.transform.localScale = Vector3.one * pulse;
+            }
+
             if (stunTimer <= 0f)
             {
                 // Hết stun
@@ -57,7 +70,7 @@ public class EnemyTelegraph : MonoBehaviour
             }
         }
 
-        // Đảm bảo chữ dấu ! không bị lật ngược theo hướng mặt của quái
+        // Đảm bảo chữ dấu ! hoặc STUN không bị lật ngược theo hướng mặt của quái
         if (indicatorObj != null && indicatorObj.activeSelf)
         {
             indicatorObj.transform.rotation = Quaternion.identity;
@@ -131,17 +144,18 @@ public class EnemyTelegraph : MonoBehaviour
     }
 
     /// <summary>
-    /// Làm choáng quái vật trong khoảng thời gian duration.
+    /// Làm choáng quái vật trong khoảng thời gian duration (mặc định 1 giây, chữ STUN màu đỏ).
     /// </summary>
-    public void Stun(float duration)
+    public void Stun(float duration = 1.0f)
     {
         CancelWarning();
-        stunTimer = Mathf.Max(stunTimer, duration);
+        stunTimer = duration;
 
         if (indicatorObj == null) CreateIndicator();
-        tmp.text = "*STUN*";
-        tmp.fontSize = 4.5f;
-        tmp.color = new Color(0.9f, 0.9f, 0.3f);
+        tmp.text = "STUN";
+        tmp.fontSize = 6.5f;
+        tmp.fontStyle = FontStyles.Bold;
+        tmp.color = stunColor;
         indicatorObj.SetActive(true);
     }
 
@@ -153,7 +167,7 @@ public class EnemyTelegraph : MonoBehaviour
         if (IsPreparingAttack)
         {
             CancelWarning();
-            Stun(0.8f); // Khựng lại 0.8s khi bị ngắt đòn
+            Stun(1.0f); // Làm choáng 1.0s khi bị ngắt đòn
             return true;
         }
         return false;

@@ -51,6 +51,8 @@ public class PatrolEnemy1 : MonoBehaviour
         if (telegraph != null && telegraph.IsStunned)
         {
             animator.SetBool("Attack1", false);
+            var rb = GetComponent<Rigidbody2D>();
+            if (rb != null) rb.linearVelocity = new Vector2(0f, rb.linearVelocity.y);
             return;
         }
 
@@ -129,11 +131,13 @@ public class PatrolEnemy1 : MonoBehaviour
             }
         }
     }
-    public void Stun(float duration)
+    public void Stun(float duration = 1.0f)
     {
         if (telegraph != null) telegraph.Stun(duration);
         animator.SetBool("Attack1", false);
         animator.SetTrigger("Hurt");
+        var rb = GetComponent<Rigidbody2D>();
+        if (rb != null) rb.linearVelocity = new Vector2(0f, rb.linearVelocity.y);
     }
 
     public void takeDamageE(float damage)

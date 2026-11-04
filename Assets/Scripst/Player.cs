@@ -44,6 +44,10 @@ public class Player : MonoBehaviour
 
     public float GetBaseDamage() => (weapons != null ? weapons.Damage : damageP);
     public bool IsFacingRight => facingRight;
+    public bool IsGround => isGround;
+
+    private int jumpCount = 0;
+    private bool doubleJumpPressed = false;
 
     private void Awake()
     {
@@ -84,11 +88,17 @@ public class Player : MonoBehaviour
     }
     private void FixedUpdate()
     {
-        if (jumpPressed == true)
+        if (jumpPressed)
         {
             rb.AddForce(new Vector2(0f, jumpHight), ForceMode2D.Impulse);
-
             jumpPressed = false;
+        }
+        else if (doubleJumpPressed)
+        {
+            // Triệt tiêu vận tốc rơi trước khi bật nhảy lần 2 để cú nhảy đúp mượt mà và nảy bốc
+            rb.linearVelocity = new Vector2(rb.linearVelocity.x, 0f);
+            rb.AddForce(new Vector2(0f, jumpHight * 0.95f), ForceMode2D.Impulse);
+            doubleJumpPressed = false;
         }
     }
     private void Movement()
@@ -115,12 +125,28 @@ public class Player : MonoBehaviour
 
         isGround = Physics2D.OverlapCircle(groundCheck.position, 0.2f, groundLayer);
         
-
-        if (Input.GetButtonDown("Jump") && isGround)
+        if (isGround)
         {
-            jumpPressed = true;
-            animator.ResetTrigger("Attack1");
-            if (AudioManager.Instance != null) AudioManager.Instance.SFX_Jump();
+            jumpCount = 0;
+        }
+
+        if (Input.GetButtonDown("Jump"))
+        {
+            if (isGround)
+            {
+                jumpPressed = true;
+                jumpCount = 1;
+                animator.ResetTrigger("Attack1");
+                if (AudioManager.Instance != null) AudioManager.Instance.SFX_Jump();
+            }
+            else if (jumpCount <= 1) // Lần nhảy thứ 2 trên không: Double Jump
+            {
+                doubleJumpPressed = true;
+                jumpCount = 2;
+                animator.ResetTrigger("Attack1");
+                animator.SetBool("Jump", true);
+                if (AudioManager.Instance != null) AudioManager.Instance.SFX_Jump();
+            }
         }
     }
 

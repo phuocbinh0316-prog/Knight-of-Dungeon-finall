@@ -13,44 +13,61 @@ public class GroundSlam : MonoBehaviour
     [SerializeField] private float slamSpeed = 32f;
     [SerializeField] private float impactRadius = 3.5f;
     [SerializeField] private float damageMultiplier = 2.0f;
-    [SerializeField] private float stunDuration = 1.8f;
-    [SerializeField] private LayerMask enemyLayer;
-    [SerializeField] private LayerMask groundLayer;
-    [SerializeField] private Transform groundCheck;
+    [SerializeField] private float stunDuration = 1.0f; // 1 giây theo yêu cầu
 
     public bool IsSlamming { get; private set; }
 
     private Rigidbody2D rb;
     private Player player;
-    private float originalGravity;
+    private float originalGravity = 1f;
     private float lastSlamTime;
-    private const float Cooldown = 1.0f;
+    private const float Cooldown = 0.8f;
 
     private void Awake()
     {
         rb = GetComponent<Rigidbody2D>();
         player = GetComponent<Player>();
-        originalGravity = rb.gravityScale;
+        if (rb != null)
+        {
+            originalGravity = rb.gravityScale > 0f ? rb.gravityScale : 1f;
+        }
     }
 
     private void Update()
     {
         if (IsSlamming) return;
 
-        // Kiểm tra điều kiện kích hoạt: đang trên không + nhấn Xuống + Nhảy (hoặc phím S khi đang rơi)
-        bool downInput = Input.GetKey(KeyCode.S) || Input.GetKey(KeyCode.DownArrow) || Input.GetAxisRaw("Vertical") < -0.5f;
-        bool jumpInput = Input.GetButtonDown("Jump") || Input.GetKeyDown(KeyCode.Space) || Input.GetKeyDown(KeyCode.S);
+        // Chỉ kích hoạt khi đang ở trên không
+        bool isAirborne = player != null ? !player.IsGround : true;
+        if (!isAirborne) return;
 
-        if (downInput && jumpInput && !IsOnGround() && Time.time >= lastSlamTime + Cooldown)
+        // Kiểm tra phím: S + Space hoặc Mũi tên xuống + Space
+        bool downInput = Input.GetKey(KeyCode.S) || Input.GetKey(KeyCode.DownArrow) || Input.GetAxisRaw("Vertical") < -0.5f;
+        bool jumpInput = Input.GetButtonDown("Jump") || Input.GetKeyDown(KeyCode.Space);
+
+        if (downInput && jumpInput && Time.time >= lastSlamTime + Cooldown)
         {
             StartCoroutine(GroundSlamRoutine());
         }
     }
 
-    private bool IsOnGround()
+    /// <summary>
+    /// Kiểm tra xem nhân vật đã chạm sàn hay chưa (kết hợp cả Player.IsGround và Raycast đa lớp).
+    /// </summary>
+    private bool IsHitGround()
     {
-        Vector2 checkPos = groundCheck != null ? (Vector2)groundCheck.position : (Vector2)transform.position + Vector2.down * 0.8f;
-        return Physics2D.OverlapCircle(checkPos, 0.3f, groundLayer);
+        if (player != null && player.IsGround) return true;
+
+        // Quét raycast xuống dưới 1.1m để phát hiện sàn
+        RaycastHit2D[] hits = Physics2D.RaycastAll(transform.position, Vector2.down, 1.1f);
+        foreach (var h in hits)
+        {
+            if (h.collider != null && !h.collider.isTrigger && h.collider.gameObject != gameObject)
+            {
+                return true;
+            }
+        }
+        return false;
     }
 
     private IEnumerator GroundSlamRoutine()
@@ -58,31 +75,45 @@ public class GroundSlam : MonoBehaviour
         IsSlamming = true;
         lastSlamTime = Time.time;
 
-        // 1. Wind-up trên không (tụ lực tích gió)
-        rb.velocity = Vector2.zero;
-        rb.gravityScale = 0f;
-        yield return new WaitForSeconds(0.06f);
+        if (rb == null) rb = GetComponent<Rigidbody2D>();
+        originalGravity = rb.gravityScale > 0f ? rb.gravityScale : 1f;
 
-        // 2. Lao thẳng xuống với vận tốc cao
-        rb.velocity = new Vector2(0f, -slamSpeed);
-
-        // Chờ cho đến khi chạm đất
-        while (!IsOnGround())
+        try
         {
-            rb.velocity = new Vector2(0f, -slamSpeed);
-            yield return null;
+            // 1. Wind-up trên không (tụ lực khựng 0.05s)
+            rb.linearVelocity = Vector2.zero;
+            rb.gravityScale = 0f;
+            yield return new WaitForSeconds(0.05f);
+
+            // 2. Lao thẳng xuống với vận tốc cao
+            rb.linearVelocity = new Vector2(0f, -slamSpeed);
+
+            // Chờ cho đến khi chạm sàn (có timeout an toàn 1.2s tránh kẹt vĩnh viễn)
+            float elapsed = 0f;
+            const float MaxDiveDuration = 1.2f;
+
+            while (!IsHitGround() && elapsed < MaxDiveDuration)
+            {
+                rb.linearVelocity = new Vector2(0f, -slamSpeed);
+                elapsed += Time.deltaTime;
+                yield return null;
+            }
+
+            // 3. Chạm đất - Tác động chấn động nổ diện rộng (Impact)
+            rb.gravityScale = originalGravity;
+            rb.linearVelocity = Vector2.zero;
+
+            PerformImpact();
+
+            // Độ trễ khựng nhẹ hồi phục sau cú nện đất (0.08s)
+            yield return new WaitForSeconds(0.08f);
         }
-
-        // 3. Chạm đất - Tác động chấn động nổ diện rộng (Impact)
-        rb.gravityScale = originalGravity;
-        rb.velocity = Vector2.zero;
-
-        PerformImpact();
-
-        // Độ khựng hồi phục sau cú nện đất (0.12s) để tạo trọng lực đòn đánh
-        yield return new WaitForSeconds(0.12f);
-
-        IsSlamming = false;
+        finally
+        {
+            // Failsafe tuyệt đối: luôn khôi phục trọng lực và mở khóa di chuyển
+            if (rb != null) rb.gravityScale = originalGravity;
+            IsSlamming = false;
+        }
     }
 
     private void PerformImpact()
@@ -111,7 +142,7 @@ public class GroundSlam : MonoBehaviour
             GameObject root = h.attachedRigidbody != null ? h.attachedRigidbody.gameObject : h.gameObject;
             if (root == gameObject || !hitRoots.Add(root)) continue;
 
-            // Kiểm tra và áp dụng sát thương + Stun lên kẻ địch
+            // Kiểm tra và áp dụng sát thương + Stun 1s lên kẻ địch
             var telegraph = root.GetComponent<EnemyTelegraph>();
             if (telegraph != null)
             {
@@ -122,8 +153,7 @@ public class GroundSlam : MonoBehaviour
             if (e1 != null)
             {
                 e1.Stun(stunDuration);
-                e1.takeDamageE(slamDamage);
-                DamagePopup.Spawn(root.transform.position, slamDamage, Color.yellow, isCritical: true);
+                e1.takeDamageE(slamDamage, true);
                 continue;
             }
 
