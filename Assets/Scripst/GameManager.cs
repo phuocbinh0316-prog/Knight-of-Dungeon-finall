@@ -55,6 +55,8 @@ public class GameManager : MonoBehaviour
     {
         AudioManager.Instance.SFX_Win();
 
+        SaveSystem.SubmitScore(score);
+        SaveSystem.UnlockLevel(SceneManager.GetActiveScene().buildIndex + 1);
         score = 0;
         Time.timeScale = 0;
         gameWinUi.SetActive(true);
