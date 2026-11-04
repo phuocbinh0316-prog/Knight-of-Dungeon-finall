@@ -23,6 +23,7 @@ public class RangedEnemy : MonoBehaviour
 
     private Health health;
     private LootDropper loot;
+    private EnemyTelegraph telegraph;
     private float nextFireTime;
     private bool dead;
 
@@ -30,6 +31,7 @@ public class RangedEnemy : MonoBehaviour
     {
         health = GetComponent<Health>();
         loot = GetComponent<LootDropper>();
+        telegraph = GetComponent<EnemyTelegraph>() ?? gameObject.AddComponent<EnemyTelegraph>();
         health.onDied.AddListener(OnDied);
     }
 
@@ -46,10 +48,15 @@ public class RangedEnemy : MonoBehaviour
     private void Update()
     {
         if (dead || player == null) return;
+        if (telegraph != null && telegraph.IsStunned) return;
 
         float dx = player.position.x - transform.position.x;
         float dist = Vector2.Distance(transform.position, player.position);
-        if (dist > detectRange) return;
+        if (dist > detectRange)
+        {
+            if (telegraph != null) telegraph.CancelWarning();
+            return;
+        }
 
         bool wantRight = dx >= 0f;
         bool faceRight = spriteFacesRight ? wantRight : !wantRight;
@@ -62,8 +69,22 @@ public class RangedEnemy : MonoBehaviour
 
         if (Time.time >= nextFireTime)
         {
-            Shoot();
-            nextFireTime = Time.time + fireInterval;
+            if (telegraph != null && !telegraph.IsPreparingAttack)
+            {
+                telegraph.ShowWarning(0.35f, () =>
+                {
+                    if (!dead && player != null && (telegraph == null || !telegraph.IsStunned))
+                    {
+                        Shoot();
+                    }
+                });
+                nextFireTime = Time.time + fireInterval;
+            }
+            else if (telegraph == null)
+            {
+                Shoot();
+                nextFireTime = Time.time + fireInterval;
+            }
         }
     }
 
@@ -80,6 +101,7 @@ public class RangedEnemy : MonoBehaviour
     {
         if (dead) return;
         dead = true;
+        if (telegraph != null) telegraph.CancelWarning();
         if (loot != null) loot.Drop();
         RunManager.Get().RegisterKill();
         Destroy(gameObject, 0.05f);

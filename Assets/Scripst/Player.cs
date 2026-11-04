@@ -36,6 +36,15 @@ public class Player : MonoBehaviour
     private Vector3 startPos;
     private DashRoll dash;
     private WeaponHolder weapons;
+    private GroundSlam groundSlam;
+
+    private int comboStep = 0;
+    private float lastAttackTime = 0f;
+    private const float ComboResetTime = 0.85f;
+
+    public float GetBaseDamage() => (weapons != null ? weapons.Damage : damageP);
+    public bool IsFacingRight => facingRight;
+
     private void Awake()
     {
         gameManager = FindAnyObjectByType<GameManager>();
@@ -43,6 +52,7 @@ public class Player : MonoBehaviour
         rb = GetComponent<Rigidbody2D>();
         dash = GetComponent<DashRoll>();
         weapons = GetComponent<WeaponHolder>();
+        groundSlam = GetComponent<GroundSlam>() ?? gameObject.AddComponent<GroundSlam>();
     }
     void Start()
     {
@@ -84,6 +94,7 @@ public class Player : MonoBehaviour
     private void Movement()
     {
         if (dash != null && dash.IsDashing) { moveMent = 0f; return; }
+        if (groundSlam != null && groundSlam.IsSlamming) { moveMent = 0f; return; }
 
         moveMent = Input.GetAxis("Horizontal");
         transform.position += new Vector3(moveMent, 0f, 0f) * moveSpeed * Time.deltaTime;
@@ -100,6 +111,8 @@ public class Player : MonoBehaviour
     }
     private void jump()
     {
+        if (groundSlam != null && groundSlam.IsSlamming) return;
+
         isGround = Physics2D.OverlapCircle(groundCheck.position, 0.2f, groundLayer);
         
 
@@ -143,6 +156,24 @@ public class Player : MonoBehaviour
             nextAttackTime = Time.time + (weapons != null ? weapons.Cooldown : attackCooldown);
             isAttackingTimer = 0.35f;
             canDealDamage = true;
+
+            // Xử lý chuỗi combo 3 đòn kiểu Dead Cells
+            if (Time.time - lastAttackTime > ComboResetTime)
+            {
+                comboStep = 1;
+            }
+            else
+            {
+                comboStep = (comboStep % 3) + 1;
+            }
+            lastAttackTime = Time.time;
+
+            // Đòn combo 2 hơi bước tới trước nhẹ
+            if (comboStep == 2)
+            {
+                transform.position += (facingRight ? Vector3.right : Vector3.left) * 0.25f;
+            }
+
             animator.ResetTrigger("Attack1");
             animator.SetTrigger("Attack1");
             if (AudioManager.Instance != null) AudioManager.Instance.SFX_Attack();
@@ -173,7 +204,7 @@ public class Player : MonoBehaviour
         if (!canDealDamage) return;
         canDealDamage = false;
 
-        float dmg = (weapons != null ? weapons.Damage : damageP) * MetaUpgrades.DamageMultiplier;
+        float baseDmg = (weapons != null ? weapons.Damage : damageP) * MetaUpgrades.DamageMultiplier;
         float radius = weapons != null ? weapons.Range : attackRadius;
 
         Collider2D[] hits = Physics2D.OverlapCircleAll(attackPoint.position, radius, LayerPlayer);
@@ -184,20 +215,59 @@ public class Player : MonoBehaviour
             GameObject root = h.attachedRigidbody != null ? h.attachedRigidbody.gameObject : h.gameObject;
             if (!done.Add(root)) continue;
 
+            bool isBackstab = false;
+            bool isStunned = false;
+
+            var telegraph = root.GetComponent<EnemyTelegraph>();
+            if (telegraph != null)
+            {
+                isStunned = telegraph.IsStunned;
+            }
+
             var e1 = root.GetComponent<PatrolEnemy1>();
-            if (e1 != null) e1.takeDamageE(dmg);
+            if (e1 != null)
+            {
+                // Đánh lén sau lưng khi Player và Quái cùng nhìn về một hướng
+                isBackstab = (facingRight == e1.IsFacingRight);
+            }
+
+            // Điều kiện chí mạng: Đòn Finisher thứ 3 HOẶC đánh sau lưng HOẶC đánh quái đang bị Stun
+            bool isCrit = (comboStep == 3) || isBackstab || isStunned;
+            float finalDmg = baseDmg * (isCrit ? 1.75f : 1f);
+
+            if (comboStep == 3)
+            {
+                CameraShake.Shake(0.22f);
+            }
+
+            if (e1 != null)
+            {
+                e1.takeDamageE(finalDmg, isCrit);
+                continue;
+            }
 
             var boss = root.GetComponent<PatrolBoss>();
-            if (boss != null) boss.takeDamageE(dmg);
+            if (boss != null)
+            {
+                boss.takeDamageE(finalDmg);
+                DamagePopup.Spawn(root.transform.position, finalDmg, Color.white, isCrit);
+                continue;
+            }
 
             var d = root.GetComponent<IDamageable>();
-            if (d != null) d.TakeDamage(dmg, root.transform.position);
+            if (d != null)
+            {
+                d.TakeDamage(finalDmg, root.transform.position);
+                DamagePopup.Spawn(root.transform.position, finalDmg, Color.white, isCrit);
+            }
         }
     }
 
     public void TakeDamageP(float damage)
     {
         if (dash != null && dash.IsInvulnerable) return;
+        if (groundSlam != null && groundSlam.IsSlamming) return;
+
         GameFeel.OnHit(transform.position, damage, gameObject);
         animator.SetTrigger("Hurt");
         if (AudioManager.Instance != null) AudioManager.Instance.SFX_Hit();

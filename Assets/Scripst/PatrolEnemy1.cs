@@ -26,9 +26,13 @@ public class PatrolEnemy1 : MonoBehaviour
     [SerializeField] private GameObject filePrefab;
     [SerializeField] float dropChance = 1f; // 100%
 
+    private EnemyTelegraph telegraph;
+    public bool IsFacingRight => facingRight;
+
     private void Awake()
     {
         animator = GetComponent<Animator>();
+        telegraph = GetComponent<EnemyTelegraph>() ?? gameObject.AddComponent<EnemyTelegraph>();
     }
 
     // Start is called once before the first execution of Update after the MonoBehaviour is created
@@ -43,6 +47,13 @@ public class PatrolEnemy1 : MonoBehaviour
         if (player == null) return;
 
         UpdateHpBar();
+
+        if (telegraph != null && telegraph.IsStunned)
+        {
+            animator.SetBool("Attack1", false);
+            return;
+        }
+
         //Trong phạm vi tấn công
         if (Vector2.Distance(transform.position,player.position) <= attackRange)
         {
@@ -50,6 +61,7 @@ public class PatrolEnemy1 : MonoBehaviour
         }
         else
         {
+            if (telegraph != null) telegraph.CancelWarning();
             Patrol();
         }
     }
@@ -67,6 +79,7 @@ public class PatrolEnemy1 : MonoBehaviour
         }
         if (Vector2.Distance(transform.position, player.position) > retrieveDistance)
         {
+            if (telegraph != null) telegraph.CancelWarning();
             RaycastHit2D hit = Physics2D.Raycast(checkPoint.position, Vector2.down, distance, layerMask);
 
             if (hit == false)
@@ -81,6 +94,10 @@ public class PatrolEnemy1 : MonoBehaviour
         }
         else
         {
+            if (telegraph != null && !telegraph.IsPreparingAttack)
+            {
+                telegraph.ShowWarning(0.35f, null);
+            }
             animator.SetBool("Attack1", true);
         }
 
@@ -112,9 +129,31 @@ public class PatrolEnemy1 : MonoBehaviour
             }
         }
     }
+    public void Stun(float duration)
+    {
+        if (telegraph != null) telegraph.Stun(duration);
+        animator.SetBool("Attack1", false);
+        animator.SetTrigger("Hurt");
+    }
+
     public void takeDamageE(float damage)
     {
-        GameFeel.OnHit(transform.position, damage, gameObject);
+        takeDamageE(damage, false);
+    }
+
+    public void takeDamageE(float damage, bool isCritical)
+    {
+        if (telegraph != null)
+        {
+            bool wasInterrupted = telegraph.TryInterrupt();
+            if (wasInterrupted)
+            {
+                isCritical = true; // Thưởng crit khi ngắt đòn đối thủ!
+                animator.SetBool("Attack1", false);
+            }
+        }
+
+        GameFeel.OnHit(transform.position, damage, gameObject, isCritical);
 
         animator.SetTrigger("Hurt");
         currentHp -= damage;
@@ -123,6 +162,7 @@ public class PatrolEnemy1 : MonoBehaviour
     }
     private void Die()
     {
+        if (telegraph != null) telegraph.CancelWarning();
         Vector3 spawnPosCoin = new Vector3(transform.position.x,transform.position.y+2f,0);
         Instantiate(coinPrefab, spawnPosCoin, Quaternion.identity);
         

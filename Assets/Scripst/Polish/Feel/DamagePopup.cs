@@ -9,25 +9,28 @@ public class DamagePopup : MonoBehaviour
     private float timer;
     private const float Lifetime = 0.7f;
 
-    public static void Spawn(Vector2 position, float damage, Color color)
+    public static void Spawn(Vector2 position, float damage, Color color, bool isCritical = false)
     {
         var go = new GameObject("DamagePopup");
         go.transform.position = position + Vector2.up * 0.6f;
         var popup = go.AddComponent<DamagePopup>();
-        popup.Setup(damage, color);
+        popup.Setup(damage, color, isCritical);
     }
 
-    private void Setup(float damage, Color color)
+    private void Setup(float damage, Color color, bool isCritical)
     {
         tmp = gameObject.AddComponent<TextMeshPro>();
-        tmp.text = Mathf.CeilToInt(damage).ToString();
-        tmp.fontSize = 6f;
+        int dmgInt = Mathf.CeilToInt(damage);
+        tmp.text = isCritical ? $"{dmgInt}!" : dmgInt.ToString();
+        tmp.fontSize = isCritical ? 9f : 6f;
         tmp.fontStyle = FontStyles.Bold;
         tmp.alignment = TextAlignmentOptions.Center;
-        tmp.color = color;
+        tmp.color = isCritical ? new Color(1f, 0.85f, 0.1f) : color;
         tmp.sortingOrder = 100;
 
-        velocity = new Vector3(Random.Range(-0.8f, 0.8f), 3f, 0f);
+        float vx = Random.Range(-0.8f, 0.8f);
+        float vy = isCritical ? 4.5f : 3f;
+        velocity = new Vector3(vx, vy, 0f);
     }
 
     private void Update()
