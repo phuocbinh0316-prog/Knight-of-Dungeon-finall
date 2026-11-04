@@ -34,17 +34,32 @@ public class Player : MonoBehaviour
     private float currentHp;
     [SerializeField] private Image hpBar;
     private Vector3 startPos;
+    private DashRoll dash;
+    private WeaponHolder weapons;
     private void Awake()
     {
         gameManager = FindAnyObjectByType<GameManager>();
         animator = GetComponent<Animator>();
         rb = GetComponent<Rigidbody2D>();
-
+        dash = GetComponent<DashRoll>();
+        weapons = GetComponent<WeaponHolder>();
     }
     void Start()
     {
+        maxHealth += MetaUpgrades.BonusHealth;
         currentHp = maxHealth;
         startPos = transform.position;
+    }
+
+    public void Heal(float amount)
+    {
+        currentHp = Mathf.Min(maxHealth, currentHp + amount);
+    }
+
+    public void SetSpawn(Vector3 pos)
+    {
+        transform.position = pos;
+        startPos = pos;
     }
 
     // Update is called once per frame
@@ -68,6 +83,7 @@ public class Player : MonoBehaviour
     }
     private void Movement()
     {
+        if (dash != null && dash.IsDashing) { moveMent = 0f; return; }
 
         moveMent = Input.GetAxis("Horizontal");
         transform.position += new Vector3(moveMent, 0f, 0f) * moveSpeed * Time.deltaTime;
@@ -124,7 +140,7 @@ public class Player : MonoBehaviour
 
         if (Input.GetKeyDown(KeyCode.J) && Time.time >= nextAttackTime)
         {
-            nextAttackTime = Time.time + attackCooldown;
+            nextAttackTime = Time.time + (weapons != null ? weapons.Cooldown : attackCooldown);
             isAttackingTimer = 0.35f;
             canDealDamage = true;
             animator.ResetTrigger("Attack1");
@@ -157,22 +173,31 @@ public class Player : MonoBehaviour
         if (!canDealDamage) return;
         canDealDamage = false;
 
-        Collider2D collInfo = Physics2D.OverlapCircle(attackPoint.position, attackRadius, LayerPlayer);
-        if (collInfo)
+        float dmg = (weapons != null ? weapons.Damage : damageP) * MetaUpgrades.DamageMultiplier;
+        float radius = weapons != null ? weapons.Range : attackRadius;
+
+        Collider2D[] hits = Physics2D.OverlapCircleAll(attackPoint.position, radius, LayerPlayer);
+        var done = new System.Collections.Generic.HashSet<GameObject>();
+
+        foreach (var h in hits)
         {
-            if (collInfo.gameObject.GetComponent<PatrolEnemy1>() != null)
-            {
-                collInfo.gameObject.GetComponent<PatrolEnemy1>().takeDamageE(damageP);
-            }
-            if (collInfo.gameObject.GetComponent<PatrolBoss>() != null)
-            {
-                collInfo.gameObject.GetComponent<PatrolBoss>().takeDamageE(damageP);
-            }
+            GameObject root = h.attachedRigidbody != null ? h.attachedRigidbody.gameObject : h.gameObject;
+            if (!done.Add(root)) continue;
+
+            var e1 = root.GetComponent<PatrolEnemy1>();
+            if (e1 != null) e1.takeDamageE(dmg);
+
+            var boss = root.GetComponent<PatrolBoss>();
+            if (boss != null) boss.takeDamageE(dmg);
+
+            var d = root.GetComponent<IDamageable>();
+            if (d != null) d.TakeDamage(dmg, root.transform.position);
         }
     }
 
     public void TakeDamageP(float damage)
     {
+        if (dash != null && dash.IsInvulnerable) return;
         GameFeel.OnHit(transform.position, damage, gameObject);
         animator.SetTrigger("Hurt");
         AudioManager.Instance.SFX_Hit();
