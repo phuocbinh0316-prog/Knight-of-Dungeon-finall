@@ -38,6 +38,12 @@ public class MainMenu : MonoBehaviour
         SceneTransition.Load("map 1");
     }
 
+    public void PlayRun()
+    {
+        RunManager.Get().ResetRun();
+        SceneTransition.Load("Run");
+    }
+
     public void QuitGame()
     {
         Application.Quit();
