@@ -1,4 +1,4 @@
-﻿using UnityEngine;
+using UnityEngine;
 using UnityEngine.SceneManagement;
 using UnityEngine.UI;
 
@@ -75,7 +75,7 @@ public class PauseMenu : MonoBehaviour
     {
         Time.timeScale = 1f;
         AudioListener.pause = false;
-        SceneManager.LoadScene("MainMenu");
+        SceneTransition.Load("MainMenu");
     }
 
     public void QuitGame()

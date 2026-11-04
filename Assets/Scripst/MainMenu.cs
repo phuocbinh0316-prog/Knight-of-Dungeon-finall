@@ -1,4 +1,4 @@
-﻿using UnityEngine;
+using UnityEngine;
 using UnityEngine.SceneManagement;
 using UnityEngine.UI;
 using UnityEngine.Audio;
@@ -35,7 +35,7 @@ public class MainMenu : MonoBehaviour
     // ---------------- MAIN MENU ----------------
     public void PlayGame()
     {
-        SceneManager.LoadScene("map 1");
+        SceneTransition.Load("map 1");
     }
 
     public void QuitGame()

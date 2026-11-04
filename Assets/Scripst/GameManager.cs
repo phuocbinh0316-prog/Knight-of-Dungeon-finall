@@ -1,4 +1,4 @@
-﻿using UnityEngine;
+using UnityEngine;
 using UnityEngine.SocialPlatforms.Impl;
 using TMPro;
 using UnityEngine.SceneManagement;
@@ -68,7 +68,7 @@ public class GameManager : MonoBehaviour
         UpdateScore();
         //ko nhận inputs
         Time.timeScale = 1;
-        SceneManager.LoadScene("map 1");
+        SceneTransition.Load("map 1");
     }
 
     public void MainMenu()
@@ -78,7 +78,7 @@ public class GameManager : MonoBehaviour
         UpdateScore();
         //ko nhận inputs
         Time.timeScale = 1;
-        SceneManager.LoadScene("MainMenu");
+        SceneTransition.Load("MainMenu");
     }
 
     public void Continue()
@@ -94,11 +94,11 @@ public class GameManager : MonoBehaviour
 
         if (nextIndex >= SceneManager.sceneCountInBuildSettings)
         {
-            SceneManager.LoadScene("MainMenu");
+            SceneTransition.Load("MainMenu");
         }
         else
         {
-            SceneManager.LoadScene(nextIndex);
+            SceneTransition.Load(System.IO.Path.GetFileNameWithoutExtension(SceneUtility.GetScenePathByBuildIndex(nextIndex)));
         }
     }
 }
