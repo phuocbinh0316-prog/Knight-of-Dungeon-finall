@@ -1,0 +1,1473 @@
+fileFormatVersion: 2
+guid: 75581ef7954670d46a6f2e4505c3bfc7
+TextureImporter:
+  internalIDToNameTable:
+  - first:
+      213: -7018563032041048082
+    second: dc_tileset_1_0
+  - first:
+      213: -4023690288591166056
+    second: dc1_fill_brick
+  - first:
+      213: -1659693693992215009
+    second: dc1_fill_blocks
+  - first:
+      213: -4561953088090129364
+    second: dc1_ceiling
+  - first:
+      213: 3216334717799901045
+    second: dc1_mossy_stone
+  - first:
+      213: 6638100194076852949
+    second: dc1_cracked_stone
+  - first:
+      213: -7436557153770153692
+    second: dc1_stairs
+  - first:
+      213: 8971395018972824221
+    second: dc1_platform_moss
+  - first:
+      213: 6642551044698537704
+    second: dc1_platform_island
+  - first:
+      213: 1600321806748038366
+    second: dc1_surface_left
+  - first:
+      213: 945512276611103252
+    second: dc1_surface_center
+  - first:
+      213: -657456693935047770
+    second: dc1_surface_right
+  - first:
+      213: 7942062348816810005
+    second: dc1_surface_broken
+  - first:
+      213: 5327389533958296256
+    second: dc1_wall_left
+  - first:
+      213: 7303957243689740055
+    second: dc1_wall_right
+  - first:
+      213: 686422264305293729
+    second: dc1_platform_ledge
+  - first:
+      213: -7385137855788851584
+    second: dc1_gothic_arch
+  - first:
+      213: 6456867770651992241
+    second: dc1_window_stained_red
+  - first:
+      213: -333046678678058539
+    second: dc1_window_stained_purple
+  - first:
+      213: 1854073568655795448
+    second: dc1_window_iron_bars
+  - first:
+      213: 6602824400923228696
+    second: dc1_wooden_door
+  - first:
+      213: -3945018524215940377
+    second: dc1_iron_gate
+  - first:
+      213: 1642297939112790690
+    second: dc1_stone_altar
+  - first:
+      213: -8299747027371636789
+    second: dc1_column_1
+  - first:
+      213: 8929473377119493464
+    second: dc1_column_2
+  - first:
+      213: -1583157724144881570
+    second: dc1_column_3
+  - first:
+      213: 1773237525140997802
+    second: dc1_column_4
+  - first:
+      213: 1815934141151403827
+    second: dc1_railing_1
+  - first:
+      213: 8248729437898949062
+    second: dc1_railing_broken
+  - first:
+      213: 8686731289772306739
+    second: dc1_torch_wall
+  - first:
+      213: 7669888553909653338
+    second: dc1_torch_wall_alt
+  - first:
+      213: -4993559769962158612
+    second: dc1_lantern
+  - first:
+      213: -1736727972554121598
+    second: dc1_candles
+  - first:
+      213: -3448086948204373434
+    second: dc1_barrel
+  - first:
+      213: 2393245522199626321
+    second: dc1_crates_stacked
+  - first:
+      213: 3793648026454930735
+    second: dc1_chest_gold_closed
+  - first:
+      213: 7666199960899254221
+    second: dc1_chest_iron_closed
+  - first:
+      213: -5321732297314857543
+    second: dc1_chest_open_loot
+  - first:
+      213: 2511059802133139174
+    second: dc1_skull_bones
+  - first:
+      213: 6409102302234630744
+    second: dc1_shields
+  - first:
+      213: 7598682407723978133
+    second: dc1_banner_crimson
+  - first:
+      213: 5882260153063632476
+    second: dc1_banner_purple
+  - first:
+      213: -6479909385314606134
+    second: dc1_banner_blue
+  - first:
+      213: 825315140125540831
+    second: dc1_banner_tattered
+  - first:
+      213: -6919754072355839845
+    second: dc1_cage_hanging
+  - first:
+      213: -2203918316375671830
+    second: dc1_chains_hooks
+  - first:
+      213: -2981867764613102816
+    second: dc1_rubble_pile
+  - first:
+      213: -8078746917136815746
+    second: dc1_bg_ruined_tower
+  - first:
+      213: 1033334712972842779
+    second: dc1_bg_cathedral
+  - first:
+      213: -1601188566864784390
+    second: dc1_bg_arch_left
+  - first:
+      213: -4369605231397749531
+    second: dc1_bg_arch_right
+  - first:
+      213: 2297497741746609985
+    second: dc1_bg_pillars
+  - first:
+      213: 8477286316400311686
+    second: dc1_bg_fortress
+  externalObjects: {}
+  serializedVersion: 13
+  mipmaps:
+    mipMapMode: 0
+    enableMipMap: 0
+    sRGBTexture: 1
+    linearTexture: 0
+    fadeOut: 0
+    borderMipMap: 0
+    mipMapsPreserveCoverage: 0
+    alphaTestReferenceValue: 0.5
+    mipMapFadeDistanceStart: 1
+    mipMapFadeDistanceEnd: 3
+  bumpmap:
+    convertToNormalMap: 0
+    externalNormalMap: 0
+    heightScale: 0.25
+    normalMapFilter: 0
+    flipGreenChannel: 0
+  isReadable: 1
+  streamingMipmaps: 0
+  streamingMipmapsPriority: 0
+  vTOnly: 0
+  ignoreMipmapLimit: 0
+  grayScaleToAlpha: 0
+  generateCubemap: 6
+  cubemapConvolution: 0
+  seamlessCubemap: 0
+  textureFormat: 1
+  maxTextureSize: 2048
+  textureSettings:
+    serializedVersion: 2
+    filterMode: 0
+    aniso: 1
+    mipBias: 0
+    wrapU: 1
+    wrapV: 1
+    wrapW: 1
+  nPOTScale: 0
+  lightmap: 0
+  compressionQuality: 50
+  spriteMode: 2
+  spriteExtrude: 1
+  spriteMeshType: 1
+  alignment: 0
+  spritePivot: {x: 0.5, y: 0.5}
+  spritePixelsToUnits: 32
+  spriteBorder: {x: 0, y: 0, z: 0, w: 0}
+  spriteGenerateFallbackPhysicsShape: 1
+  alphaUsage: 1
+  alphaIsTransparency: 1
+  spriteTessellationDetail: -1
+  textureType: 8
+  textureShape: 1
+  singleChannelComponent: 0
+  flipbookRows: 1
+  flipbookColumns: 1
+  maxTextureSizeSet: 0
+  compressionQualitySet: 0
+  textureFormatSet: 0
+  ignorePngGamma: 0
+  applyGammaDecoding: 0
+  swizzle: 50462976
+  cookieLightType: 0
+  platformSettings:
+  - serializedVersion: 4
+    buildTarget: DefaultTexturePlatform
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 0
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 4
+    buildTarget: Standalone
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  spriteSheet:
+    serializedVersion: 2
+    sprites:
+    - serializedVersion: 2
+      name: dc1_fill_brick
+      rect:
+        serializedVersion: 2
+        x: 20
+        y: 678
+        width: 80
+        height: 80
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 895a55e300bf828c0800000000000000
+      internalID: -4023690288591166056
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: dc1_fill_blocks
+      rect:
+        serializedVersion: 2
+        x: 140
+        y: 678
+        width: 80
+        height: 80
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: f1e53a5f06597f8e0800000000000000
+      internalID: -1659693693992215009
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: dc1_ceiling
+      rect:
+        serializedVersion: 2
+        x: 360
+        y: 710
+        width: 80
+        height: 48
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: c2c346e26dfa0b0c0800000000000000
+      internalID: -4561953088090129364
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: dc1_mossy_stone
+      rect:
+        serializedVersion: 2
+        x: 700
+        y: 678
+        width: 80
+        height: 80
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 577283d8267b2ac20800000000000000
+      internalID: 3216334717799901045
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: dc1_cracked_stone
+      rect:
+        serializedVersion: 2
+        x: 805
+        y: 678
+        width: 80
+        height: 80
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 5d20763d4f44f1c50800000000000000
+      internalID: 6638100194076852949
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: dc1_stairs
+      rect:
+        serializedVersion: 2
+        x: 906
+        y: 663
+        width: 120
+        height: 95
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 429d3a15baa0cc890800000000000000
+      internalID: -7436557153770153692
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: dc1_platform_moss
+      rect:
+        serializedVersion: 2
+        x: 1045
+        y: 698
+        width: 150
+        height: 60
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: d92859dbc3cc08c70800000000000000
+      internalID: 8971395018972824221
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: dc1_platform_island
+      rect:
+        serializedVersion: 2
+        x: 1211
+        y: 678
+        width: 140
+        height: 80
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 8eef7ad3bf41f2c50800000000000000
+      internalID: 6642551044698537704
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: dc1_surface_left
+      rect:
+        serializedVersion: 2
+        x: 20
+        y: 588
+        width: 45
+        height: 55
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: ed43781543c753610800000000000000
+      internalID: 1600321806748038366
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: dc1_surface_center
+      rect:
+        serializedVersion: 2
+        x: 70
+        y: 588
+        width: 80
+        height: 55
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 41afc22f7622f1d00800000000000000
+      internalID: 945512276611103252
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: dc1_surface_right
+      rect:
+        serializedVersion: 2
+        x: 190
+        y: 588
+        width: 45
+        height: 55
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 6ab7cc6ce9e30e6f0800000000000000
+      internalID: -657456693935047770
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: dc1_surface_broken
+      rect:
+        serializedVersion: 2
+        x: 356
+        y: 588
+        width: 85
+        height: 55
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 5100b3d90afd73e60800000000000000
+      internalID: 7942062348816810005
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: dc1_wall_left
+      rect:
+        serializedVersion: 2
+        x: 570
+        y: 568
+        width: 35
+        height: 75
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 0c2d7bf2e80bee940800000000000000
+      internalID: 5327389533958296256
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: dc1_wall_right
+      rect:
+        serializedVersion: 2
+        x: 460
+        y: 568
+        width: 35
+        height: 75
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 717a4c44a6edc5560800000000000000
+      internalID: 7303957243689740055
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: dc1_platform_ledge
+      rect:
+        serializedVersion: 2
+        x: 1040
+        y: 593
+        width: 130
+        height: 35
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 1a916dd9969a68900800000000000000
+      internalID: 686422264305293729
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: dc1_gothic_arch
+      rect:
+        serializedVersion: 2
+        x: 20
+        y: 365
+        width: 138
+        height: 154
+      alignment: 7
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 08e5a609f38b28990800000000000000
+      internalID: -7385137855788851584
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: dc1_window_stained_red
+      rect:
+        serializedVersion: 2
+        x: 171
+        y: 365
+        width: 90
+        height: 154
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 1b0616707076b9950800000000000000
+      internalID: 6456867770651992241
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: dc1_window_stained_purple
+      rect:
+        serializedVersion: 2
+        x: 274
+        y: 365
+        width: 90
+        height: 154
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 5d945cf6fc7c06bf0800000000000000
+      internalID: -333046678678058539
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: dc1_window_iron_bars
+      rect:
+        serializedVersion: 2
+        x: 377
+        y: 365
+        width: 81
+        height: 154
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 8f46b2f561efab910800000000000000
+      internalID: 1854073568655795448
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: dc1_wooden_door
+      rect:
+        serializedVersion: 2
+        x: 472
+        y: 365
+        width: 147
+        height: 154
+      alignment: 7
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 81a7f433fc1f1ab50800000000000000
+      internalID: 6602824400923228696
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: dc1_iron_gate
+      rect:
+        serializedVersion: 2
+        x: 631
+        y: 365
+        width: 125
+        height: 154
+      alignment: 7
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 7eae5c7cd8a7049c0800000000000000
+      internalID: -3945018524215940377
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: dc1_stone_altar
+      rect:
+        serializedVersion: 2
+        x: 768
+        y: 365
+        width: 118
+        height: 154
+      alignment: 7
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 2aa8c2c364d9ac610800000000000000
+      internalID: 1642297939112790690
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: dc1_column_1
+      rect:
+        serializedVersion: 2
+        x: 899
+        y: 365
+        width: 35
+        height: 154
+      alignment: 7
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: bc7c8e37d0061dc80800000000000000
+      internalID: -8299747027371636789
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: dc1_column_2
+      rect:
+        serializedVersion: 2
+        x: 950
+        y: 365
+        width: 39
+        height: 154
+      alignment: 7
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 85dd382e9bcdbeb70800000000000000
+      internalID: 8929473377119493464
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: dc1_column_3
+      rect:
+        serializedVersion: 2
+        x: 1003
+        y: 365
+        width: 41
+        height: 154
+      alignment: 7
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: e50bde4107e770ae0800000000000000
+      internalID: -1583157724144881570
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: dc1_column_4
+      rect:
+        serializedVersion: 2
+        x: 1058
+        y: 365
+        width: 40
+        height: 154
+      alignment: 7
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: aa60c64522ecb9810800000000000000
+      internalID: 1773237525140997802
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: dc1_railing_1
+      rect:
+        serializedVersion: 2
+        x: 1112
+        y: 438
+        width: 111
+        height: 75
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 33f55daea7e733910800000000000000
+      internalID: 1815934141151403827
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: dc1_railing_broken
+      rect:
+        serializedVersion: 2
+        x: 1237
+        y: 363
+        width: 118
+        height: 70
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 6c1464a58bf597270800000000000000
+      internalID: 8248729437898949062
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: dc1_torch_wall
+      rect:
+        serializedVersion: 2
+        x: 20
+        y: 208
+        width: 75
+        height: 120
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 331362275187d8870800000000000000
+      internalID: 8686731289772306739
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: dc1_torch_wall_alt
+      rect:
+        serializedVersion: 2
+        x: 100
+        y: 208
+        width: 75
+        height: 120
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: a5f8e92c00be07a60800000000000000
+      internalID: 7669888553909653338
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: dc1_lantern
+      rect:
+        serializedVersion: 2
+        x: 199
+        y: 238
+        width: 29
+        height: 85
+      alignment: 2
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: ce569b2a8df43bab0800000000000000
+      internalID: -4993559769962158612
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: dc1_candles
+      rect:
+        serializedVersion: 2
+        x: 251
+        y: 258
+        width: 37
+        height: 50
+      alignment: 7
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 28e5d6c4c17e5e7e0800000000000000
+      internalID: -1736727972554121598
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: dc1_barrel
+      rect:
+        serializedVersion: 2
+        x: 309
+        y: 243
+        width: 48
+        height: 50
+      alignment: 7
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 64a1e99703fe520d0800000000000000
+      internalID: -3448086948204373434
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: dc1_crates_stacked
+      rect:
+        serializedVersion: 2
+        x: 373
+        y: 243
+        width: 98
+        height: 55
+      alignment: 7
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 152c00b5f14863120800000000000000
+      internalID: 2393245522199626321
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: dc1_chest_gold_closed
+      rect:
+        serializedVersion: 2
+        x: 486
+        y: 243
+        width: 64
+        height: 50
+      alignment: 7
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: f2535bbc7ceb5a430800000000000000
+      internalID: 3793648026454930735
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: dc1_chest_iron_closed
+      rect:
+        serializedVersion: 2
+        x: 565
+        y: 243
+        width: 66
+        height: 50
+      alignment: 7
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: dc773864f30d36a60800000000000000
+      internalID: 7666199960899254221
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: dc1_chest_open_loot
+      rect:
+        serializedVersion: 2
+        x: 642
+        y: 243
+        width: 75
+        height: 55
+      alignment: 7
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 9bd03dcdba86526b0800000000000000
+      internalID: -5321732297314857543
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: dc1_skull_bones
+      rect:
+        serializedVersion: 2
+        x: 720
+        y: 243
+        width: 62
+        height: 45
+      alignment: 7
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 6ee88ebf59319d220800000000000000
+      internalID: 2511059802133139174
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: dc1_shields
+      rect:
+        serializedVersion: 2
+        x: 745
+        y: 243
+        width: 45
+        height: 45
+      alignment: 7
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 85a55d54694b1f850800000000000000
+      internalID: 6409102302234630744
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: dc1_banner_crimson
+      rect:
+        serializedVersion: 2
+        x: 794
+        y: 213
+        width: 48
+        height: 115
+      alignment: 2
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 59dc569e361f37960800000000000000
+      internalID: 7598682407723978133
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: dc1_banner_purple
+      rect:
+        serializedVersion: 2
+        x: 858
+        y: 213
+        width: 45
+        height: 115
+      alignment: 2
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: c5eeac3917cf1a150800000000000000
+      internalID: 5882260153063632476
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: dc1_banner_blue
+      rect:
+        serializedVersion: 2
+        x: 917
+        y: 213
+        width: 48
+        height: 115
+      alignment: 2
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: ac36a9ffebcb216a0800000000000000
+      internalID: -6479909385314606134
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: dc1_banner_tattered
+      rect:
+        serializedVersion: 2
+        x: 978
+        y: 213
+        width: 48
+        height: 115
+      alignment: 2
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: fd14fea4fbb147b00800000000000000
+      internalID: 825315140125540831
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: dc1_cage_hanging
+      rect:
+        serializedVersion: 2
+        x: 1040
+        y: 213
+        width: 45
+        height: 115
+      alignment: 2
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: b90ea28655818ff90800000000000000
+      internalID: -6919754072355839845
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: dc1_chains_hooks
+      rect:
+        serializedVersion: 2
+        x: 1150
+        y: 213
+        width: 27
+        height: 115
+      alignment: 2
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: aeb7376d7fb1a61e0800000000000000
+      internalID: -2203918316375671830
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: dc1_rubble_pile
+      rect:
+        serializedVersion: 2
+        x: 1239
+        y: 243
+        width: 114
+        height: 50
+      alignment: 7
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 0234c0311174e96d0800000000000000
+      internalID: -2981867764613102816
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: dc1_bg_ruined_tower
+      rect:
+        serializedVersion: 2
+        x: 30
+        y: 9
+        width: 214
+        height: 174
+      alignment: 7
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: e7927cd5b7682ef80800000000000000
+      internalID: -8078746917136815746
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: dc1_bg_cathedral
+      rect:
+        serializedVersion: 2
+        x: 282
+        y: 9
+        width: 200
+        height: 174
+      alignment: 7
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: b1793d45274275e00800000000000000
+      internalID: 1033334712972842779
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: dc1_bg_arch_left
+      rect:
+        serializedVersion: 2
+        x: 523
+        y: 9
+        width: 95
+        height: 174
+      alignment: 7
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: af39b9d5b7f67c9e0800000000000000
+      internalID: -1601188566864784390
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: dc1_bg_arch_right
+      rect:
+        serializedVersion: 2
+        x: 641
+        y: 9
+        width: 95
+        height: 174
+      alignment: 7
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 5ec39d5713b0c53c0800000000000000
+      internalID: -4369605231397749531
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: dc1_bg_pillars
+      rect:
+        serializedVersion: 2
+        x: 768
+        y: 9
+        width: 248
+        height: 174
+      alignment: 7
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 14f9111060a52ef10800000000000000
+      internalID: 2297497741746609985
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: dc1_bg_fortress
+      rect:
+        serializedVersion: 2
+        x: 1037
+        y: 9
+        width: 303
+        height: 174
+      alignment: 7
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 68df15c7dfe55a570800000000000000
+      internalID: 8477286316400311686
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    outline: []
+    customData: 
+    physicsShape: []
+    bones: []
+    spriteID: 
+    internalID: 0
+    vertices: []
+    indices: 
+    edges: []
+    weights: []
+    secondaryTextures: []
+    spriteCustomMetadata:
+      entries: []
+    nameFileIdTable:
+      dc1_banner_blue: -6479909385314606134
+      dc1_banner_crimson: 7598682407723978133
+      dc1_banner_purple: 5882260153063632476
+      dc1_banner_tattered: 825315140125540831
+      dc1_barrel: -3448086948204373434
+      dc1_bg_arch_left: -1601188566864784390
+      dc1_bg_arch_right: -4369605231397749531
+      dc1_bg_cathedral: 1033334712972842779
+      dc1_bg_fortress: 8477286316400311686
+      dc1_bg_pillars: 2297497741746609985
+      dc1_bg_ruined_tower: -8078746917136815746
+      dc1_cage_hanging: -6919754072355839845
+      dc1_candles: -1736727972554121598
+      dc1_ceiling: -4561953088090129364
+      dc1_chains_hooks: -2203918316375671830
+      dc1_chest_gold_closed: 3793648026454930735
+      dc1_chest_iron_closed: 7666199960899254221
+      dc1_chest_open_loot: -5321732297314857543
+      dc1_column_1: -8299747027371636789
+      dc1_column_2: 8929473377119493464
+      dc1_column_3: -1583157724144881570
+      dc1_column_4: 1773237525140997802
+      dc1_cracked_stone: 6638100194076852949
+      dc1_crates_stacked: 2393245522199626321
+      dc1_fill_blocks: -1659693693992215009
+      dc1_fill_brick: -4023690288591166056
+      dc1_gothic_arch: -7385137855788851584
+      dc1_iron_gate: -3945018524215940377
+      dc1_lantern: -4993559769962158612
+      dc1_mossy_stone: 3216334717799901045
+      dc1_platform_island: 6642551044698537704
+      dc1_platform_ledge: 686422264305293729
+      dc1_platform_moss: 8971395018972824221
+      dc1_railing_1: 1815934141151403827
+      dc1_railing_broken: 8248729437898949062
+      dc1_rubble_pile: -2981867764613102816
+      dc1_shields: 6409102302234630744
+      dc1_skull_bones: 2511059802133139174
+      dc1_stairs: -7436557153770153692
+      dc1_stone_altar: 1642297939112790690
+      dc1_surface_broken: 7942062348816810005
+      dc1_surface_center: 945512276611103252
+      dc1_surface_left: 1600321806748038366
+      dc1_surface_right: -657456693935047770
+      dc1_torch_wall: 8686731289772306739
+      dc1_torch_wall_alt: 7669888553909653338
+      dc1_wall_left: 5327389533958296256
+      dc1_wall_right: 7303957243689740055
+      dc1_window_iron_bars: 1854073568655795448
+      dc1_window_stained_purple: -333046678678058539
+      dc1_window_stained_red: 6456867770651992241
+      dc1_wooden_door: 6602824400923228696
+      dc_tileset_1_0: -7018563032041048082
+  mipmapLimitGroupName: 
+  pSDRemoveMatte: 0
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
