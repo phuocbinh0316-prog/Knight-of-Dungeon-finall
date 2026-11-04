@@ -43,6 +43,10 @@ namespace Knight.Editor
                 var (cellPrefab, heartPrefab, weaponPickupPrefab) = CreatePickups();
                 var rangedEnemyPrefab = CreateRangedEnemy(projPrefab, cellPrefab, heartPrefab);
                 var rooms = CreateRooms();
+
+                AssetDatabase.SaveAssets();
+                AssetDatabase.Refresh();
+
                 CreateRunScene(rooms, rangedEnemyPrefab, weaponPickupPrefab, weapons);
                 AddRunSceneToBuildSettings();
                 SetupMainMenuScene();
@@ -624,31 +628,35 @@ namespace Knight.Editor
             var gen = genGO.AddComponent<LevelGenerator>();
             var soGen = new SerializedObject(gen);
 
-            soGen.FindProperty("startRoom").objectReferenceValue = rooms.Find(r => r.type == RoomType.Start);
-            soGen.FindProperty("bossRoom").objectReferenceValue = rooms.Find(r => r.type == RoomType.Boss);
+            var startRoom = AssetDatabase.LoadAssetAtPath<GameObject>("Assets/Prefabs/Roguelite/Rooms/Room_Start.prefab")?.GetComponent<Room>();
+            var bossRoom = AssetDatabase.LoadAssetAtPath<GameObject>("Assets/Prefabs/Roguelite/Rooms/Room_Boss.prefab")?.GetComponent<Room>();
+            var combat1 = AssetDatabase.LoadAssetAtPath<GameObject>("Assets/Prefabs/Roguelite/Rooms/Room_Combat_1.prefab")?.GetComponent<Room>();
+            var combat2 = AssetDatabase.LoadAssetAtPath<GameObject>("Assets/Prefabs/Roguelite/Rooms/Room_Combat_2.prefab")?.GetComponent<Room>();
+            var treasure1 = AssetDatabase.LoadAssetAtPath<GameObject>("Assets/Prefabs/Roguelite/Rooms/Room_Treasure.prefab")?.GetComponent<Room>();
+
+            soGen.FindProperty("startRoom").objectReferenceValue = startRoom;
+            soGen.FindProperty("bossRoom").objectReferenceValue = bossRoom;
 
             var combatProp = soGen.FindProperty("combatRooms");
-            var combats = rooms.FindAll(r => r.type == RoomType.Combat);
-            combatProp.arraySize = combats.Count;
-            for (int i = 0; i < combats.Count; i++)
-                combatProp.GetArrayElementAtIndex(i).objectReferenceValue = combats[i];
+            combatProp.arraySize = 2;
+            combatProp.GetArrayElementAtIndex(0).objectReferenceValue = combat1;
+            combatProp.GetArrayElementAtIndex(1).objectReferenceValue = combat2;
 
             var treasureProp = soGen.FindProperty("treasureRooms");
-            var treasures = rooms.FindAll(r => r.type == RoomType.Treasure);
-            treasureProp.arraySize = treasures.Count;
-            for (int i = 0; i < treasures.Count; i++)
-                treasureProp.GetArrayElementAtIndex(i).objectReferenceValue = treasures[i];
+            treasureProp.arraySize = 1;
+            treasureProp.GetArrayElementAtIndex(0).objectReferenceValue = treasure1;
 
             if (weaponPickupPrefab != null)
                 soGen.FindProperty("weaponPickupPrefab").objectReferenceValue = weaponPickupPrefab.GetComponent<Pickup>();
 
-            if (weapons != null && weapons.Length > 0)
-            {
-                var wpProp = soGen.FindProperty("weaponPool");
-                wpProp.arraySize = weapons.Length;
-                for (int i = 0; i < weapons.Length; i++)
-                    wpProp.GetArrayElementAtIndex(i).objectReferenceValue = weapons[i];
-            }
+            var wpProp = soGen.FindProperty("weaponPool");
+            var w1 = AssetDatabase.LoadAssetAtPath<WeaponData>("Assets/RogueliteData/Weapons/Sword_Common.asset");
+            var w2 = AssetDatabase.LoadAssetAtPath<WeaponData>("Assets/RogueliteData/Weapons/Axe_Rare.asset");
+            var w3 = AssetDatabase.LoadAssetAtPath<WeaponData>("Assets/RogueliteData/Weapons/Dagger_Epic.asset");
+            wpProp.arraySize = 3;
+            wpProp.GetArrayElementAtIndex(0).objectReferenceValue = w1;
+            wpProp.GetArrayElementAtIndex(1).objectReferenceValue = w2;
+            wpProp.GetArrayElementAtIndex(2).objectReferenceValue = w3;
 
             // Enemy Pool (Melee + Ranged)
             var enemyMelee = AssetDatabase.LoadAssetAtPath<GameObject>("Assets/Prefabs/Attack_1_0.prefab");

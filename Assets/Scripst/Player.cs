@@ -107,7 +107,7 @@ public class Player : MonoBehaviour
         {
             jumpPressed = true;
             animator.ResetTrigger("Attack1");
-            AudioManager.Instance.SFX_Jump();
+            if (AudioManager.Instance != null) AudioManager.Instance.SFX_Jump();
         }
     }
 
@@ -145,7 +145,7 @@ public class Player : MonoBehaviour
             canDealDamage = true;
             animator.ResetTrigger("Attack1");
             animator.SetTrigger("Attack1");
-            AudioManager.Instance.SFX_Attack();
+            if (AudioManager.Instance != null) AudioManager.Instance.SFX_Attack();
             Attack();
         }
     }
@@ -163,7 +163,7 @@ public class Player : MonoBehaviour
         runSfxTimer -= Time.deltaTime;
         if (runSfxTimer <= 0f)
         {
-            AudioManager.Instance.PlaySFX(AudioManager.Instance.run, runSfxVolume);
+            if (AudioManager.Instance != null) AudioManager.Instance.PlaySFX(AudioManager.Instance.run, runSfxVolume);
             runSfxTimer = runSfxInterval;
         }
     }
@@ -200,7 +200,7 @@ public class Player : MonoBehaviour
         if (dash != null && dash.IsInvulnerable) return;
         GameFeel.OnHit(transform.position, damage, gameObject);
         animator.SetTrigger("Hurt");
-        AudioManager.Instance.SFX_Hit();
+        if (AudioManager.Instance != null) AudioManager.Instance.SFX_Hit();
 
         currentHp -= damage;
         currentHp = Mathf.Max(currentHp, 0);
@@ -209,7 +209,7 @@ public class Player : MonoBehaviour
     private void Die()
     {
         //Destroy(this.gameObject);
-        gameManager.GameOver();
+        if (gameManager != null) gameManager.GameOver();
     }
     private void UpdateHpBar()
     {
@@ -230,15 +230,15 @@ public class Player : MonoBehaviour
     {
         if (collision.CompareTag("Coin"))
         {
-            AudioManager.Instance.SFX_TakeCoin();
+            if (AudioManager.Instance != null) AudioManager.Instance.SFX_TakeCoin();
             Destroy(collision.gameObject);
-            gameManager.AddScore(1);
+            if (gameManager != null) gameManager.AddScore(1);
         }
         if (collision.CompareTag("Key"))
         {
-            AudioManager.Instance.SFX_Win();
+            if (AudioManager.Instance != null) AudioManager.Instance.SFX_Win();
             Destroy(collision.gameObject);
-            gameManager.GameWin();
+            if (gameManager != null) gameManager.GameWin();
         }
         if (collision.CompareTag("checkroi"))
         {

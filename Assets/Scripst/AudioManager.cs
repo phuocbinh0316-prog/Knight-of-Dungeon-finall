@@ -1,8 +1,20 @@
-﻿using UnityEngine;
+using UnityEngine;
 
 public class AudioManager : MonoBehaviour
 {
-    public static AudioManager Instance;
+    public static AudioManager Instance
+    {
+        get
+        {
+            if (_instance == null)
+            {
+                _instance = FindAnyObjectByType<AudioManager>();
+            }
+            return _instance;
+        }
+        private set => _instance = value;
+    }
+    private static AudioManager _instance;
 
     [Header("Audio Sources")]
     [SerializeField] private AudioSource musicSource;
@@ -33,12 +45,12 @@ public class AudioManager : MonoBehaviour
 
     private void Awake()
     {
-        if (Instance != null && Instance != this)
+        if (_instance != null && _instance != this)
         {
             Destroy(gameObject);
             return;
         }
-        Instance = this;
+        _instance = this;
         DontDestroyOnLoad(gameObject);
     }
 

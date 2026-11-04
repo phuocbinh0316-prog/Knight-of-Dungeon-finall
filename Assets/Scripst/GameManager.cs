@@ -44,24 +44,30 @@ public class GameManager : MonoBehaviour
         isGameOver = true;
         RunManager.Get().BankCells();
 
-        AudioManager.Instance.SFX_Die();
+        if (AudioManager.Instance != null)
+        {
+            AudioManager.Instance.SFX_Die();
+        }
 
         score = 0;
         Time.timeScale = 0;
-        gameOverUi.SetActive(true);
+        if (gameOverUi != null) gameOverUi.SetActive(true);
     }
 
 
     public void GameWin()
     {
-        AudioManager.Instance.SFX_Win();
+        if (AudioManager.Instance != null)
+        {
+            AudioManager.Instance.SFX_Win();
+        }
 
         SaveSystem.SubmitScore(score);
         SaveSystem.UnlockLevel(SceneManager.GetActiveScene().buildIndex + 1);
         RunManager.Get().BankCells();
         score = 0;
         Time.timeScale = 0;
-        gameWinUi.SetActive(true);
+        if (gameWinUi != null) gameWinUi.SetActive(true);
     }
 
 

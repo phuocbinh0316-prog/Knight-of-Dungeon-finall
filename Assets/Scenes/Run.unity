@@ -1878,13 +1878,13 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: cbaface700585674cba56d78b2e3506c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::LevelGenerator
-  startRoom: {fileID: 0}
+  startRoom: {fileID: 8186850006794920071, guid: 63df203a6412c6c45becec14717f2f10, type: 3}
   combatRooms:
-  - {fileID: 0}
-  - {fileID: 0}
+  - {fileID: 5429682964513950896, guid: e593b560193036447945df5adaaa6acd, type: 3}
+  - {fileID: 2110014433243057105, guid: 33e6cbdce2706514b9140d5ecf4e6444, type: 3}
   treasureRooms:
-  - {fileID: 0}
-  bossRoom: {fileID: 0}
+  - {fileID: 8488187188366824221, guid: 22f33794368084648926c9bd5138e473, type: 3}
+  bossRoom: {fileID: 4022150446323015713, guid: dcc0a5ef5a3f1554c9d076b03c6e7daf, type: 3}
   baseCombatRooms: 4
   extraRoomsPerDepth: 1
   treasureChance: 0.6
@@ -1900,9 +1900,9 @@ MonoBehaviour:
   spawnChancePerDepth: 0.05
   weaponPickupPrefab: {fileID: 1918613691724363240, guid: 8913b0a0b0482b844bfb2557107351a2, type: 3}
   weaponPool:
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
+  - {fileID: 11400000, guid: 65eb1538c8f177446bd7831be258c0e8, type: 2}
+  - {fileID: 11400000, guid: b5d345cf160c8dc4889d056758df04ea, type: 2}
+  - {fileID: 11400000, guid: 86a26cc2c651e174faafa394f23c31c2, type: 2}
   player: {fileID: 1861060585}
 --- !u!4 &937851719
 Transform:

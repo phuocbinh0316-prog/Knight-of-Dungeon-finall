@@ -146,12 +146,15 @@ public class LevelGenerator : MonoBehaviour
     private static Room PickRandom(Room[] list, string avoidName)
     {
         if (list == null || list.Length == 0) return null;
-        if (list.Length == 1) return list[0];
-        for (int tries = 0; tries < 10; tries++)
+        for (int tries = 0; tries < 15; tries++)
         {
             var r = list[Random.Range(0, list.Length)];
-            if (r.name != avoidName) return r;
+            if (r != null && r.name != avoidName) return r;
         }
-        return list[Random.Range(0, list.Length)];
+        foreach (var r in list)
+        {
+            if (r != null) return r;
+        }
+        return null;
     }
 }
