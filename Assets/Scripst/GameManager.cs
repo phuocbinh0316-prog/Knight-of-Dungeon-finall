@@ -42,6 +42,7 @@ public class GameManager : MonoBehaviour
     {
         if (isGameOver) return; // chặn gọi lặp
         isGameOver = true;
+        RunManager.Get().BankCells();
 
         AudioManager.Instance.SFX_Die();
 
@@ -57,6 +58,7 @@ public class GameManager : MonoBehaviour
 
         SaveSystem.SubmitScore(score);
         SaveSystem.UnlockLevel(SceneManager.GetActiveScene().buildIndex + 1);
+        RunManager.Get().BankCells();
         score = 0;
         Time.timeScale = 0;
         gameWinUi.SetActive(true);
@@ -70,6 +72,12 @@ public class GameManager : MonoBehaviour
         UpdateScore();
         //ko nhận inputs
         Time.timeScale = 1;
+        if (SceneManager.GetActiveScene().name == "Run")
+        {
+            RunManager.Get().ResetRun();
+            SceneTransition.Load("Run");
+            return;
+        }
         SceneTransition.Load("map 1");
     }
 
@@ -91,6 +99,12 @@ public class GameManager : MonoBehaviour
         //ko nhận inputs
         Time.timeScale = 1;
         gameWinUi.SetActive(false);
+        if (SceneManager.GetActiveScene().name == "Run")
+        {
+            RunManager.Get().NextDepth();
+            SceneTransition.Load("Run");
+            return;
+        }
 
         int nextIndex = SceneManager.GetActiveScene().buildIndex + 1;
 
