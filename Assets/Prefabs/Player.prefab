@@ -45,6 +45,9 @@ GameObject:
   - component: {fileID: 4958056172656343653}
   - component: {fileID: 5773799727984060247}
   - component: {fileID: 5632909484112763110}
+  - component: {fileID: 4767764916865778867}
+  - component: {fileID: 177887875738310060}
+  - component: {fileID: 936990431337245082}
   m_Layer: 7
   m_Name: Player
   m_TagString: Player
@@ -115,7 +118,7 @@ SpriteRenderer:
   m_LightmapParameters: {fileID: 0}
   m_GlobalIlluminationMeshLod: 0
   m_SortingLayerID: 25901061
-  m_SortingLayer: 2
+  m_SortingLayer: 4
   m_SortingOrder: 0
   m_Sprite: {fileID: 21300000, guid: ae297123f091bbf4e8f1835eb98fb293, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
@@ -213,13 +216,17 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8684fef41ec9e954ab9729fd33e9ff4a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::Player
+  runSfxInterval: 0.35
+  runSfxVolume: 0.6
   moveSpeed: 7
   jumpHight: 20
   groundLayer:
     serializedVersion: 2
     m_Bits: 64
   groundCheck: {fileID: 3799482556291983448}
+  distancePoint: 1
   maxHealth: 3
+  attackCooldown: 0.5
   attackPoint: {fileID: 3649599602598593764}
   attackRadius: 1.2
   LayerPlayer:
@@ -249,6 +256,54 @@ Animator:
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorStateOnDisable: 0
   m_WriteDefaultValuesOnDisable: 0
+--- !u!114 &4767764916865778867
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4869127233436868927}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 920f37caa77ac4d438ad05e331524b43, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::DashRoll
+  dashSpeed: 20
+  dashDuration: 0.22
+  invulnerableDuration: 0.28
+  cooldown: 0.6
+  ghostAlpha: 0.5
+--- !u!114 &177887875738310060
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4869127233436868927}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 92f6d48462a61594eb29a3b02d46f2a0, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::WeaponHolder
+  startingWeapon: {fileID: 11400000, guid: 65eb1538c8f177446bd7831be258c0e8, type: 2}
+  fallbackDamage: 1
+  fallbackCooldown: 0.5
+  fallbackRange: 1
+--- !u!114 &936990431337245082
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4869127233436868927}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 91dae8ba45b64b543bf2dad8ef2a0373, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::HitFlash
+  renderers: []
+  flashColor: {r: 1, g: 0.3, b: 0.3, a: 1}
+  duration: 0.1
 --- !u!1 &6873943879191814166
 GameObject:
   m_ObjectHideFlags: 0

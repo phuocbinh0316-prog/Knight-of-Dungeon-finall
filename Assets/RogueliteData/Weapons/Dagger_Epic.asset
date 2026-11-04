@@ -1,0 +1,22 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f2c763fad3345cc4ca6ca702d71ad041, type: 3}
+  m_Name: Dagger_Epic
+  m_EditorClassIdentifier: Assembly-CSharp::WeaponData
+  displayName: Shadow Dagger
+  description: "Dao g\u0103m b\xF3ng t\u1ED1i, ch\xE9m c\u1EF1c nhanh \u1EDF c\u1EF1
+    ly g\u1EA7n."
+  icon: {fileID: 5682877175833816285, guid: 8391b18e521165c40bf61d1165299faf, type: 3}
+  rarity: 2
+  damage: 1.2
+  cooldown: 0.22
+  range: 0.9

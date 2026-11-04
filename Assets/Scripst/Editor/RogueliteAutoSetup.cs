@@ -201,14 +201,13 @@ namespace Knight.Editor
 
         private static (GameObject cell, GameObject heart, GameObject weapon) CreatePickups()
         {
-            var cellPrefab = CreatePickupPrefab("Assets/Prefabs/Roguelite/Pickup_Cell.prefab", "Pickup_Cell", PickupType.Cell, 1, 0f,
-                AssetDatabase.LoadAssetAtPath<Sprite>("Assets/UIII/Fantasy Minimal Pixel Art GUI by eta-commence/Icons/CoinIcon_16x18.png"));
+            var cellSprite = AssetDatabase.LoadAssetAtPath<Sprite>("Assets/UIII/Fantasy Minimal Pixel Art GUI by eta-commercial-free/UI/CoinIcon_16x18.png");
+            var heartSprite = AssetDatabase.LoadAssetAtPath<Sprite>("Assets/UIII/Fantasy Minimal Pixel Art GUI by eta-commercial-free/UI/HeartIcons_32x32.png");
+            var weaponSprite = AssetDatabase.LoadAssetAtPath<Sprite>("Assets/UIII/fantasy_pixelart_ui/icons/silver_sword.png");
 
-            var heartPrefab = CreatePickupPrefab("Assets/Prefabs/Roguelite/Pickup_Heart.prefab", "Pickup_Heart", PickupType.Heart, 1, 1f,
-                AssetDatabase.LoadAssetAtPath<Sprite>("Assets/UIII/Fantasy Minimal Pixel Art GUI by eta-commence/Icons/HeartIcons_32x32.png"));
-
-            var weaponPrefab = CreatePickupPrefab("Assets/Prefabs/Roguelite/Pickup_Weapon.prefab", "Pickup_Weapon", PickupType.Weapon, 1, 0f,
-                AssetDatabase.LoadAssetAtPath<Sprite>("Assets/UIII/fantasy_pixelart_ui/icons/silver_sword.png"));
+            var cellPrefab = CreatePickupPrefab("Assets/Prefabs/Roguelite/Pickup_Cell.prefab", "Pickup_Cell", PickupType.Cell, 1, 0f, cellSprite);
+            var heartPrefab = CreatePickupPrefab("Assets/Prefabs/Roguelite/Pickup_Heart.prefab", "Pickup_Heart", PickupType.Heart, 1, 1f, heartSprite);
+            var weaponPrefab = CreatePickupPrefab("Assets/Prefabs/Roguelite/Pickup_Weapon.prefab", "Pickup_Weapon", PickupType.Weapon, 1, 0f, weaponSprite);
 
             return (cellPrefab, heartPrefab, weaponPrefab);
         }
@@ -315,7 +314,7 @@ namespace Knight.Editor
             list.Add(CreateRoomPrefab("Room_Combat_1", RoomType.Combat, 22f, true, false, false, false));
             list.Add(CreateRoomPrefab("Room_Combat_2", RoomType.Combat, 26f, true, false, false, false, true));
             list.Add(CreateRoomPrefab("Room_Treasure", RoomType.Treasure, 16f, false, true, false, false));
-            list.Add(CreateRoomPrefab("Room_Boss", RoomType.Boss, 26f, false, false, false, true));
+            list.Add(CreateRoomPrefab("Room_Boss", RoomType.Boss, 28f, false, false, false, true));
             return list;
         }
 
@@ -428,6 +427,24 @@ namespace Knight.Editor
                 room.lootSpawnPoints = new Transform[] { lootSpawn.transform };
             }
 
+            // Boss Room specific: Place Boss enemy and Key portal/trigger
+            if (type == RoomType.Boss)
+            {
+                var bossPrefab = AssetDatabase.LoadAssetAtPath<GameObject>("Assets/Prefabs/Boos.prefab");
+                if (bossPrefab != null)
+                {
+                    var bossInst = (GameObject)PrefabUtility.InstantiatePrefab(bossPrefab, root.transform);
+                    bossInst.transform.localPosition = new Vector3(0f, 1f, 0f);
+                }
+
+                var keyPrefab = AssetDatabase.LoadAssetAtPath<GameObject>("Assets/Prefabs/Key_0.prefab");
+                if (keyPrefab != null)
+                {
+                    var keyInst = (GameObject)PrefabUtility.InstantiatePrefab(keyPrefab, root.transform);
+                    keyInst.transform.localPosition = new Vector3(width / 2f - 3f, 1f, 0f);
+                }
+            }
+
             var prefab = PrefabUtility.SaveAsPrefabAsset(root, path);
             Object.DestroyImmediate(root);
             Debug.Log("[RogueliteAutoSetup] Created Room prefab: " + path);
@@ -486,14 +503,49 @@ namespace Knight.Editor
             esGO.AddComponent<UnityEngine.EventSystems.EventSystem>();
             esGO.AddComponent<UnityEngine.InputSystem.UI.InputSystemUIInputModule>();
 
-            // RunHUD Text Elements
+            // HpBar prefab in HUD Canvas
+            var hpBarPrefab = AssetDatabase.LoadAssetAtPath<GameObject>("Assets/Prefabs/HpBar.prefab");
+            if (hpBarPrefab != null && playerInstance != null)
+            {
+                var hpBarInst = (GameObject)PrefabUtility.InstantiatePrefab(hpBarPrefab, canvasGO.transform);
+                var hpRect = hpBarInst.GetComponent<RectTransform>();
+                if (hpRect != null)
+                {
+                    hpRect.anchorMin = new Vector2(0f, 1f);
+                    hpRect.anchorMax = new Vector2(0f, 1f);
+                    hpRect.pivot = new Vector2(0f, 1f);
+                    hpRect.anchoredPosition = new Vector2(25f, -25f);
+                }
+
+                var hpChild = hpBarInst.transform.Find("Hp");
+                if (hpChild != null)
+                {
+                    var hpImg = hpChild.GetComponent<Image>();
+                    if (hpImg != null)
+                    {
+                        var pScript = playerInstance.GetComponent<Player>();
+                        if (pScript != null)
+                        {
+                            var soP = new SerializedObject(pScript);
+                            var hpProp = soP.FindProperty("hpBar");
+                            if (hpProp != null)
+                            {
+                                hpProp.objectReferenceValue = hpImg;
+                                soP.ApplyModifiedPropertiesWithoutUndo();
+                            }
+                        }
+                    }
+                }
+            }
+
+            // RunHUD Text Elements (placed neatly below HpBar)
             var hudGO = new GameObject("RunHUD");
             hudGO.transform.SetParent(canvasGO.transform, false);
             var hudRect = hudGO.AddComponent<RectTransform>();
             hudRect.anchorMin = new Vector2(0f, 1f);
             hudRect.anchorMax = new Vector2(0f, 1f);
             hudRect.pivot = new Vector2(0f, 1f);
-            hudRect.anchoredPosition = new Vector2(25f, -25f);
+            hudRect.anchoredPosition = new Vector2(25f, -80f);
             hudRect.sizeDelta = new Vector2(300f, 120f);
 
             var depthTMP = CreateTextMesh(hudGO.transform, "DepthText", "Depth 1", 24, new Vector2(0f, 0f), TextAlignmentOptions.TopLeft);
@@ -531,6 +583,41 @@ namespace Knight.Editor
             soGM.FindProperty("gameOverUi").objectReferenceValue = gameOverPanel;
             soGM.FindProperty("gameWinUi").objectReferenceValue = gameWinPanel;
             soGM.ApplyModifiedPropertiesWithoutUndo();
+
+            // Pause UI
+            var pausePanelPrefab = AssetDatabase.LoadAssetAtPath<GameObject>("Assets/Prefabs/PausePanel.prefab");
+            var pauseBtnPrefab = AssetDatabase.LoadAssetAtPath<GameObject>("Assets/Prefabs/PauseBtn.prefab");
+            if (pausePanelPrefab != null)
+            {
+                var pPanel = (GameObject)PrefabUtility.InstantiatePrefab(pausePanelPrefab, canvasGO.transform);
+                pPanel.SetActive(false);
+                if (pauseBtnPrefab != null)
+                {
+                    var pBtn = (GameObject)PrefabUtility.InstantiatePrefab(pauseBtnPrefab, canvasGO.transform);
+                    var pBtnRect = pBtn.GetComponent<RectTransform>();
+                    if (pBtnRect != null)
+                    {
+                        pBtnRect.anchorMin = new Vector2(1f, 1f);
+                        pBtnRect.anchorMax = new Vector2(1f, 1f);
+                        pBtnRect.pivot = new Vector2(1f, 1f);
+                        pBtnRect.anchoredPosition = new Vector2(-40f, -80f);
+                    }
+                    var btnComp = pBtn.GetComponentInChildren<Button>();
+                    var pMenu = pPanel.GetComponent<PauseMenu>();
+                    if (btnComp != null && pMenu != null)
+                    {
+                        UnityEventTools.AddPersistentListener(btnComp.onClick, pMenu.Pause);
+                    }
+                }
+            }
+
+            // Pit death trigger ("checkroi")
+            var pitGO = new GameObject("PitTrigger");
+            pitGO.tag = "checkroi";
+            var pitCol = pitGO.AddComponent<BoxCollider2D>();
+            pitCol.isTrigger = true;
+            pitCol.size = new Vector2(2000f, 10f);
+            pitGO.transform.position = new Vector3(0f, -15f, 0f);
 
             // 5. LevelGenerator
             var genGO = new GameObject("LevelGenerator");
@@ -728,6 +815,10 @@ namespace Knight.Editor
             rect.sizeDelta = new Vector2(300f, 40f);
 
             var tmp = go.AddComponent<TextMeshProUGUI>();
+            if (tmp.font == null && TMP_Settings.defaultFontAsset != null)
+            {
+                tmp.font = TMP_Settings.defaultFontAsset;
+            }
             tmp.text = text;
             tmp.fontSize = fontSize;
             tmp.alignment = alignment;
@@ -761,6 +852,10 @@ namespace Knight.Editor
             textRect.offsetMax = Vector2.zero;
 
             var tmp = textGO.AddComponent<TextMeshProUGUI>();
+            if (tmp.font == null && TMP_Settings.defaultFontAsset != null)
+            {
+                tmp.font = TMP_Settings.defaultFontAsset;
+            }
             tmp.text = label;
             tmp.fontSize = 18f;
             tmp.fontStyle = FontStyles.Bold;
