@@ -1,0 +1,1882 @@
+[
+  {
+    "name": "tile_stone_block_01",
+    "category": "Ground_Floor",
+    "file_path": "Assets/Art/Extracted/Ground_Floor/tile_stone_block_01.png",
+    "bounding_box": [
+      13,
+      10,
+      52,
+      53
+    ],
+    "dimensions": [
+      52,
+      53
+    ],
+    "pivot": [
+      0.5,
+      0.5
+    ],
+    "intended_use": "Solid terrain ground block"
+  },
+  {
+    "name": "tile_stone_block_02",
+    "category": "Ground_Floor",
+    "file_path": "Assets/Art/Extracted/Ground_Floor/tile_stone_block_02.png",
+    "bounding_box": [
+      77,
+      10,
+      51,
+      54
+    ],
+    "dimensions": [
+      51,
+      54
+    ],
+    "pivot": [
+      0.5,
+      0.5
+    ],
+    "intended_use": "Solid terrain ground block variant"
+  },
+  {
+    "name": "tile_stone_block_03",
+    "category": "Ground_Floor",
+    "file_path": "Assets/Art/Extracted/Ground_Floor/tile_stone_block_03.png",
+    "bounding_box": [
+      140,
+      10,
+      52,
+      54
+    ],
+    "dimensions": [
+      52,
+      54
+    ],
+    "pivot": [
+      0.5,
+      0.5
+    ],
+    "intended_use": "Solid terrain ground block variant"
+  },
+  {
+    "name": "tile_stone_corner_L",
+    "category": "Ground_Floor",
+    "file_path": "Assets/Art/Extracted/Ground_Floor/tile_stone_corner_L.png",
+    "bounding_box": [
+      203,
+      10,
+      53,
+      54
+    ],
+    "dimensions": [
+      53,
+      54
+    ],
+    "pivot": [
+      0.5,
+      0.5
+    ],
+    "intended_use": "Terrain left corner tile"
+  },
+  {
+    "name": "tile_stone_corner_R",
+    "category": "Ground_Floor",
+    "file_path": "Assets/Art/Extracted/Ground_Floor/tile_stone_corner_R.png",
+    "bounding_box": [
+      266,
+      11,
+      53,
+      54
+    ],
+    "dimensions": [
+      53,
+      54
+    ],
+    "pivot": [
+      0.5,
+      0.5
+    ],
+    "intended_use": "Terrain right corner tile"
+  },
+  {
+    "name": "tile_stone_floor",
+    "category": "Ground_Floor",
+    "file_path": "Assets/Art/Extracted/Ground_Floor/tile_stone_floor.png",
+    "bounding_box": [
+      330,
+      11,
+      51,
+      51
+    ],
+    "dimensions": [
+      51,
+      51
+    ],
+    "pivot": [
+      0.5,
+      0.5
+    ],
+    "intended_use": "Flat stone floor tile"
+  },
+  {
+    "name": "tile_stone_cracked_01",
+    "category": "Ground_Floor",
+    "file_path": "Assets/Art/Extracted/Ground_Floor/tile_stone_cracked_01.png",
+    "bounding_box": [
+      392,
+      10,
+      52,
+      54
+    ],
+    "dimensions": [
+      52,
+      54
+    ],
+    "pivot": [
+      0.5,
+      0.5
+    ],
+    "intended_use": "Cracked stone surface tile"
+  },
+  {
+    "name": "tile_stone_cracked_02",
+    "category": "Ground_Floor",
+    "file_path": "Assets/Art/Extracted/Ground_Floor/tile_stone_cracked_02.png",
+    "bounding_box": [
+      455,
+      9,
+      52,
+      56
+    ],
+    "dimensions": [
+      52,
+      56
+    ],
+    "pivot": [
+      0.5,
+      0.5
+    ],
+    "intended_use": "Broken stone surface tile"
+  },
+  {
+    "name": "tile_stone_inner_corner",
+    "category": "Ground_Floor",
+    "file_path": "Assets/Art/Extracted/Ground_Floor/tile_stone_inner_corner.png",
+    "bounding_box": [
+      518,
+      10,
+      53,
+      53
+    ],
+    "dimensions": [
+      53,
+      53
+    ],
+    "pivot": [
+      0.5,
+      0.5
+    ],
+    "intended_use": "Inner corner stone tile"
+  },
+  {
+    "name": "tile_mossy_block_01",
+    "category": "Ground_Floor",
+    "file_path": "Assets/Art/Extracted/Ground_Floor/tile_mossy_block_01.png",
+    "bounding_box": [
+      13,
+      76,
+      52,
+      54
+    ],
+    "dimensions": [
+      52,
+      54
+    ],
+    "pivot": [
+      0.5,
+      0.5
+    ],
+    "intended_use": "Mossy ground stone block"
+  },
+  {
+    "name": "tile_mossy_block_02",
+    "category": "Ground_Floor",
+    "file_path": "Assets/Art/Extracted/Ground_Floor/tile_mossy_block_02.png",
+    "bounding_box": [
+      76,
+      76,
+      53,
+      55
+    ],
+    "dimensions": [
+      53,
+      55
+    ],
+    "pivot": [
+      0.5,
+      0.5
+    ],
+    "intended_use": "Mossy ground stone block variant"
+  },
+  {
+    "name": "tile_mossy_block_03",
+    "category": "Ground_Floor",
+    "file_path": "Assets/Art/Extracted/Ground_Floor/tile_mossy_block_03.png",
+    "bounding_box": [
+      140,
+      76,
+      53,
+      55
+    ],
+    "dimensions": [
+      53,
+      55
+    ],
+    "pivot": [
+      0.5,
+      0.5
+    ],
+    "intended_use": "Mossy ground stone block variant"
+  },
+  {
+    "name": "tile_mossy_corner_L",
+    "category": "Ground_Floor",
+    "file_path": "Assets/Art/Extracted/Ground_Floor/tile_mossy_corner_L.png",
+    "bounding_box": [
+      204,
+      76,
+      52,
+      55
+    ],
+    "dimensions": [
+      52,
+      55
+    ],
+    "pivot": [
+      0.5,
+      0.5
+    ],
+    "intended_use": "Mossy left corner tile"
+  },
+  {
+    "name": "tile_mossy_corner_R",
+    "category": "Ground_Floor",
+    "file_path": "Assets/Art/Extracted/Ground_Floor/tile_mossy_corner_R.png",
+    "bounding_box": [
+      267,
+      75,
+      52,
+      56
+    ],
+    "dimensions": [
+      52,
+      56
+    ],
+    "pivot": [
+      0.5,
+      0.5
+    ],
+    "intended_use": "Mossy right corner tile"
+  },
+  {
+    "name": "tile_mossy_floor",
+    "category": "Ground_Floor",
+    "file_path": "Assets/Art/Extracted/Ground_Floor/tile_mossy_floor.png",
+    "bounding_box": [
+      329,
+      75,
+      53,
+      56
+    ],
+    "dimensions": [
+      53,
+      56
+    ],
+    "pivot": [
+      0.5,
+      0.5
+    ],
+    "intended_use": "Mossy flat floor tile"
+  },
+  {
+    "name": "tile_mossy_cracked_01",
+    "category": "Ground_Floor",
+    "file_path": "Assets/Art/Extracted/Ground_Floor/tile_mossy_cracked_01.png",
+    "bounding_box": [
+      392,
+      75,
+      53,
+      55
+    ],
+    "dimensions": [
+      53,
+      55
+    ],
+    "pivot": [
+      0.5,
+      0.5
+    ],
+    "intended_use": "Mossy cracked stone tile"
+  },
+  {
+    "name": "tile_mossy_cracked_02",
+    "category": "Ground_Floor",
+    "file_path": "Assets/Art/Extracted/Ground_Floor/tile_mossy_cracked_02.png",
+    "bounding_box": [
+      455,
+      75,
+      53,
+      56
+    ],
+    "dimensions": [
+      53,
+      56
+    ],
+    "pivot": [
+      0.5,
+      0.5
+    ],
+    "intended_use": "Mossy broken stone tile"
+  },
+  {
+    "name": "tile_mossy_inner_corner",
+    "category": "Ground_Floor",
+    "file_path": "Assets/Art/Extracted/Ground_Floor/tile_mossy_inner_corner.png",
+    "bounding_box": [
+      517,
+      74,
+      52,
+      56
+    ],
+    "dimensions": [
+      52,
+      56
+    ],
+    "pivot": [
+      0.5,
+      0.5
+    ],
+    "intended_use": "Mossy inner corner tile"
+  },
+  {
+    "name": "platform_floating_stone",
+    "category": "Platforms",
+    "file_path": "Assets/Art/Extracted/Platforms/platform_floating_stone.png",
+    "bounding_box": [
+      642,
+      19,
+      54,
+      39
+    ],
+    "dimensions": [
+      54,
+      39
+    ],
+    "pivot": [
+      0.5,
+      0.5
+    ],
+    "intended_use": "Floating stone chunk platform"
+  },
+  {
+    "name": "platform_edge_thin_stone",
+    "category": "Platforms",
+    "file_path": "Assets/Art/Extracted/Platforms/platform_edge_thin_stone.png",
+    "bounding_box": [
+      771,
+      27,
+      50,
+      21
+    ],
+    "dimensions": [
+      50,
+      21
+    ],
+    "pivot": [
+      0.5,
+      0.5
+    ],
+    "intended_use": "Thin stone platform ledge"
+  },
+  {
+    "name": "platform_edge_stone_drop",
+    "category": "Platforms",
+    "file_path": "Assets/Art/Extracted/Platforms/platform_edge_stone_drop.png",
+    "bounding_box": [
+      836,
+      27,
+      50,
+      29
+    ],
+    "dimensions": [
+      50,
+      29
+    ],
+    "pivot": [
+      0.5,
+      0.5
+    ],
+    "intended_use": "Stone platform with downward point"
+  },
+  {
+    "name": "platform_long_stone",
+    "category": "Platforms",
+    "file_path": "Assets/Art/Extracted/Platforms/platform_long_stone.png",
+    "bounding_box": [
+      896,
+      29,
+      115,
+      21
+    ],
+    "dimensions": [
+      115,
+      21
+    ],
+    "pivot": [
+      0.5,
+      0.5
+    ],
+    "intended_use": "Long continuous stone platform"
+  },
+  {
+    "name": "platform_floating_mossy",
+    "category": "Platforms",
+    "file_path": "Assets/Art/Extracted/Platforms/platform_floating_mossy.png",
+    "bounding_box": [
+      644,
+      85,
+      51,
+      43
+    ],
+    "dimensions": [
+      51,
+      43
+    ],
+    "pivot": [
+      0.5,
+      0.5
+    ],
+    "intended_use": "Floating mossy stone platform"
+  },
+  {
+    "name": "platform_edge_thin_mossy",
+    "category": "Platforms",
+    "file_path": "Assets/Art/Extracted/Platforms/platform_edge_thin_mossy.png",
+    "bounding_box": [
+      769,
+      96,
+      51,
+      17
+    ],
+    "dimensions": [
+      51,
+      17
+    ],
+    "pivot": [
+      0.5,
+      0.5
+    ],
+    "intended_use": "Thin mossy stone platform ledge"
+  },
+  {
+    "name": "platform_edge_mossy_drop",
+    "category": "Platforms",
+    "file_path": "Assets/Art/Extracted/Platforms/platform_edge_mossy_drop.png",
+    "bounding_box": [
+      832,
+      96,
+      53,
+      22
+    ],
+    "dimensions": [
+      53,
+      22
+    ],
+    "pivot": [
+      0.5,
+      0.5
+    ],
+    "intended_use": "Mossy stone platform ledge with overhang"
+  },
+  {
+    "name": "platform_long_mossy",
+    "category": "Platforms",
+    "file_path": "Assets/Art/Extracted/Platforms/platform_long_mossy.png",
+    "bounding_box": [
+      895,
+      96,
+      116,
+      21
+    ],
+    "dimensions": [
+      116,
+      21
+    ],
+    "pivot": [
+      0.5,
+      0.5
+    ],
+    "intended_use": "Long continuous mossy stone platform"
+  },
+  {
+    "name": "debris_stone_steps_01",
+    "category": "Platforms",
+    "file_path": "Assets/Art/Extracted/Platforms/debris_stone_steps_01.png",
+    "bounding_box": [
+      581,
+      10,
+      27,
+      50
+    ],
+    "dimensions": [
+      27,
+      50
+    ],
+    "pivot": [
+      0.5,
+      0.5
+    ],
+    "intended_use": "Small stepping stone fragments"
+  },
+  {
+    "name": "debris_stone_steps_02",
+    "category": "Platforms",
+    "file_path": "Assets/Art/Extracted/Platforms/debris_stone_steps_02.png",
+    "bounding_box": [
+      609,
+      13,
+      22,
+      51
+    ],
+    "dimensions": [
+      22,
+      51
+    ],
+    "pivot": [
+      0.5,
+      0.5
+    ],
+    "intended_use": "Medium stepping stone fragments"
+  },
+  {
+    "name": "debris_mossy_steps_01",
+    "category": "Platforms",
+    "file_path": "Assets/Art/Extracted/Platforms/debris_mossy_steps_01.png",
+    "bounding_box": [
+      581,
+      79,
+      24,
+      50
+    ],
+    "dimensions": [
+      24,
+      50
+    ],
+    "pivot": [
+      0.5,
+      0.5
+    ],
+    "intended_use": "Mossy stone steps debris"
+  },
+  {
+    "name": "debris_mossy_steps_02",
+    "category": "Platforms",
+    "file_path": "Assets/Art/Extracted/Platforms/debris_mossy_steps_02.png",
+    "bounding_box": [
+      609,
+      83,
+      22,
+      48
+    ],
+    "dimensions": [
+      22,
+      48
+    ],
+    "pivot": [
+      0.5,
+      0.5
+    ],
+    "intended_use": "Mossy stone stepping fragments"
+  },
+  {
+    "name": "wall_brick_column_01",
+    "category": "Walls_Architecture",
+    "file_path": "Assets/Art/Extracted/Walls_Architecture/wall_brick_column_01.png",
+    "bounding_box": [
+      13,
+      143,
+      52,
+      93
+    ],
+    "dimensions": [
+      52,
+      93
+    ],
+    "pivot": [
+      0.5,
+      0.0
+    ],
+    "intended_use": "Vertical brick wall section"
+  },
+  {
+    "name": "wall_brick_column_02",
+    "category": "Walls_Architecture",
+    "file_path": "Assets/Art/Extracted/Walls_Architecture/wall_brick_column_02.png",
+    "bounding_box": [
+      76,
+      143,
+      53,
+      93
+    ],
+    "dimensions": [
+      53,
+      93
+    ],
+    "pivot": [
+      0.5,
+      0.0
+    ],
+    "intended_use": "Dark brick wall column"
+  },
+  {
+    "name": "wall_brick_large_panel",
+    "category": "Walls_Architecture",
+    "file_path": "Assets/Art/Extracted/Walls_Architecture/wall_brick_large_panel.png",
+    "bounding_box": [
+      140,
+      143,
+      116,
+      93
+    ],
+    "dimensions": [
+      116,
+      93
+    ],
+    "pivot": [
+      0.5,
+      0.0
+    ],
+    "intended_use": "Large wide brick wall panel"
+  },
+  {
+    "name": "wall_carved_arch_frame",
+    "category": "Walls_Architecture",
+    "file_path": "Assets/Art/Extracted/Walls_Architecture/wall_carved_arch_frame.png",
+    "bounding_box": [
+      268,
+      143,
+      140,
+      94
+    ],
+    "dimensions": [
+      140,
+      94
+    ],
+    "pivot": [
+      0.5,
+      0.0
+    ],
+    "intended_use": "Carved stone arch wall structure"
+  },
+  {
+    "name": "pillar_fluted",
+    "category": "Walls_Architecture",
+    "file_path": "Assets/Art/Extracted/Walls_Architecture/pillar_fluted.png",
+    "bounding_box": [
+      420,
+      144,
+      31,
+      92
+    ],
+    "dimensions": [
+      31,
+      92
+    ],
+    "pivot": [
+      0.5,
+      0.0
+    ],
+    "intended_use": "Fluted gothic pillar"
+  },
+  {
+    "name": "pillar_ornate_capital",
+    "category": "Walls_Architecture",
+    "file_path": "Assets/Art/Extracted/Walls_Architecture/pillar_ornate_capital.png",
+    "bounding_box": [
+      471,
+      143,
+      33,
+      94
+    ],
+    "dimensions": [
+      33,
+      94
+    ],
+    "pivot": [
+      0.5,
+      0.0
+    ],
+    "intended_use": "Corinthian style pillar"
+  },
+  {
+    "name": "pillar_plain_round",
+    "category": "Walls_Architecture",
+    "file_path": "Assets/Art/Extracted/Walls_Architecture/pillar_plain_round.png",
+    "bounding_box": [
+      532,
+      143,
+      27,
+      94
+    ],
+    "dimensions": [
+      27,
+      94
+    ],
+    "pivot": [
+      0.5,
+      0.0
+    ],
+    "intended_use": "Smooth stone pillar"
+  },
+  {
+    "name": "pillar_cracked_round",
+    "category": "Walls_Architecture",
+    "file_path": "Assets/Art/Extracted/Walls_Architecture/pillar_cracked_round.png",
+    "bounding_box": [
+      589,
+      143,
+      31,
+      93
+    ],
+    "dimensions": [
+      31,
+      93
+    ],
+    "pivot": [
+      0.5,
+      0.0
+    ],
+    "intended_use": "Damaged round pillar with crack"
+  },
+  {
+    "name": "pillar_background_round",
+    "category": "Walls_Architecture",
+    "file_path": "Assets/Art/Extracted/Walls_Architecture/pillar_background_round.png",
+    "bounding_box": [
+      640,
+      143,
+      53,
+      94
+    ],
+    "dimensions": [
+      53,
+      94
+    ],
+    "pivot": [
+      0.5,
+      0.0
+    ],
+    "intended_use": "Background stone wall pillar"
+  },
+  {
+    "name": "pillar_background_cross",
+    "category": "Walls_Architecture",
+    "file_path": "Assets/Art/Extracted/Walls_Architecture/pillar_background_cross.png",
+    "bounding_box": [
+      703,
+      143,
+      54,
+      93
+    ],
+    "dimensions": [
+      54,
+      93
+    ],
+    "pivot": [
+      0.5,
+      0.0
+    ],
+    "intended_use": "Background pillar with stone cross"
+  },
+  {
+    "name": "pillar_background_slit",
+    "category": "Walls_Architecture",
+    "file_path": "Assets/Art/Extracted/Walls_Architecture/pillar_background_slit.png",
+    "bounding_box": [
+      768,
+      144,
+      53,
+      93
+    ],
+    "dimensions": [
+      53,
+      93
+    ],
+    "pivot": [
+      0.5,
+      0.0
+    ],
+    "intended_use": "Background pillar with arrow slit"
+  },
+  {
+    "name": "stairs_stone_broken_L",
+    "category": "Walls_Architecture",
+    "file_path": "Assets/Art/Extracted/Walls_Architecture/stairs_stone_broken_L.png",
+    "bounding_box": [
+      832,
+      151,
+      51,
+      86
+    ],
+    "dimensions": [
+      51,
+      86
+    ],
+    "pivot": [
+      0.5,
+      0.0
+    ],
+    "intended_use": "Broken stone wall and stairs left"
+  },
+  {
+    "name": "stairs_stone_broken_M",
+    "category": "Walls_Architecture",
+    "file_path": "Assets/Art/Extracted/Walls_Architecture/stairs_stone_broken_M.png",
+    "bounding_box": [
+      894,
+      143,
+      53,
+      94
+    ],
+    "dimensions": [
+      53,
+      94
+    ],
+    "pivot": [
+      0.5,
+      0.0
+    ],
+    "intended_use": "Broken stone wall and stairs center"
+  },
+  {
+    "name": "stairs_stone_broken_R",
+    "category": "Walls_Architecture",
+    "file_path": "Assets/Art/Extracted/Walls_Architecture/stairs_stone_broken_R.png",
+    "bounding_box": [
+      960,
+      147,
+      48,
+      89
+    ],
+    "dimensions": [
+      48,
+      89
+    ],
+    "pivot": [
+      0.5,
+      0.0
+    ],
+    "intended_use": "Broken stone steps right"
+  },
+  {
+    "name": "arch_ruined_pillar",
+    "category": "Walls_Architecture",
+    "file_path": "Assets/Art/Extracted/Walls_Architecture/arch_ruined_pillar.png",
+    "bounding_box": [
+      891,
+      248,
+      57,
+      105
+    ],
+    "dimensions": [
+      57,
+      105
+    ],
+    "pivot": [
+      0.5,
+      0.0
+    ],
+    "intended_use": "Gothic arch with pillar base"
+  },
+  {
+    "name": "arch_ruined_corner",
+    "category": "Walls_Architecture",
+    "file_path": "Assets/Art/Extracted/Walls_Architecture/arch_ruined_corner.png",
+    "bounding_box": [
+      959,
+      252,
+      49,
+      100
+    ],
+    "dimensions": [
+      49,
+      100
+    ],
+    "pivot": [
+      0.5,
+      0.0
+    ],
+    "intended_use": "Ruined gothic arch top corner"
+  },
+  {
+    "name": "arch_grand_gateway",
+    "category": "Doors_Windows",
+    "file_path": "Assets/Art/Extracted/Doors_Windows/arch_grand_gateway.png",
+    "bounding_box": [
+      13,
+      248,
+      115,
+      105
+    ],
+    "dimensions": [
+      115,
+      105
+    ],
+    "pivot": [
+      0.5,
+      0.0
+    ],
+    "intended_use": "Grand gothic portal archway"
+  },
+  {
+    "name": "window_gothic_empty",
+    "category": "Doors_Windows",
+    "file_path": "Assets/Art/Extracted/Doors_Windows/window_gothic_empty.png",
+    "bounding_box": [
+      138,
+      248,
+      53,
+      94
+    ],
+    "dimensions": [
+      53,
+      94
+    ],
+    "pivot": [
+      0.5,
+      0.0
+    ],
+    "intended_use": "Empty gothic stone window"
+  },
+  {
+    "name": "window_gothic_rose_cracked",
+    "category": "Doors_Windows",
+    "file_path": "Assets/Art/Extracted/Doors_Windows/window_gothic_rose_cracked.png",
+    "bounding_box": [
+      202,
+      248,
+      52,
+      94
+    ],
+    "dimensions": [
+      52,
+      94
+    ],
+    "pivot": [
+      0.5,
+      0.0
+    ],
+    "intended_use": "Stained glass rose window cracked"
+  },
+  {
+    "name": "window_gothic_stained_glass",
+    "category": "Doors_Windows",
+    "file_path": "Assets/Art/Extracted/Doors_Windows/window_gothic_stained_glass.png",
+    "bounding_box": [
+      265,
+      248,
+      53,
+      94
+    ],
+    "dimensions": [
+      53,
+      94
+    ],
+    "pivot": [
+      0.5,
+      0.0
+    ],
+    "intended_use": "Intact colorful stained-glass window"
+  },
+  {
+    "name": "window_gothic_iron_grate",
+    "category": "Doors_Windows",
+    "file_path": "Assets/Art/Extracted/Doors_Windows/window_gothic_iron_grate.png",
+    "bounding_box": [
+      332,
+      248,
+      52,
+      94
+    ],
+    "dimensions": [
+      52,
+      94
+    ],
+    "pivot": [
+      0.5,
+      0.0
+    ],
+    "intended_use": "Gothic window with iron bars"
+  },
+  {
+    "name": "door_grand_wooden",
+    "category": "Doors_Windows",
+    "file_path": "Assets/Art/Extracted/Doors_Windows/door_grand_wooden.png",
+    "bounding_box": [
+      400,
+      248,
+      99,
+      106
+    ],
+    "dimensions": [
+      99,
+      106
+    ],
+    "pivot": [
+      0.5,
+      0.0
+    ],
+    "intended_use": "Double wooden reinforced door"
+  },
+  {
+    "name": "door_iron_portcullis",
+    "category": "Doors_Windows",
+    "file_path": "Assets/Art/Extracted/Doors_Windows/door_iron_portcullis.png",
+    "bounding_box": [
+      512,
+      248,
+      78,
+      105
+    ],
+    "dimensions": [
+      78,
+      105
+    ],
+    "pivot": [
+      0.5,
+      0.0
+    ],
+    "intended_use": "Heavy iron portcullis gate"
+  },
+  {
+    "name": "bridge_stone_rail",
+    "category": "Doors_Windows",
+    "file_path": "Assets/Art/Extracted/Doors_Windows/bridge_stone_rail.png",
+    "bounding_box": [
+      601,
+      248,
+      88,
+      105
+    ],
+    "dimensions": [
+      88,
+      105
+    ],
+    "pivot": [
+      0.5,
+      0.0
+    ],
+    "intended_use": "Stone bridge with horizontal railing"
+  },
+  {
+    "name": "bridge_balustrade",
+    "category": "Doors_Windows",
+    "file_path": "Assets/Art/Extracted/Doors_Windows/bridge_balustrade.png",
+    "bounding_box": [
+      703,
+      248,
+      116,
+      105
+    ],
+    "dimensions": [
+      116,
+      105
+    ],
+    "pivot": [
+      0.5,
+      0.0
+    ],
+    "intended_use": "Wide bridge with balustrade balusters"
+  },
+  {
+    "name": "torch_wall_lit_01",
+    "category": "Props_Lighting",
+    "file_path": "Assets/Art/Extracted/Props_Lighting/torch_wall_lit_01.png",
+    "bounding_box": [
+      18,
+      363,
+      24,
+      47
+    ],
+    "dimensions": [
+      24,
+      47
+    ],
+    "pivot": [
+      0.5,
+      0.5
+    ],
+    "intended_use": "Lit wall torch with flame"
+  },
+  {
+    "name": "torch_wall_lit_02",
+    "category": "Props_Lighting",
+    "file_path": "Assets/Art/Extracted/Props_Lighting/torch_wall_lit_02.png",
+    "bounding_box": [
+      60,
+      363,
+      22,
+      46
+    ],
+    "dimensions": [
+      22,
+      46
+    ],
+    "pivot": [
+      0.5,
+      0.5
+    ],
+    "intended_use": "Lit wall torch variant"
+  },
+  {
+    "name": "lantern_hanging",
+    "category": "Props_Lighting",
+    "file_path": "Assets/Art/Extracted/Props_Lighting/lantern_hanging.png",
+    "bounding_box": [
+      99,
+      365,
+      21,
+      46
+    ],
+    "dimensions": [
+      21,
+      46
+    ],
+    "pivot": [
+      0.5,
+      1.0
+    ],
+    "intended_use": "Hanging glowing oil lantern"
+  },
+  {
+    "name": "lantern_standing_01",
+    "category": "Props_Lighting",
+    "file_path": "Assets/Art/Extracted/Props_Lighting/lantern_standing_01.png",
+    "bounding_box": [
+      60,
+      422,
+      19,
+      40
+    ],
+    "dimensions": [
+      19,
+      40
+    ],
+    "pivot": [
+      0.5,
+      0.0
+    ],
+    "intended_use": "Floor standing iron lantern"
+  },
+  {
+    "name": "lantern_standing_02",
+    "category": "Props_Lighting",
+    "file_path": "Assets/Art/Extracted/Props_Lighting/lantern_standing_02.png",
+    "bounding_box": [
+      100,
+      421,
+      21,
+      40
+    ],
+    "dimensions": [
+      21,
+      40
+    ],
+    "pivot": [
+      0.5,
+      0.0
+    ],
+    "intended_use": "Floor standing lantern lit"
+  },
+  {
+    "name": "candles_cluster_large",
+    "category": "Props_Lighting",
+    "file_path": "Assets/Art/Extracted/Props_Lighting/candles_cluster_large.png",
+    "bounding_box": [
+      145,
+      368,
+      41,
+      43
+    ],
+    "dimensions": [
+      41,
+      43
+    ],
+    "pivot": [
+      0.5,
+      0.0
+    ],
+    "intended_use": "Cluster of melting wax candles"
+  },
+  {
+    "name": "candles_candelabra",
+    "category": "Props_Lighting",
+    "file_path": "Assets/Art/Extracted/Props_Lighting/candles_candelabra.png",
+    "bounding_box": [
+      208,
+      373,
+      32,
+      37
+    ],
+    "dimensions": [
+      32,
+      37
+    ],
+    "pivot": [
+      0.5,
+      0.0
+    ],
+    "intended_use": "Triple candle group on floor"
+  },
+  {
+    "name": "barrel_single_01",
+    "category": "Decorations",
+    "file_path": "Assets/Art/Extracted/Decorations/barrel_single_01.png",
+    "bounding_box": [
+      14,
+      424,
+      32,
+      38
+    ],
+    "dimensions": [
+      32,
+      38
+    ],
+    "pivot": [
+      0.5,
+      0.0
+    ],
+    "intended_use": "Single wooden dungeon barrel"
+  },
+  {
+    "name": "barrel_pair",
+    "category": "Decorations",
+    "file_path": "Assets/Art/Extracted/Decorations/barrel_pair.png",
+    "bounding_box": [
+      142,
+      421,
+      48,
+      41
+    ],
+    "dimensions": [
+      48,
+      41
+    ],
+    "pivot": [
+      0.5,
+      0.0
+    ],
+    "intended_use": "Pair of stacked wooden barrels"
+  },
+  {
+    "name": "barrel_single_02",
+    "category": "Decorations",
+    "file_path": "Assets/Art/Extracted/Decorations/barrel_single_02.png",
+    "bounding_box": [
+      208,
+      420,
+      31,
+      42
+    ],
+    "dimensions": [
+      31,
+      42
+    ],
+    "pivot": [
+      0.5,
+      0.0
+    ],
+    "intended_use": "Wooden storage barrel"
+  },
+  {
+    "name": "chest_closed",
+    "category": "Decorations",
+    "file_path": "Assets/Art/Extracted/Decorations/chest_closed.png",
+    "bounding_box": [
+      264,
+      371,
+      49,
+      37
+    ],
+    "dimensions": [
+      49,
+      37
+    ],
+    "pivot": [
+      0.5,
+      0.0
+    ],
+    "intended_use": "Locked wooden iron-bound chest"
+  },
+  {
+    "name": "chest_half_open",
+    "category": "Decorations",
+    "file_path": "Assets/Art/Extracted/Decorations/chest_half_open.png",
+    "bounding_box": [
+      324,
+      370,
+      44,
+      38
+    ],
+    "dimensions": [
+      44,
+      38
+    ],
+    "pivot": [
+      0.5,
+      0.0
+    ],
+    "intended_use": "Half-open treasure chest"
+  },
+  {
+    "name": "chest_treasure_open",
+    "category": "Decorations",
+    "file_path": "Assets/Art/Extracted/Decorations/chest_treasure_open.png",
+    "bounding_box": [
+      379,
+      368,
+      46,
+      40
+    ],
+    "dimensions": [
+      46,
+      40
+    ],
+    "pivot": [
+      0.5,
+      0.0
+    ],
+    "intended_use": "Wide open treasure chest"
+  },
+  {
+    "name": "crate_wooden_01",
+    "category": "Decorations",
+    "file_path": "Assets/Art/Extracted/Decorations/crate_wooden_01.png",
+    "bounding_box": [
+      266,
+      420,
+      44,
+      42
+    ],
+    "dimensions": [
+      44,
+      42
+    ],
+    "pivot": [
+      0.5,
+      0.0
+    ],
+    "intended_use": "Wooden storage crate"
+  },
+  {
+    "name": "crate_wooden_02",
+    "category": "Decorations",
+    "file_path": "Assets/Art/Extracted/Decorations/crate_wooden_02.png",
+    "bounding_box": [
+      324,
+      420,
+      44,
+      42
+    ],
+    "dimensions": [
+      44,
+      42
+    ],
+    "pivot": [
+      0.5,
+      0.0
+    ],
+    "intended_use": "Reinforced wooden cargo crate"
+  },
+  {
+    "name": "skulls_and_bones_01",
+    "category": "Decorations",
+    "file_path": "Assets/Art/Extracted/Decorations/skulls_and_bones_01.png",
+    "bounding_box": [
+      435,
+      386,
+      29,
+      23
+    ],
+    "dimensions": [
+      29,
+      23
+    ],
+    "pivot": [
+      0.5,
+      0.0
+    ],
+    "intended_use": "Skull and bone fragments on floor"
+  },
+  {
+    "name": "skulls_and_bones_02",
+    "category": "Decorations",
+    "file_path": "Assets/Art/Extracted/Decorations/skulls_and_bones_02.png",
+    "bounding_box": [
+      472,
+      379,
+      30,
+      30
+    ],
+    "dimensions": [
+      30,
+      30
+    ],
+    "pivot": [
+      0.5,
+      0.0
+    ],
+    "intended_use": "Crossed bones and skull"
+  },
+  {
+    "name": "skull_floor_pile",
+    "category": "Decorations",
+    "file_path": "Assets/Art/Extracted/Decorations/skull_floor_pile.png",
+    "bounding_box": [
+      383,
+      426,
+      35,
+      34
+    ],
+    "dimensions": [
+      35,
+      34
+    ],
+    "pivot": [
+      0.5,
+      0.0
+    ],
+    "intended_use": "Small skull and bone remains"
+  },
+  {
+    "name": "shield_metal_kite",
+    "category": "Decorations",
+    "file_path": "Assets/Art/Extracted/Decorations/shield_metal_kite.png",
+    "bounding_box": [
+      435,
+      422,
+      24,
+      40
+    ],
+    "dimensions": [
+      24,
+      40
+    ],
+    "pivot": [
+      0.5,
+      0.0
+    ],
+    "intended_use": "Metal knight kite shield with emblem"
+  },
+  {
+    "name": "shield_wooden_cracked",
+    "category": "Decorations",
+    "file_path": "Assets/Art/Extracted/Decorations/shield_wooden_cracked.png",
+    "bounding_box": [
+      473,
+      423,
+      25,
+      39
+    ],
+    "dimensions": [
+      25,
+      39
+    ],
+    "pivot": [
+      0.5,
+      0.0
+    ],
+    "intended_use": "Cracked wooden heater shield"
+  },
+  {
+    "name": "banner_heraldic_orange",
+    "category": "Decorations",
+    "file_path": "Assets/Art/Extracted/Decorations/banner_heraldic_orange.png",
+    "bounding_box": [
+      513,
+      364,
+      33,
+      100
+    ],
+    "dimensions": [
+      33,
+      100
+    ],
+    "pivot": [
+      0.5,
+      0.0
+    ],
+    "intended_use": "Heraldic standing banner with creature crest"
+  },
+  {
+    "name": "banner_tattered_blue",
+    "category": "Decorations",
+    "file_path": "Assets/Art/Extracted/Decorations/banner_tattered_blue.png",
+    "bounding_box": [
+      557,
+      364,
+      33,
+      99
+    ],
+    "dimensions": [
+      33,
+      99
+    ],
+    "pivot": [
+      0.5,
+      0.0
+    ],
+    "intended_use": "Dark blue heraldic pole banner"
+  },
+  {
+    "name": "banner_ragged_red",
+    "category": "Decorations",
+    "file_path": "Assets/Art/Extracted/Decorations/banner_ragged_red.png",
+    "bounding_box": [
+      602,
+      368,
+      34,
+      65
+    ],
+    "dimensions": [
+      34,
+      65
+    ],
+    "pivot": [
+      0.5,
+      1.0
+    ],
+    "intended_use": "Tattered red wall banner"
+  },
+  {
+    "name": "chains_hanging_short",
+    "category": "Decorations",
+    "file_path": "Assets/Art/Extracted/Decorations/chains_hanging_short.png",
+    "bounding_box": [
+      842,
+      249,
+      8,
+      63
+    ],
+    "dimensions": [
+      8,
+      63
+    ],
+    "pivot": [
+      0.5,
+      1.0
+    ],
+    "intended_use": "Hanging iron chain links short"
+  },
+  {
+    "name": "chains_hanging_long",
+    "category": "Decorations",
+    "file_path": "Assets/Art/Extracted/Decorations/chains_hanging_long.png",
+    "bounding_box": [
+      866,
+      249,
+      8,
+      82
+    ],
+    "dimensions": [
+      8,
+      82
+    ],
+    "pivot": [
+      0.5,
+      1.0
+    ],
+    "intended_use": "Hanging iron chain links long"
+  },
+  {
+    "name": "cage_iron_hanging",
+    "category": "Decorations",
+    "file_path": "Assets/Art/Extracted/Decorations/cage_iron_hanging.png",
+    "bounding_box": [
+      650,
+      365,
+      34,
+      67
+    ],
+    "dimensions": [
+      34,
+      67
+    ],
+    "pivot": [
+      0.5,
+      1.0
+    ],
+    "intended_use": "Hanging iron gibbet cage"
+  },
+  {
+    "name": "cage_iron_small",
+    "category": "Decorations",
+    "file_path": "Assets/Art/Extracted/Decorations/cage_iron_small.png",
+    "bounding_box": [
+      712,
+      365,
+      30,
+      83
+    ],
+    "dimensions": [
+      30,
+      83
+    ],
+    "pivot": [
+      0.5,
+      1.0
+    ],
+    "intended_use": "Small hanging torture cage on chain"
+  },
+  {
+    "name": "statue_hooded_justice",
+    "category": "Decorations",
+    "file_path": "Assets/Art/Extracted/Decorations/statue_hooded_justice.png",
+    "bounding_box": [
+      764,
+      365,
+      54,
+      99
+    ],
+    "dimensions": [
+      54,
+      99
+    ],
+    "pivot": [
+      0.5,
+      0.0
+    ],
+    "intended_use": "Gothic hooded statue holding sword and scales"
+  },
+  {
+    "name": "crystals_green_purple",
+    "category": "Decorations",
+    "file_path": "Assets/Art/Extracted/Decorations/crystals_green_purple.png",
+    "bounding_box": [
+      827,
+      381,
+      24,
+      28
+    ],
+    "dimensions": [
+      24,
+      28
+    ],
+    "pivot": [
+      0.5,
+      0.0
+    ],
+    "intended_use": "Glowing green and purple magic crystals"
+  },
+  {
+    "name": "crystals_purple_large",
+    "category": "Decorations",
+    "file_path": "Assets/Art/Extracted/Decorations/crystals_purple_large.png",
+    "bounding_box": [
+      858,
+      365,
+      27,
+      43
+    ],
+    "dimensions": [
+      27,
+      43
+    ],
+    "pivot": [
+      0.5,
+      0.0
+    ],
+    "intended_use": "Large purple dungeon crystals"
+  },
+  {
+    "name": "runes_glowing_symbols",
+    "category": "Decorations",
+    "file_path": "Assets/Art/Extracted/Decorations/runes_glowing_symbols.png",
+    "bounding_box": [
+      832,
+      422,
+      50,
+      40
+    ],
+    "dimensions": [
+      50,
+      40
+    ],
+    "pivot": [
+      0.5,
+      0.5
+    ],
+    "intended_use": "Set of 4 glowing ancient arcane runes"
+  },
+  {
+    "name": "remains_bones_pile",
+    "category": "Decorations",
+    "file_path": "Assets/Art/Extracted/Decorations/remains_bones_pile.png",
+    "bounding_box": [
+      896,
+      385,
+      49,
+      35
+    ],
+    "dimensions": [
+      49,
+      35
+    ],
+    "pivot": [
+      0.5,
+      0.0
+    ],
+    "intended_use": "Debris and human bone remains"
+  },
+  {
+    "name": "remains_pebbles_pile",
+    "category": "Decorations",
+    "file_path": "Assets/Art/Extracted/Decorations/remains_pebbles_pile.png",
+    "bounding_box": [
+      896,
+      425,
+      50,
+      38
+    ],
+    "dimensions": [
+      50,
+      38
+    ],
+    "pivot": [
+      0.5,
+      0.0
+    ],
+    "intended_use": "Gravel and skull remains"
+  },
+  {
+    "name": "brambles_thorns_01",
+    "category": "Decorations",
+    "file_path": "Assets/Art/Extracted/Decorations/brambles_thorns_01.png",
+    "bounding_box": [
+      959,
+      366,
+      51,
+      43
+    ],
+    "dimensions": [
+      51,
+      43
+    ],
+    "pivot": [
+      0.5,
+      0.5
+    ],
+    "intended_use": "Dark thorny vines and brambles"
+  },
+  {
+    "name": "brambles_thorns_02",
+    "category": "Decorations",
+    "file_path": "Assets/Art/Extracted/Decorations/brambles_thorns_02.png",
+    "bounding_box": [
+      959,
+      421,
+      51,
+      42
+    ],
+    "dimensions": [
+      51,
+      42
+    ],
+    "pivot": [
+      0.5,
+      0.5
+    ],
+    "intended_use": "Thorny tangle cluster"
+  },
+  {
+    "name": "bg_silhouette_cathedral_towers",
+    "category": "Background_Silhouettes",
+    "file_path": "Assets/Art/Extracted/Background_Silhouettes/bg_silhouette_cathedral_towers.png",
+    "bounding_box": [
+      13,
+      475,
+      243,
+      87
+    ],
+    "dimensions": [
+      243,
+      87
+    ],
+    "pivot": [
+      0.5,
+      0.0
+    ],
+    "intended_use": "Cathedral towers and gothic town silhouette"
+  },
+  {
+    "name": "bg_silhouette_arcade_arches",
+    "category": "Background_Silhouettes",
+    "file_path": "Assets/Art/Extracted/Background_Silhouettes/bg_silhouette_arcade_arches.png",
+    "bounding_box": [
+      278,
+      488,
+      208,
+      74
+    ],
+    "dimensions": [
+      208,
+      74
+    ],
+    "pivot": [
+      0.5,
+      0.0
+    ],
+    "intended_use": "Triple arcade arch background silhouette"
+  },
+  {
+    "name": "bg_silhouette_pillars_drapery",
+    "category": "Background_Silhouettes",
+    "file_path": "Assets/Art/Extracted/Background_Silhouettes/bg_silhouette_pillars_drapery.png",
+    "bounding_box": [
+      516,
+      475,
+      244,
+      87
+    ],
+    "dimensions": [
+      244,
+      87
+    ],
+    "pivot": [
+      0.5,
+      0.0
+    ],
+    "intended_use": "Dungeon colonnade with hanging banners"
+  },
+  {
+    "name": "bg_silhouette_banner_columns",
+    "category": "Background_Silhouettes",
+    "file_path": "Assets/Art/Extracted/Background_Silhouettes/bg_silhouette_banner_columns.png",
+    "bounding_box": [
+      806,
+      475,
+      169,
+      87
+    ],
+    "dimensions": [
+      169,
+      87
+    ],
+    "pivot": [
+      0.5,
+      0.0
+    ],
+    "intended_use": "Silhouette with tattered banners and star glint"
+  }
+]

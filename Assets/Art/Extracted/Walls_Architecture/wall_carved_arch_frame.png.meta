@@ -1,0 +1,1157 @@
+fileFormatVersion: 2
+guid: 2089248075451e943b692d7ef918564a
+TextureImporter:
+  internalIDToNameTable:
+  - first:
+      213: 1442415208536047895
+    second: wall_carved_arch_frame_0
+  - first:
+      213: 8385980430621236872
+    second: wall_carved_arch_frame_1
+  - first:
+      213: -6340903071906804965
+    second: wall_carved_arch_frame_2
+  - first:
+      213: 8626742067408117683
+    second: wall_carved_arch_frame_3
+  - first:
+      213: 305518603932908925
+    second: wall_carved_arch_frame_4
+  - first:
+      213: -9081851776218084372
+    second: wall_carved_arch_frame_5
+  - first:
+      213: -8837987125669790383
+    second: wall_carved_arch_frame_6
+  - first:
+      213: 6957425242976371101
+    second: wall_carved_arch_frame_7
+  - first:
+      213: 6775790128071430989
+    second: wall_carved_arch_frame_8
+  - first:
+      213: -5583654131449961796
+    second: wall_carved_arch_frame_9
+  - first:
+      213: -3674177357125110716
+    second: wall_carved_arch_frame_10
+  - first:
+      213: -6198815461039361392
+    second: wall_carved_arch_frame_11
+  - first:
+      213: 1797184490541541981
+    second: wall_carved_arch_frame_12
+  - first:
+      213: 2496774902719193357
+    second: wall_carved_arch_frame_13
+  - first:
+      213: 1536674270083514767
+    second: wall_carved_arch_frame_14
+  - first:
+      213: -9014429385484965319
+    second: wall_carved_arch_frame_15
+  - first:
+      213: 529994346328212599
+    second: wall_carved_arch_frame_16
+  - first:
+      213: 7611835716203702209
+    second: wall_carved_arch_frame_17
+  - first:
+      213: -2587205528354576423
+    second: wall_carved_arch_frame_18
+  - first:
+      213: -509489997336736072
+    second: wall_carved_arch_frame_19
+  - first:
+      213: -8938018338975297180
+    second: wall_carved_arch_frame_20
+  - first:
+      213: 2828893202922905919
+    second: wall_carved_arch_frame_21
+  - first:
+      213: -880835418686874456
+    second: wall_carved_arch_frame_22
+  - first:
+      213: 1238327072386737764
+    second: wall_carved_arch_frame_23
+  - first:
+      213: -2858910570042226404
+    second: wall_carved_arch_frame_24
+  - first:
+      213: -1829484843639484689
+    second: wall_carved_arch_frame_25
+  - first:
+      213: 4581702854298971631
+    second: wall_carved_arch_frame_26
+  - first:
+      213: -1793188882198326686
+    second: wall_carved_arch_frame_27
+  - first:
+      213: 4446902052091377206
+    second: wall_carved_arch_frame_28
+  - first:
+      213: -6229078929538663670
+    second: wall_carved_arch_frame_29
+  - first:
+      213: 5868394273698855318
+    second: wall_carved_arch_frame_30
+  - first:
+      213: 8815921296538242397
+    second: wall_carved_arch_frame_31
+  - first:
+      213: -951651124355966138
+    second: wall_carved_arch_frame_32
+  - first:
+      213: 3871061646252066673
+    second: wall_carved_arch_frame_33
+  - first:
+      213: 2732878721906749513
+    second: wall_carved_arch_frame_34
+  - first:
+      213: 5189873337052831153
+    second: wall_carved_arch_frame_35
+  - first:
+      213: -7181070879097800864
+    second: wall_carved_arch_frame_36
+  - first:
+      213: 8062387189685159212
+    second: wall_carved_arch_frame_37
+  - first:
+      213: -6448726375410778926
+    second: wall_carved_arch_frame_38
+  - first:
+      213: 2888099709600347348
+    second: wall_carved_arch_frame_39
+  externalObjects: {}
+  serializedVersion: 13
+  mipmaps:
+    mipMapMode: 0
+    enableMipMap: 0
+    sRGBTexture: 1
+    linearTexture: 0
+    fadeOut: 0
+    borderMipMap: 0
+    mipMapsPreserveCoverage: 0
+    alphaTestReferenceValue: 0.5
+    mipMapFadeDistanceStart: 1
+    mipMapFadeDistanceEnd: 3
+  bumpmap:
+    convertToNormalMap: 0
+    externalNormalMap: 0
+    heightScale: 0.25
+    normalMapFilter: 0
+    flipGreenChannel: 0
+  isReadable: 0
+  streamingMipmaps: 0
+  streamingMipmapsPriority: 0
+  vTOnly: 0
+  ignoreMipmapLimit: 0
+  grayScaleToAlpha: 0
+  generateCubemap: 6
+  cubemapConvolution: 0
+  seamlessCubemap: 0
+  textureFormat: 1
+  maxTextureSize: 2048
+  textureSettings:
+    serializedVersion: 2
+    filterMode: 0
+    aniso: 1
+    mipBias: 0
+    wrapU: 1
+    wrapV: 1
+    wrapW: 1
+  nPOTScale: 0
+  lightmap: 0
+  compressionQuality: 50
+  spriteMode: 1
+  spriteExtrude: 1
+  spriteMeshType: 1
+  alignment: 0
+  spritePivot: {x: 0.5, y: 0.5}
+  spritePixelsToUnits: 32
+  spriteBorder: {x: 0, y: 0, z: 0, w: 0}
+  spriteGenerateFallbackPhysicsShape: 1
+  alphaUsage: 1
+  alphaIsTransparency: 1
+  spriteTessellationDetail: -1
+  textureType: 8
+  textureShape: 1
+  singleChannelComponent: 0
+  flipbookRows: 1
+  flipbookColumns: 1
+  maxTextureSizeSet: 0
+  compressionQualitySet: 0
+  textureFormatSet: 0
+  ignorePngGamma: 0
+  applyGammaDecoding: 0
+  swizzle: 50462976
+  cookieLightType: 0
+  platformSettings:
+  - serializedVersion: 4
+    buildTarget: DefaultTexturePlatform
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 0
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 4
+    buildTarget: Standalone
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  spriteSheet:
+    serializedVersion: 2
+    sprites:
+    - serializedVersion: 2
+      name: wall_carved_arch_frame_0
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 81
+        width: 28
+        height: 13
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 711896b6dfc740410800000000000000
+      internalID: 1442415208536047895
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: wall_carved_arch_frame_1
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 68
+        width: 140
+        height: 22
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 88e5e8455ccf06470800000000000000
+      internalID: 8385980430621236872
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: wall_carved_arch_frame_2
+      rect:
+        serializedVersion: 2
+        x: 27
+        y: 89
+        width: 86
+        height: 5
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: b1bcfcb60469008a0800000000000000
+      internalID: -6340903071906804965
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: wall_carved_arch_frame_3
+      rect:
+        serializedVersion: 2
+        x: 112
+        y: 85
+        width: 28
+        height: 9
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 3bf97c0343858b770800000000000000
+      internalID: 8626742067408117683
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: wall_carved_arch_frame_4
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 4
+        width: 29
+        height: 74
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: d7db1b33d8b6d3400800000000000000
+      internalID: 305518603932908925
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: wall_carved_arch_frame_5
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 61
+        width: 5
+        height: 8
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: ceb45cf5de7c6f180800000000000000
+      internalID: -9081851776218084372
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: wall_carved_arch_frame_6
+      rect:
+        serializedVersion: 2
+        x: 22
+        y: 61
+        width: 9
+        height: 9
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 15df9fce889295580800000000000000
+      internalID: -8837987125669790383
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: wall_carved_arch_frame_7
+      rect:
+        serializedVersion: 2
+        x: 24
+        y: 69
+        width: 15
+        height: 8
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: d9141fe756dbd8060800000000000000
+      internalID: 6957425242976371101
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: wall_carved_arch_frame_8
+      rect:
+        serializedVersion: 2
+        x: 28
+        y: 8
+        width: 112
+        height: 70
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: d43db48c831780e50800000000000000
+      internalID: 6775790128071430989
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: wall_carved_arch_frame_9
+      rect:
+        serializedVersion: 2
+        x: 30
+        y: 60
+        width: 17
+        height: 15
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: cb26842a620e282b0800000000000000
+      internalID: -5583654131449961796
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: wall_carved_arch_frame_10
+      rect:
+        serializedVersion: 2
+        x: 46
+        y: 60
+        width: 18
+        height: 9
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 44436ca0923b20dc0800000000000000
+      internalID: -3674177357125110716
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: wall_carved_arch_frame_11
+      rect:
+        serializedVersion: 2
+        x: 53
+        y: 69
+        width: 19
+        height: 9
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 092bc805e2269f9a0800000000000000
+      internalID: -6198815461039361392
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: wall_carved_arch_frame_12
+      rect:
+        serializedVersion: 2
+        x: 64
+        y: 60
+        width: 20
+        height: 10
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: d5ae192b5c1e0f810800000000000000
+      internalID: 1797184490541541981
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: wall_carved_arch_frame_13
+      rect:
+        serializedVersion: 2
+        x: 75
+        y: 69
+        width: 13
+        height: 9
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: d0120b8ab8356a220800000000000000
+      internalID: 2496774902719193357
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: wall_carved_arch_frame_14
+      rect:
+        serializedVersion: 2
+        x: 83
+        y: 60
+        width: 15
+        height: 9
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: f818fc36b1d535510800000000000000
+      internalID: 1536674270083514767
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: wall_carved_arch_frame_15
+      rect:
+        serializedVersion: 2
+        x: 98
+        y: 60
+        width: 17
+        height: 9
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 93a63510c3056e280800000000000000
+      internalID: -9014429385484965319
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: wall_carved_arch_frame_16
+      rect:
+        serializedVersion: 2
+        x: 22
+        y: 44
+        width: 17
+        height: 17
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 774cbd9cc0bea5700800000000000000
+      internalID: 529994346328212599
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: wall_carved_arch_frame_17
+      rect:
+        serializedVersion: 2
+        x: 34
+        y: 43
+        width: 13
+        height: 9
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 1c7e3f0314ca2a960800000000000000
+      internalID: 7611835716203702209
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: wall_carved_arch_frame_18
+      rect:
+        serializedVersion: 2
+        x: 39
+        y: 52
+        width: 17
+        height: 8
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 9d7af719746681cd0800000000000000
+      internalID: -2587205528354576423
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: wall_carved_arch_frame_19
+      rect:
+        serializedVersion: 2
+        x: 47
+        y: 43
+        width: 18
+        height: 9
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 8be012cfb8dede8f0800000000000000
+      internalID: -509489997336736072
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: wall_carved_arch_frame_20
+      rect:
+        serializedVersion: 2
+        x: 55
+        y: 51
+        width: 18
+        height: 9
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 46153752da7c5f380800000000000000
+      internalID: -8938018338975297180
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: wall_carved_arch_frame_21
+      rect:
+        serializedVersion: 2
+        x: 64
+        y: 43
+        width: 34
+        height: 9
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: f31acb3416f324720800000000000000
+      internalID: 2828893202922905919
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: wall_carved_arch_frame_22
+      rect:
+        serializedVersion: 2
+        x: 72
+        y: 51
+        width: 18
+        height: 9
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 8ac16938ad4a6c3f0800000000000000
+      internalID: -880835418686874456
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: wall_carved_arch_frame_23
+      rect:
+        serializedVersion: 2
+        x: 89
+        y: 52
+        width: 18
+        height: 8
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 4666c5159eb6f2110800000000000000
+      internalID: 1238327072386737764
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: wall_carved_arch_frame_24
+      rect:
+        serializedVersion: 2
+        x: 97
+        y: 43
+        width: 15
+        height: 10
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: c190604dbfb1358d0800000000000000
+      internalID: -2858910570042226404
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: wall_carved_arch_frame_25
+      rect:
+        serializedVersion: 2
+        x: 106
+        y: 52
+        width: 11
+        height: 8
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: fee48ec4a3d5c96e0800000000000000
+      internalID: -1829484843639484689
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: wall_carved_arch_frame_26
+      rect:
+        serializedVersion: 2
+        x: 22
+        y: 26
+        width: 95
+        height: 9
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: fed22e8987a759f30800000000000000
+      internalID: 4581702854298971631
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: wall_carved_arch_frame_27
+      rect:
+        serializedVersion: 2
+        x: 23
+        y: 35
+        width: 15
+        height: 8
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 262936d56305d17e0800000000000000
+      internalID: -1793188882198326686
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: wall_carved_arch_frame_28
+      rect:
+        serializedVersion: 2
+        x: 39
+        y: 34
+        width: 34
+        height: 10
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 636bcdd0bd196bd30800000000000000
+      internalID: 4446902052091377206
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: wall_carved_arch_frame_29
+      rect:
+        serializedVersion: 2
+        x: 72
+        y: 35
+        width: 18
+        height: 8
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: a0b3af677bddd89a0800000000000000
+      internalID: -6229078929538663670
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: wall_carved_arch_frame_30
+      rect:
+        serializedVersion: 2
+        x: 89
+        y: 35
+        width: 18
+        height: 8
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 699b1c5ff79b07150800000000000000
+      internalID: 5868394273698855318
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: wall_carved_arch_frame_31
+      rect:
+        serializedVersion: 2
+        x: 107
+        y: 34
+        width: 10
+        height: 9
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: d5d86ffd5b1785a70800000000000000
+      internalID: 8815921296538242397
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: wall_carved_arch_frame_32
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 0
+        width: 140
+        height: 9
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 64b59ae285e0bc2f0800000000000000
+      internalID: -951651124355966138
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: wall_carved_arch_frame_33
+      rect:
+        serializedVersion: 2
+        x: 27
+        y: 8
+        width: 8
+        height: 14
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 1774e78be06c8b530800000000000000
+      internalID: 3871061646252066673
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: wall_carved_arch_frame_34
+      rect:
+        serializedVersion: 2
+        x: 34
+        y: 7
+        width: 9
+        height: 16
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 940b979d7b22de520800000000000000
+      internalID: 2732878721906749513
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: wall_carved_arch_frame_35
+      rect:
+        serializedVersion: 2
+        x: 49
+        y: 8
+        width: 9
+        height: 14
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 1bd1e4c8d42260840800000000000000
+      internalID: 5189873337052831153
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: wall_carved_arch_frame_36
+      rect:
+        serializedVersion: 2
+        x: 57
+        y: 7
+        width: 9
+        height: 15
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 06739781516b75c90800000000000000
+      internalID: -7181070879097800864
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: wall_carved_arch_frame_37
+      rect:
+        serializedVersion: 2
+        x: 68
+        y: 8
+        width: 13
+        height: 14
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: c2508d2ce6a53ef60800000000000000
+      internalID: 8062387189685159212
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: wall_carved_arch_frame_38
+      rect:
+        serializedVersion: 2
+        x: 80
+        y: 8
+        width: 8
+        height: 14
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 2dcb2f347858186a0800000000000000
+      internalID: -6448726375410778926
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: wall_carved_arch_frame_39
+      rect:
+        serializedVersion: 2
+        x: 95
+        y: 8
+        width: 8
+        height: 14
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 4d433a25267941820800000000000000
+      internalID: 2888099709600347348
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    outline: []
+    customData: 
+    physicsShape: []
+    bones: []
+    spriteID: 5e97eb03825dee720800000000000000
+    internalID: 0
+    vertices: []
+    indices: 
+    edges: []
+    weights: []
+    secondaryTextures: []
+    spriteCustomMetadata:
+      entries: []
+    nameFileIdTable:
+      wall_carved_arch_frame_0: 1442415208536047895
+      wall_carved_arch_frame_1: 8385980430621236872
+      wall_carved_arch_frame_10: -3674177357125110716
+      wall_carved_arch_frame_11: -6198815461039361392
+      wall_carved_arch_frame_12: 1797184490541541981
+      wall_carved_arch_frame_13: 2496774902719193357
+      wall_carved_arch_frame_14: 1536674270083514767
+      wall_carved_arch_frame_15: -9014429385484965319
+      wall_carved_arch_frame_16: 529994346328212599
+      wall_carved_arch_frame_17: 7611835716203702209
+      wall_carved_arch_frame_18: -2587205528354576423
+      wall_carved_arch_frame_19: -509489997336736072
+      wall_carved_arch_frame_2: -6340903071906804965
+      wall_carved_arch_frame_20: -8938018338975297180
+      wall_carved_arch_frame_21: 2828893202922905919
+      wall_carved_arch_frame_22: -880835418686874456
+      wall_carved_arch_frame_23: 1238327072386737764
+      wall_carved_arch_frame_24: -2858910570042226404
+      wall_carved_arch_frame_25: -1829484843639484689
+      wall_carved_arch_frame_26: 4581702854298971631
+      wall_carved_arch_frame_27: -1793188882198326686
+      wall_carved_arch_frame_28: 4446902052091377206
+      wall_carved_arch_frame_29: -6229078929538663670
+      wall_carved_arch_frame_3: 8626742067408117683
+      wall_carved_arch_frame_30: 5868394273698855318
+      wall_carved_arch_frame_31: 8815921296538242397
+      wall_carved_arch_frame_32: -951651124355966138
+      wall_carved_arch_frame_33: 3871061646252066673
+      wall_carved_arch_frame_34: 2732878721906749513
+      wall_carved_arch_frame_35: 5189873337052831153
+      wall_carved_arch_frame_36: -7181070879097800864
+      wall_carved_arch_frame_37: 8062387189685159212
+      wall_carved_arch_frame_38: -6448726375410778926
+      wall_carved_arch_frame_39: 2888099709600347348
+      wall_carved_arch_frame_4: 305518603932908925
+      wall_carved_arch_frame_5: -9081851776218084372
+      wall_carved_arch_frame_6: -8837987125669790383
+      wall_carved_arch_frame_7: 6957425242976371101
+      wall_carved_arch_frame_8: 6775790128071430989
+      wall_carved_arch_frame_9: -5583654131449961796
+  mipmapLimitGroupName: 
+  pSDRemoveMatte: 0
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 

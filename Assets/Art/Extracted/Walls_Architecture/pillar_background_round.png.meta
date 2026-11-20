@@ -1,0 +1,819 @@
+fileFormatVersion: 2
+guid: d4ce6ad3442e3de4d812aaaa58a7e999
+TextureImporter:
+  internalIDToNameTable:
+  - first:
+      213: -8005988665443305180
+    second: pillar_background_round_0
+  - first:
+      213: 4896860878377369602
+    second: pillar_background_round_1
+  - first:
+      213: 1494226572066453796
+    second: pillar_background_round_2
+  - first:
+      213: -2089660049331971030
+    second: pillar_background_round_3
+  - first:
+      213: 4054896755740329555
+    second: pillar_background_round_4
+  - first:
+      213: 6479177988522387048
+    second: pillar_background_round_5
+  - first:
+      213: -730323581321880940
+    second: pillar_background_round_6
+  - first:
+      213: 6444774135372341926
+    second: pillar_background_round_7
+  - first:
+      213: -7198771216046892327
+    second: pillar_background_round_8
+  - first:
+      213: -170363785547501612
+    second: pillar_background_round_9
+  - first:
+      213: -5120931883444076508
+    second: pillar_background_round_10
+  - first:
+      213: -4042592941796757160
+    second: pillar_background_round_11
+  - first:
+      213: 5006287203855712677
+    second: pillar_background_round_12
+  - first:
+      213: 4976201618160170217
+    second: pillar_background_round_13
+  - first:
+      213: -8285928669689839108
+    second: pillar_background_round_14
+  - first:
+      213: -5170626600604738058
+    second: pillar_background_round_15
+  - first:
+      213: 6138614932964239201
+    second: pillar_background_round_16
+  - first:
+      213: -32615935051363871
+    second: pillar_background_round_17
+  - first:
+      213: 6510448379406584099
+    second: pillar_background_round_18
+  - first:
+      213: 5766682709590310249
+    second: pillar_background_round_19
+  - first:
+      213: 7117196554477363081
+    second: pillar_background_round_20
+  - first:
+      213: -4809098270274819150
+    second: pillar_background_round_21
+  - first:
+      213: 7707881942087636907
+    second: pillar_background_round_22
+  - first:
+      213: -1925985038613997059
+    second: pillar_background_round_23
+  - first:
+      213: -5360927702488553452
+    second: pillar_background_round_24
+  - first:
+      213: 4162914739774515125
+    second: pillar_background_round_25
+  - first:
+      213: -2040230652032436200
+    second: pillar_background_round_26
+  externalObjects: {}
+  serializedVersion: 13
+  mipmaps:
+    mipMapMode: 0
+    enableMipMap: 0
+    sRGBTexture: 1
+    linearTexture: 0
+    fadeOut: 0
+    borderMipMap: 0
+    mipMapsPreserveCoverage: 0
+    alphaTestReferenceValue: 0.5
+    mipMapFadeDistanceStart: 1
+    mipMapFadeDistanceEnd: 3
+  bumpmap:
+    convertToNormalMap: 0
+    externalNormalMap: 0
+    heightScale: 0.25
+    normalMapFilter: 0
+    flipGreenChannel: 0
+  isReadable: 0
+  streamingMipmaps: 0
+  streamingMipmapsPriority: 0
+  vTOnly: 0
+  ignoreMipmapLimit: 0
+  grayScaleToAlpha: 0
+  generateCubemap: 6
+  cubemapConvolution: 0
+  seamlessCubemap: 0
+  textureFormat: 1
+  maxTextureSize: 2048
+  textureSettings:
+    serializedVersion: 2
+    filterMode: 0
+    aniso: 1
+    mipBias: 0
+    wrapU: 1
+    wrapV: 1
+    wrapW: 1
+  nPOTScale: 0
+  lightmap: 0
+  compressionQuality: 50
+  spriteMode: 1
+  spriteExtrude: 1
+  spriteMeshType: 1
+  alignment: 0
+  spritePivot: {x: 0.5, y: 0.5}
+  spritePixelsToUnits: 32
+  spriteBorder: {x: 0, y: 0, z: 0, w: 0}
+  spriteGenerateFallbackPhysicsShape: 1
+  alphaUsage: 1
+  alphaIsTransparency: 1
+  spriteTessellationDetail: -1
+  textureType: 8
+  textureShape: 1
+  singleChannelComponent: 0
+  flipbookRows: 1
+  flipbookColumns: 1
+  maxTextureSizeSet: 0
+  compressionQualitySet: 0
+  textureFormatSet: 0
+  ignorePngGamma: 0
+  applyGammaDecoding: 0
+  swizzle: 50462976
+  cookieLightType: 0
+  platformSettings:
+  - serializedVersion: 4
+    buildTarget: DefaultTexturePlatform
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 0
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 4
+    buildTarget: Standalone
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  spriteSheet:
+    serializedVersion: 2
+    sprites:
+    - serializedVersion: 2
+      name: pillar_background_round_0
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 86
+        width: 16
+        height: 8
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 429b270f9b305e090800000000000000
+      internalID: -8005988665443305180
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: pillar_background_round_1
+      rect:
+        serializedVersion: 2
+        x: 2
+        y: 77
+        width: 15
+        height: 9
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 200c032360525f340800000000000000
+      internalID: 4896860878377369602
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: pillar_background_round_2
+      rect:
+        serializedVersion: 2
+        x: 16
+        y: 78
+        width: 21
+        height: 16
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 42978f9862f8cb410800000000000000
+      internalID: 1494226572066453796
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: pillar_background_round_3
+      rect:
+        serializedVersion: 2
+        x: 36
+        y: 77
+        width: 15
+        height: 17
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: a2c1e32b1490003e0800000000000000
+      internalID: -2089660049331971030
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: pillar_background_round_4
+      rect:
+        serializedVersion: 2
+        x: 42
+        y: 86
+        width: 11
+        height: 8
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 35649c69d13e54830800000000000000
+      internalID: 4054896755740329555
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: pillar_background_round_5
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 68
+        width: 19
+        height: 10
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 866286a6d0aaae950800000000000000
+      internalID: 6479177988522387048
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: pillar_background_round_6
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 60
+        width: 19
+        height: 9
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 49ad73c729e5dd5f0800000000000000
+      internalID: -730323581321880940
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: pillar_background_round_7
+      rect:
+        serializedVersion: 2
+        x: 18
+        y: 16
+        width: 18
+        height: 64
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 6a26e742eef607950800000000000000
+      internalID: 6444774135372341926
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: pillar_background_round_8
+      rect:
+        serializedVersion: 2
+        x: 34
+        y: 68
+        width: 9
+        height: 10
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 9dad73048b3d81c90800000000000000
+      internalID: -7198771216046892327
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: pillar_background_round_9
+      rect:
+        serializedVersion: 2
+        x: 34
+        y: 60
+        width: 18
+        height: 10
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 4dfa9d72a0fb2adf0800000000000000
+      internalID: -170363785547501612
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: pillar_background_round_10
+      rect:
+        serializedVersion: 2
+        x: 42
+        y: 69
+        width: 11
+        height: 9
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 4200858759bcee8b0800000000000000
+      internalID: -5120931883444076508
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: pillar_background_round_11
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 51
+        width: 19
+        height: 10
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 851f3b45323d5e7c0800000000000000
+      internalID: -4042592941796757160
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: pillar_background_round_12
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 43
+        width: 19
+        height: 10
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 5a1476dffa7e97540800000000000000
+      internalID: 5006287203855712677
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: pillar_background_round_13
+      rect:
+        serializedVersion: 2
+        x: 33
+        y: 42
+        width: 11
+        height: 11
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 9e43925b1050f0540800000000000000
+      internalID: 4976201618160170217
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: pillar_background_round_14
+      rect:
+        serializedVersion: 2
+        x: 34
+        y: 51
+        width: 19
+        height: 10
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: cf189e096c7720d80800000000000000
+      internalID: -8285928669689839108
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: pillar_background_round_15
+      rect:
+        serializedVersion: 2
+        x: 43
+        y: 43
+        width: 10
+        height: 9
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 6fdd4cc708e3e38b0800000000000000
+      internalID: -5170626600604738058
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: pillar_background_round_16
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 35
+        width: 19
+        height: 9
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 167ed3cf1cdb03550800000000000000
+      internalID: 6138614932964239201
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: pillar_background_round_17
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 25
+        width: 19
+        height: 10
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 1e90f39daff1c8ff0800000000000000
+      internalID: -32615935051363871
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: pillar_background_round_18
+      rect:
+        serializedVersion: 2
+        x: 34
+        y: 35
+        width: 19
+        height: 9
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 3290c07ae42c95a50800000000000000
+      internalID: 6510448379406584099
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: pillar_background_round_19
+      rect:
+        serializedVersion: 2
+        x: 34
+        y: 26
+        width: 13
+        height: 9
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 96d74850f5f570050800000000000000
+      internalID: 5766682709590310249
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: pillar_background_round_20
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 17
+        width: 19
+        height: 9
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 98fd14ace8c55c260800000000000000
+      internalID: 7117196554477363081
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: pillar_background_round_21
+      rect:
+        serializedVersion: 2
+        x: 3
+        y: 9
+        width: 15
+        height: 9
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 2bbe2565a96a24db0800000000000000
+      internalID: -4809098270274819150
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: pillar_background_round_22
+      rect:
+        serializedVersion: 2
+        x: 15
+        y: 0
+        width: 32
+        height: 18
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: ba718c8c9c5e7fa60800000000000000
+      internalID: 7707881942087636907
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: pillar_background_round_23
+      rect:
+        serializedVersion: 2
+        x: 34
+        y: 17
+        width: 19
+        height: 9
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: df912bacfc68545e0800000000000000
+      internalID: -1925985038613997059
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: pillar_background_round_24
+      rect:
+        serializedVersion: 2
+        x: 46
+        y: 9
+        width: 7
+        height: 9
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 4186e9278a82a95b0800000000000000
+      internalID: -5360927702488553452
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: pillar_background_round_25
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 1
+        width: 16
+        height: 8
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 5b76f7656e4a5c930800000000000000
+      internalID: 4162914739774515125
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: pillar_background_round_26
+      rect:
+        serializedVersion: 2
+        x: 38
+        y: 0
+        width: 15
+        height: 9
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 8183eb51805afa3e0800000000000000
+      internalID: -2040230652032436200
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    outline: []
+    customData: 
+    physicsShape: []
+    bones: []
+    spriteID: 5e97eb03825dee720800000000000000
+    internalID: 0
+    vertices: []
+    indices: 
+    edges: []
+    weights: []
+    secondaryTextures: []
+    spriteCustomMetadata:
+      entries: []
+    nameFileIdTable:
+      pillar_background_round_0: -8005988665443305180
+      pillar_background_round_1: 4896860878377369602
+      pillar_background_round_10: -5120931883444076508
+      pillar_background_round_11: -4042592941796757160
+      pillar_background_round_12: 5006287203855712677
+      pillar_background_round_13: 4976201618160170217
+      pillar_background_round_14: -8285928669689839108
+      pillar_background_round_15: -5170626600604738058
+      pillar_background_round_16: 6138614932964239201
+      pillar_background_round_17: -32615935051363871
+      pillar_background_round_18: 6510448379406584099
+      pillar_background_round_19: 5766682709590310249
+      pillar_background_round_2: 1494226572066453796
+      pillar_background_round_20: 7117196554477363081
+      pillar_background_round_21: -4809098270274819150
+      pillar_background_round_22: 7707881942087636907
+      pillar_background_round_23: -1925985038613997059
+      pillar_background_round_24: -5360927702488553452
+      pillar_background_round_25: 4162914739774515125
+      pillar_background_round_26: -2040230652032436200
+      pillar_background_round_3: -2089660049331971030
+      pillar_background_round_4: 4054896755740329555
+      pillar_background_round_5: 6479177988522387048
+      pillar_background_round_6: -730323581321880940
+      pillar_background_round_7: 6444774135372341926
+      pillar_background_round_8: -7198771216046892327
+      pillar_background_round_9: -170363785547501612
+  mipmapLimitGroupName: 
+  pSDRemoveMatte: 0
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 

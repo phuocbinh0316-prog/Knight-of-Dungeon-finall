@@ -1,0 +1,637 @@
+fileFormatVersion: 2
+guid: 381dca4b3b34e5c4581c35b3cfea9cb7
+TextureImporter:
+  internalIDToNameTable:
+  - first:
+      213: 1975504950986295937
+    second: wall_brick_column_02_0
+  - first:
+      213: 5851796747897134753
+    second: wall_brick_column_02_1
+  - first:
+      213: 4963093822128777860
+    second: wall_brick_column_02_2
+  - first:
+      213: 8007808817627966515
+    second: wall_brick_column_02_3
+  - first:
+      213: -5458535053673471837
+    second: wall_brick_column_02_4
+  - first:
+      213: -7248378149339469725
+    second: wall_brick_column_02_5
+  - first:
+      213: -2837721075449321496
+    second: wall_brick_column_02_6
+  - first:
+      213: -1717852357122375107
+    second: wall_brick_column_02_7
+  - first:
+      213: 7232600237757803530
+    second: wall_brick_column_02_8
+  - first:
+      213: 3771450679631390103
+    second: wall_brick_column_02_9
+  - first:
+      213: 7454025249474537945
+    second: wall_brick_column_02_10
+  - first:
+      213: -8749035089556822151
+    second: wall_brick_column_02_11
+  - first:
+      213: -3631660824100697671
+    second: wall_brick_column_02_12
+  - first:
+      213: -8742494125685020470
+    second: wall_brick_column_02_13
+  - first:
+      213: 3100262984330816365
+    second: wall_brick_column_02_14
+  - first:
+      213: -5288957181658839717
+    second: wall_brick_column_02_15
+  - first:
+      213: -4929322502762737863
+    second: wall_brick_column_02_16
+  - first:
+      213: 8142560942901270609
+    second: wall_brick_column_02_17
+  - first:
+      213: 6115930146351971929
+    second: wall_brick_column_02_18
+  - first:
+      213: -6805200573275089578
+    second: wall_brick_column_02_19
+  externalObjects: {}
+  serializedVersion: 13
+  mipmaps:
+    mipMapMode: 0
+    enableMipMap: 0
+    sRGBTexture: 1
+    linearTexture: 0
+    fadeOut: 0
+    borderMipMap: 0
+    mipMapsPreserveCoverage: 0
+    alphaTestReferenceValue: 0.5
+    mipMapFadeDistanceStart: 1
+    mipMapFadeDistanceEnd: 3
+  bumpmap:
+    convertToNormalMap: 0
+    externalNormalMap: 0
+    heightScale: 0.25
+    normalMapFilter: 0
+    flipGreenChannel: 0
+  isReadable: 0
+  streamingMipmaps: 0
+  streamingMipmapsPriority: 0
+  vTOnly: 0
+  ignoreMipmapLimit: 0
+  grayScaleToAlpha: 0
+  generateCubemap: 6
+  cubemapConvolution: 0
+  seamlessCubemap: 0
+  textureFormat: 1
+  maxTextureSize: 2048
+  textureSettings:
+    serializedVersion: 2
+    filterMode: 0
+    aniso: 1
+    mipBias: 0
+    wrapU: 1
+    wrapV: 1
+    wrapW: 1
+  nPOTScale: 0
+  lightmap: 0
+  compressionQuality: 50
+  spriteMode: 1
+  spriteExtrude: 1
+  spriteMeshType: 1
+  alignment: 0
+  spritePivot: {x: 0.5, y: 0.5}
+  spritePixelsToUnits: 32
+  spriteBorder: {x: 0, y: 0, z: 0, w: 0}
+  spriteGenerateFallbackPhysicsShape: 1
+  alphaUsage: 1
+  alphaIsTransparency: 1
+  spriteTessellationDetail: -1
+  textureType: 8
+  textureShape: 1
+  singleChannelComponent: 0
+  flipbookRows: 1
+  flipbookColumns: 1
+  maxTextureSizeSet: 0
+  compressionQualitySet: 0
+  textureFormatSet: 0
+  ignorePngGamma: 0
+  applyGammaDecoding: 0
+  swizzle: 50462976
+  cookieLightType: 0
+  platformSettings:
+  - serializedVersion: 4
+    buildTarget: DefaultTexturePlatform
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 0
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 4
+    buildTarget: Standalone
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  spriteSheet:
+    serializedVersion: 2
+    sprites:
+    - serializedVersion: 2
+      name: wall_brick_column_02_0
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 84
+        width: 11
+        height: 9
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 18a409749476a6b10800000000000000
+      internalID: 1975504950986295937
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: wall_brick_column_02_1
+      rect:
+        serializedVersion: 2
+        x: 1
+        y: 76
+        width: 35
+        height: 10
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 1aed1385322c53150800000000000000
+      internalID: 5851796747897134753
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: wall_brick_column_02_2
+      rect:
+        serializedVersion: 2
+        x: 10
+        y: 84
+        width: 18
+        height: 9
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 48aebee198370e440800000000000000
+      internalID: 4963093822128777860
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: wall_brick_column_02_3
+      rect:
+        serializedVersion: 2
+        x: 27
+        y: 84
+        width: 26
+        height: 9
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 33ca4f341b3712f60800000000000000
+      internalID: 8007808817627966515
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: wall_brick_column_02_4
+      rect:
+        serializedVersion: 2
+        x: 35
+        y: 76
+        width: 18
+        height: 9
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 3a066cb0a436f34b0800000000000000
+      internalID: -5458535053673471837
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: wall_brick_column_02_5
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 67
+        width: 53
+        height: 10
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 368eaea0a76986b90800000000000000
+      internalID: -7248378149339469725
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: wall_brick_column_02_6
+      rect:
+        serializedVersion: 2
+        x: 1
+        y: 59
+        width: 35
+        height: 9
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 8e7243e77b36e98d0800000000000000
+      internalID: -2837721075449321496
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: wall_brick_column_02_7
+      rect:
+        serializedVersion: 2
+        x: 35
+        y: 59
+        width: 18
+        height: 9
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: d32472df166f828e0800000000000000
+      internalID: -1717852357122375107
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: wall_brick_column_02_8
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 50
+        width: 45
+        height: 10
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: a0ca5f5a89b5f5460800000000000000
+      internalID: 7232600237757803530
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: wall_brick_column_02_9
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 42
+        width: 19
+        height: 9
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 795a55f3962e65430800000000000000
+      internalID: 3771450679631390103
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: wall_brick_column_02_10
+      rect:
+        serializedVersion: 2
+        x: 18
+        y: 42
+        width: 18
+        height: 9
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 9d9e8b5a874027760800000000000000
+      internalID: 7454025249474537945
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: wall_brick_column_02_11
+      rect:
+        serializedVersion: 2
+        x: 35
+        y: 42
+        width: 18
+        height: 9
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 977a98fb0fe259680800000000000000
+      internalID: -8749035089556822151
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: wall_brick_column_02_12
+      rect:
+        serializedVersion: 2
+        x: 44
+        y: 50
+        width: 9
+        height: 10
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 9b986cac8bfb99dc0800000000000000
+      internalID: -3631660824100697671
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: wall_brick_column_02_13
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 33
+        width: 28
+        height: 10
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: ac8ea9399eb6ca680800000000000000
+      internalID: -8742494125685020470
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: wall_brick_column_02_14
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 24
+        width: 36
+        height: 10
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: d6ba45322c8560b20800000000000000
+      internalID: 3100262984330816365
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: wall_brick_column_02_15
+      rect:
+        serializedVersion: 2
+        x: 27
+        y: 33
+        width: 26
+        height: 10
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: b5549f22779d996b0800000000000000
+      internalID: -5288957181658839717
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: wall_brick_column_02_16
+      rect:
+        serializedVersion: 2
+        x: 35
+        y: 24
+        width: 18
+        height: 10
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 93fcc77ec47879bb0800000000000000
+      internalID: -4929322502762737863
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: wall_brick_column_02_17
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 16
+        width: 53
+        height: 9
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 15899935900300170800000000000000
+      internalID: 8142560942901270609
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: wall_brick_column_02_18
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 0
+        width: 53
+        height: 16
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 95e7964801620e450800000000000000
+      internalID: 6115930146351971929
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: wall_brick_column_02_19
+      rect:
+        serializedVersion: 2
+        x: 2
+        y: 7
+        width: 50
+        height: 10
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 65557a452221f81a0800000000000000
+      internalID: -6805200573275089578
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    outline: []
+    customData: 
+    physicsShape: []
+    bones: []
+    spriteID: 5e97eb03825dee720800000000000000
+    internalID: 0
+    vertices: []
+    indices: 
+    edges: []
+    weights: []
+    secondaryTextures: []
+    spriteCustomMetadata:
+      entries: []
+    nameFileIdTable:
+      wall_brick_column_02_0: 1975504950986295937
+      wall_brick_column_02_1: 5851796747897134753
+      wall_brick_column_02_10: 7454025249474537945
+      wall_brick_column_02_11: -8749035089556822151
+      wall_brick_column_02_12: -3631660824100697671
+      wall_brick_column_02_13: -8742494125685020470
+      wall_brick_column_02_14: 3100262984330816365
+      wall_brick_column_02_15: -5288957181658839717
+      wall_brick_column_02_16: -4929322502762737863
+      wall_brick_column_02_17: 8142560942901270609
+      wall_brick_column_02_18: 6115930146351971929
+      wall_brick_column_02_19: -6805200573275089578
+      wall_brick_column_02_2: 4963093822128777860
+      wall_brick_column_02_3: 8007808817627966515
+      wall_brick_column_02_4: -5458535053673471837
+      wall_brick_column_02_5: -7248378149339469725
+      wall_brick_column_02_6: -2837721075449321496
+      wall_brick_column_02_7: -1717852357122375107
+      wall_brick_column_02_8: 7232600237757803530
+      wall_brick_column_02_9: 3771450679631390103
+  mipmapLimitGroupName: 
+  pSDRemoveMatte: 0
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 

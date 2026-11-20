@@ -12,22 +12,8 @@ using UnityEngine.UI;
 
 namespace Knight.Editor
 {
-    [InitializeOnLoad]
     public static class RogueliteAutoSetup
     {
-        private const string PrefKey = "Roguelite_AutoSetup_v1_Complete";
-
-        static RogueliteAutoSetup()
-        {
-            EditorApplication.delayCall += () =>
-            {
-                if (!EditorPrefs.GetBool(PrefKey, false))
-                {
-                    RunSetup();
-                }
-            };
-        }
-
         [MenuItem("Knight of Dungeon/Run Full Roguelite Setup")]
         public static void RunSetup()
         {
@@ -55,7 +41,6 @@ namespace Knight.Editor
                 AssetDatabase.SaveAssets();
                 AssetDatabase.Refresh();
 
-                EditorPrefs.SetBool(PrefKey, true);
                 Debug.Log("<color=green>=== [RogueliteAutoSetup] COMPLETE! All assets, prefabs, and scenes are ready with 0 errors! ===</color>");
             }
             catch (System.Exception ex)

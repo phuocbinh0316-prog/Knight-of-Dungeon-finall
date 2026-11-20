@@ -1,0 +1,741 @@
+fileFormatVersion: 2
+guid: 3bb84430f45e4c749988757541d21276
+TextureImporter:
+  internalIDToNameTable:
+  - first:
+      213: 9148001213333531465
+    second: pillar_background_slit_0
+  - first:
+      213: -5849348730783378307
+    second: pillar_background_slit_1
+  - first:
+      213: 261736462030405647
+    second: pillar_background_slit_2
+  - first:
+      213: 1368318970005619225
+    second: pillar_background_slit_3
+  - first:
+      213: 2550781727033649400
+    second: pillar_background_slit_4
+  - first:
+      213: 1734763933547464215
+    second: pillar_background_slit_5
+  - first:
+      213: -7575397905729047384
+    second: pillar_background_slit_6
+  - first:
+      213: -5581412053149839696
+    second: pillar_background_slit_7
+  - first:
+      213: -1725427399189026700
+    second: pillar_background_slit_8
+  - first:
+      213: -7539822668830395941
+    second: pillar_background_slit_9
+  - first:
+      213: -3439575370130413785
+    second: pillar_background_slit_10
+  - first:
+      213: -1287927187541868179
+    second: pillar_background_slit_11
+  - first:
+      213: 8599866796175627534
+    second: pillar_background_slit_12
+  - first:
+      213: 6363395436201755114
+    second: pillar_background_slit_13
+  - first:
+      213: 1188118329258914072
+    second: pillar_background_slit_14
+  - first:
+      213: 6100548301366819412
+    second: pillar_background_slit_15
+  - first:
+      213: -8168254943140079187
+    second: pillar_background_slit_16
+  - first:
+      213: 2657750792050496454
+    second: pillar_background_slit_17
+  - first:
+      213: -4141295529508321629
+    second: pillar_background_slit_18
+  - first:
+      213: -2945863174113655327
+    second: pillar_background_slit_19
+  - first:
+      213: 3308374714329196902
+    second: pillar_background_slit_20
+  - first:
+      213: -8965138095084463819
+    second: pillar_background_slit_21
+  - first:
+      213: -2170257239885900848
+    second: pillar_background_slit_22
+  - first:
+      213: 2685589626046571786
+    second: pillar_background_slit_23
+  externalObjects: {}
+  serializedVersion: 13
+  mipmaps:
+    mipMapMode: 0
+    enableMipMap: 0
+    sRGBTexture: 1
+    linearTexture: 0
+    fadeOut: 0
+    borderMipMap: 0
+    mipMapsPreserveCoverage: 0
+    alphaTestReferenceValue: 0.5
+    mipMapFadeDistanceStart: 1
+    mipMapFadeDistanceEnd: 3
+  bumpmap:
+    convertToNormalMap: 0
+    externalNormalMap: 0
+    heightScale: 0.25
+    normalMapFilter: 0
+    flipGreenChannel: 0
+  isReadable: 0
+  streamingMipmaps: 0
+  streamingMipmapsPriority: 0
+  vTOnly: 0
+  ignoreMipmapLimit: 0
+  grayScaleToAlpha: 0
+  generateCubemap: 6
+  cubemapConvolution: 0
+  seamlessCubemap: 0
+  textureFormat: 1
+  maxTextureSize: 2048
+  textureSettings:
+    serializedVersion: 2
+    filterMode: 0
+    aniso: 1
+    mipBias: 0
+    wrapU: 1
+    wrapV: 1
+    wrapW: 1
+  nPOTScale: 0
+  lightmap: 0
+  compressionQuality: 50
+  spriteMode: 1
+  spriteExtrude: 1
+  spriteMeshType: 1
+  alignment: 0
+  spritePivot: {x: 0.5, y: 0.5}
+  spritePixelsToUnits: 32
+  spriteBorder: {x: 0, y: 0, z: 0, w: 0}
+  spriteGenerateFallbackPhysicsShape: 1
+  alphaUsage: 1
+  alphaIsTransparency: 1
+  spriteTessellationDetail: -1
+  textureType: 8
+  textureShape: 1
+  singleChannelComponent: 0
+  flipbookRows: 1
+  flipbookColumns: 1
+  maxTextureSizeSet: 0
+  compressionQualitySet: 0
+  textureFormatSet: 0
+  ignorePngGamma: 0
+  applyGammaDecoding: 0
+  swizzle: 50462976
+  cookieLightType: 0
+  platformSettings:
+  - serializedVersion: 4
+    buildTarget: DefaultTexturePlatform
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 0
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 4
+    buildTarget: Standalone
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  spriteSheet:
+    serializedVersion: 2
+    sprites:
+    - serializedVersion: 2
+      name: pillar_background_slit_0
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 82
+        width: 37
+        height: 11
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 94b6695a2aa34fe70800000000000000
+      internalID: 9148001213333531465
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: pillar_background_slit_1
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 77
+        width: 15
+        height: 9
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: d74564e0250f2dea0800000000000000
+      internalID: -5849348730783378307
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: pillar_background_slit_2
+      rect:
+        serializedVersion: 2
+        x: 35
+        y: 85
+        width: 11
+        height: 8
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: f00071cecefd1a300800000000000000
+      internalID: 261736462030405647
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: pillar_background_slit_3
+      rect:
+        serializedVersion: 2
+        x: 35
+        y: 77
+        width: 16
+        height: 9
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 9120d928ade3df210800000000000000
+      internalID: 1368318970005619225
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: pillar_background_slit_4
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 71
+        width: 9
+        height: 6
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 8f8e5635772366320800000000000000
+      internalID: 2550781727033649400
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: pillar_background_slit_5
+      rect:
+        serializedVersion: 2
+        x: 10
+        y: 69
+        width: 8
+        height: 8
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 716814c3b9e131810800000000000000
+      internalID: 1734763933547464215
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: pillar_background_slit_6
+      rect:
+        serializedVersion: 2
+        x: 13
+        y: 12
+        width: 33
+        height: 71
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 8a438ccadb7ced690800000000000000
+      internalID: -7575397905729047384
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: pillar_background_slit_7
+      rect:
+        serializedVersion: 2
+        x: 37
+        y: 68
+        width: 8
+        height: 10
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 0be8bea2f47da82b0800000000000000
+      internalID: -5581412053149839696
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: pillar_background_slit_8
+      rect:
+        serializedVersion: 2
+        x: 44
+        y: 69
+        width: 9
+        height: 8
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 478ac911cec0e08e0800000000000000
+      internalID: -1725427399189026700
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: pillar_background_slit_9
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 60
+        width: 14
+        height: 9
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: bd13deafa3b2d5790800000000000000
+      internalID: -7539822668830395941
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: pillar_background_slit_10
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 52
+        width: 5
+        height: 9
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 727a13dac6c2440d0800000000000000
+      internalID: -3439575370130413785
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: pillar_background_slit_11
+      rect:
+        serializedVersion: 2
+        x: 4
+        y: 52
+        width: 15
+        height: 9
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: d61cff1fb0d502ee0800000000000000
+      internalID: -1287927187541868179
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: pillar_background_slit_12
+      rect:
+        serializedVersion: 2
+        x: 32
+        y: 51
+        width: 21
+        height: 11
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: e0599bd794dd85770800000000000000
+      internalID: 8599866796175627534
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: pillar_background_slit_13
+      rect:
+        serializedVersion: 2
+        x: 34
+        y: 61
+        width: 19
+        height: 8
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: ae1c52c3f625f4850800000000000000
+      internalID: 6363395436201755114
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: pillar_background_slit_14
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 43
+        width: 18
+        height: 9
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 811bb96535b0d7010800000000000000
+      internalID: 1188118329258914072
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: pillar_background_slit_15
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 35
+        width: 18
+        height: 8
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 45af416ab5089a450800000000000000
+      internalID: 6100548301366819412
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: pillar_background_slit_16
+      rect:
+        serializedVersion: 2
+        x: 29
+        y: 28
+        width: 24
+        height: 22
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: da99e4f086784ae80800000000000000
+      internalID: -8168254943140079187
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: pillar_background_slit_17
+      rect:
+        serializedVersion: 2
+        x: 33
+        y: 43
+        width: 20
+        height: 9
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 6c3dea5934a32e420800000000000000
+      internalID: 2657750792050496454
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: pillar_background_slit_18
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 18
+        width: 13
+        height: 8
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 3a64ebd48a92786c0800000000000000
+      internalID: -4141295529508321629
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: pillar_background_slit_19
+      rect:
+        serializedVersion: 2
+        x: 4
+        y: 26
+        width: 14
+        height: 9
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 1e50d0e0d013e17d0800000000000000
+      internalID: -2945863174113655327
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: pillar_background_slit_20
+      rect:
+        serializedVersion: 2
+        x: 4
+        y: 12
+        width: 12
+        height: 6
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 669e97f2645b9ed20800000000000000
+      internalID: 3308374714329196902
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: pillar_background_slit_21
+      rect:
+        serializedVersion: 2
+        x: 15
+        y: 0
+        width: 35
+        height: 13
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 5391b20e66e659380800000000000000
+      internalID: -8965138095084463819
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: pillar_background_slit_22
+      rect:
+        serializedVersion: 2
+        x: 44
+        y: 11
+        width: 9
+        height: 7
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 0d39161f982b1e1e0800000000000000
+      internalID: -2170257239885900848
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: pillar_background_slit_23
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 0
+        width: 15
+        height: 9
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: a05eaf83981254520800000000000000
+      internalID: 2685589626046571786
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    outline: []
+    customData: 
+    physicsShape: []
+    bones: []
+    spriteID: 5e97eb03825dee720800000000000000
+    internalID: 0
+    vertices: []
+    indices: 
+    edges: []
+    weights: []
+    secondaryTextures: []
+    spriteCustomMetadata:
+      entries: []
+    nameFileIdTable:
+      pillar_background_slit_0: 9148001213333531465
+      pillar_background_slit_1: -5849348730783378307
+      pillar_background_slit_10: -3439575370130413785
+      pillar_background_slit_11: -1287927187541868179
+      pillar_background_slit_12: 8599866796175627534
+      pillar_background_slit_13: 6363395436201755114
+      pillar_background_slit_14: 1188118329258914072
+      pillar_background_slit_15: 6100548301366819412
+      pillar_background_slit_16: -8168254943140079187
+      pillar_background_slit_17: 2657750792050496454
+      pillar_background_slit_18: -4141295529508321629
+      pillar_background_slit_19: -2945863174113655327
+      pillar_background_slit_2: 261736462030405647
+      pillar_background_slit_20: 3308374714329196902
+      pillar_background_slit_21: -8965138095084463819
+      pillar_background_slit_22: -2170257239885900848
+      pillar_background_slit_23: 2685589626046571786
+      pillar_background_slit_3: 1368318970005619225
+      pillar_background_slit_4: 2550781727033649400
+      pillar_background_slit_5: 1734763933547464215
+      pillar_background_slit_6: -7575397905729047384
+      pillar_background_slit_7: -5581412053149839696
+      pillar_background_slit_8: -1725427399189026700
+      pillar_background_slit_9: -7539822668830395941
+  mipmapLimitGroupName: 
+  pSDRemoveMatte: 0
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
