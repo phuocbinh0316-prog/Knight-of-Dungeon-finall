@@ -26,38 +26,54 @@ public class PatrolEnemy1 : MonoBehaviour
     [SerializeField] private GameObject filePrefab;
     [SerializeField] float dropChance = 1f; // 100%
 
+    [Header("Pro Combat (Knockback & Shield)")]
+    [SerializeField] private float knockbackForce = 4.5f;
+    [SerializeField] private bool hasFrontShield = false;
+
     private EnemyTelegraph telegraph;
+    private ShieldedEnemy shield;
+    private StatusEffectController status;
+    private Rigidbody2D rb;
+    private bool isDead = false;
+
     public bool IsFacingRight => facingRight;
+    public bool IsDead => isDead;
 
     private void Awake()
     {
         animator = GetComponent<Animator>();
+        rb = GetComponent<Rigidbody2D>();
         telegraph = GetComponent<EnemyTelegraph>() ?? gameObject.AddComponent<EnemyTelegraph>();
+        shield = GetComponent<ShieldedEnemy>();
+        if (hasFrontShield && shield == null) shield = gameObject.AddComponent<ShieldedEnemy>();
+        status = GetComponent<StatusEffectController>();
     }
 
-    // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
         currentHp = maxHealth;
+        if (player == null)
+        {
+            var p = FindAnyObjectByType<Player>();
+            if (p != null) player = p.transform;
+        }
     }
 
-    // Update is called once per frame
     void Update()
     {
-        if (player == null) return;
+        if (isDead || player == null) return;
 
         UpdateHpBar();
 
         if (telegraph != null && telegraph.IsStunned)
         {
             animator.SetBool("Attack1", false);
-            var rb = GetComponent<Rigidbody2D>();
             if (rb != null) rb.linearVelocity = new Vector2(0f, rb.linearVelocity.y);
             return;
         }
 
-        //Trong phạm vi tấn công
-        if (Vector2.Distance(transform.position,player.position) <= attackRange)
+        // Trong phạm vi tấn công
+        if (Vector2.Distance(transform.position, player.position) <= attackRange)
         {
             Chanse();
         }
@@ -67,6 +83,13 @@ public class PatrolEnemy1 : MonoBehaviour
             Patrol();
         }
     }
+
+    private float GetSpeedScale()
+    {
+        if (status == null) status = GetComponent<StatusEffectController>();
+        return status != null ? status.SpeedMultiplier : 1f;
+    }
+
     private void Chanse()
     {
         if (transform.position.x > player.position.x && facingRight == true)
@@ -86,11 +109,11 @@ public class PatrolEnemy1 : MonoBehaviour
 
             if (hit == false)
             {
-                transform.position = Vector2.MoveTowards(transform.position, player.position, 0f * Time.deltaTime); 
+                transform.position = Vector2.MoveTowards(transform.position, player.position, 0f * Time.deltaTime);
             }
             else
             {
-                transform.position = Vector2.MoveTowards(transform.position, player.position, chaseSpeed * Time.deltaTime);
+                transform.position = Vector2.MoveTowards(transform.position, player.position, chaseSpeed * GetSpeedScale() * Time.deltaTime);
             }
             animator.SetBool("Attack1", false);
         }
@@ -102,11 +125,11 @@ public class PatrolEnemy1 : MonoBehaviour
             }
             animator.SetBool("Attack1", true);
         }
-
     }
+
     private void Patrol()
     {
-        transform.Translate(Vector2.right * moveSpeed* Time.deltaTime);
+        transform.Translate(Vector2.right * moveSpeed * GetSpeedScale() * Time.deltaTime);
         RaycastHit2D hit = Physics2D.Raycast(checkPoint.position, Vector2.down, distance, layerMask);
         Collider2D hit1 = Physics2D.OverlapCircle(attackPoint.position, 0.2f, layerMask);
         if ((hit == false || hit1 == true) && facingRight)
@@ -120,33 +143,50 @@ public class PatrolEnemy1 : MonoBehaviour
             facingRight = true;
         }
     }
+
     private void Attack()
     {
+        if (isDead) return;
         Collider2D collInfo = Physics2D.OverlapCircle(attackPoint.position, attackRadius, LayerPlayer);
         if (collInfo)
         {
-            if (collInfo.gameObject.GetComponent<Player>() != null)
+            var p = collInfo.gameObject.GetComponent<Player>();
+            if (p != null)
             {
-                collInfo.gameObject.GetComponent<Player>().TakeDamageP(damageE);
+                p.TakeDamageP(damageE, transform.position, gameObject);
             }
         }
     }
+
     public void Stun(float duration = 1.0f)
     {
+        if (isDead) return;
         if (telegraph != null) telegraph.Stun(duration);
         animator.SetBool("Attack1", false);
         animator.SetTrigger("Hurt");
-        var rb = GetComponent<Rigidbody2D>();
         if (rb != null) rb.linearVelocity = new Vector2(0f, rb.linearVelocity.y);
     }
 
     public void takeDamageE(float damage)
     {
-        takeDamageE(damage, false);
+        takeDamageE(damage, false, transform.position, true);
     }
 
     public void takeDamageE(float damage, bool isCritical)
     {
+        takeDamageE(damage, isCritical, transform.position, true);
+    }
+
+    public bool takeDamageE(float damage, bool isCritical, Vector3 attackerPos, bool bypassShield)
+    {
+        if (isDead) return false;
+
+        // Kiểm tra Khiên chắn mặt trước nếu có (trừ khi đánh sau lưng / Slam / Parry / Skill)
+        if (!bypassShield && shield != null && shield.TryBlockFrontalAttack(attackerPos, facingRight))
+        {
+            return false;
+        }
+
         if (telegraph != null)
         {
             bool wasInterrupted = telegraph.TryInterrupt();
@@ -159,35 +199,67 @@ public class PatrolEnemy1 : MonoBehaviour
 
         GameFeel.OnHit(transform.position, damage, gameObject, isCritical);
 
+        // Knockback đẩy lùi nhẹ tạo lực tay đã hơn
+        if (rb != null && attackerPos != transform.position)
+        {
+            float pushDir = Mathf.Sign(transform.position.x - attackerPos.x);
+            if (Mathf.Approximately(pushDir, 0f)) pushDir = facingRight ? -1f : 1f;
+            float force = knockbackForce * (isCritical ? 1.45f : 1f);
+            rb.linearVelocity = new Vector2(pushDir * force, Mathf.Max(rb.linearVelocity.y, 1.5f));
+        }
+
         animator.SetTrigger("Hurt");
         currentHp -= damage;
         currentHp = Mathf.Max(currentHp, 0);
         if (currentHp <= 0) Die();
+        return true;
     }
+
+    public void TakeDotDamage(float damage, Color popupColor)
+    {
+        if (isDead) return;
+        DamagePopup.Spawn(transform.position, damage, popupColor, false);
+        currentHp -= damage;
+        currentHp = Mathf.Max(currentHp, 0);
+        if (currentHp <= 0) Die();
+    }
+
     private void Die()
     {
+        if (isDead) return;
+        isDead = true;
+
         if (telegraph != null) telegraph.CancelWarning();
-        Vector3 spawnPosCoin = new Vector3(transform.position.x,transform.position.y+2f,0);
-        Instantiate(coinPrefab, spawnPosCoin, Quaternion.identity);
-        
-        if (UnityEngine.Random.value < dropChance)
+        KillStreakManager.Get().RegisterKill(transform.position);
+
+        if (coinPrefab != null)
+        {
+            Vector3 spawnPosCoin = new Vector3(transform.position.x, transform.position.y + 2f, 0);
+            Instantiate(coinPrefab, spawnPosCoin, Quaternion.identity);
+        }
+
+        if (filePrefab != null && UnityEngine.Random.value < dropChance)
         {
             Vector3 spawnPosFile = new Vector3(transform.position.x + 0.5f, transform.position.y + 2f, 0);
             Instantiate(filePrefab, spawnPosFile, Quaternion.identity);
         }
+
         animator.SetTrigger("Die");
     }
+
     private void OnDieAnimationEnd()
     {
         Destroy(gameObject);
     }
+
     private void UpdateHpBar()
     {
         if (hpBar != null)
         {
-            hpBar.fillAmount = currentHp / maxHealth;
+            hpBar.fillAmount = maxHealth > 0f ? currentHp / maxHealth : 0f;
         }
     }
+
     private void OnDrawGizmosSelected()
     {
         if (checkPoint == null) return;
@@ -199,5 +271,4 @@ public class PatrolEnemy1 : MonoBehaviour
         Gizmos.color = Color.red;
         Gizmos.DrawWireSphere(attackPoint.position, attackRadius);
     }
-
 }

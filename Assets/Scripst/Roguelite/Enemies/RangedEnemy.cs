@@ -1,7 +1,7 @@
 using UnityEngine;
 
 /// <summary>
-/// Enemy bắn xa: giữ khoảng cách, quay mặt về Player và bắn đạn.
+/// Enemy bắn xa: giữ khoảng cách, quay mặt về Player và bắn đạn (có thể bị Player Parry phản ngược!).
 /// Cần: Health, Collider2D, đặt layer = Enemy để Player chém được.
 /// </summary>
 [RequireComponent(typeof(Health))]
@@ -24,6 +24,7 @@ public class RangedEnemy : MonoBehaviour
     private Health health;
     private LootDropper loot;
     private EnemyTelegraph telegraph;
+    private StatusEffectController status;
     private float nextFireTime;
     private bool dead;
 
@@ -32,6 +33,7 @@ public class RangedEnemy : MonoBehaviour
         health = GetComponent<Health>();
         loot = GetComponent<LootDropper>();
         telegraph = GetComponent<EnemyTelegraph>() ?? gameObject.AddComponent<EnemyTelegraph>();
+        status = GetComponent<StatusEffectController>();
         health.onDied.AddListener(OnDied);
     }
 
@@ -62,10 +64,13 @@ public class RangedEnemy : MonoBehaviour
         bool faceRight = spriteFacesRight ? wantRight : !wantRight;
         transform.eulerAngles = new Vector3(0f, faceRight ? 0f : 180f, 0f);
 
+        if (status == null) status = GetComponent<StatusEffectController>();
+        float spd = moveSpeed * (status != null ? status.SpeedMultiplier : 1f);
+
         if (dist < preferredDistance - 1.5f)
-            transform.position += new Vector3(-Mathf.Sign(dx), 0f, 0f) * moveSpeed * Time.deltaTime;
+            transform.position += new Vector3(-Mathf.Sign(dx), 0f, 0f) * spd * Time.deltaTime;
         else if (dist > preferredDistance + 1.5f)
-            transform.position += new Vector3(Mathf.Sign(dx), 0f, 0f) * moveSpeed * Time.deltaTime;
+            transform.position += new Vector3(Mathf.Sign(dx), 0f, 0f) * spd * Time.deltaTime;
 
         if (Time.time >= nextFireTime)
         {
@@ -94,7 +99,7 @@ public class RangedEnemy : MonoBehaviour
         Vector3 origin = firePoint != null ? firePoint.position : transform.position;
         var proj = Instantiate(projectilePrefab, origin, Quaternion.identity);
         Vector2 dir = (player.position + Vector3.up * 0.5f) - origin;
-        proj.Init(dir, projectileDamage, projectileSpeed);
+        proj.Init(dir, projectileDamage, projectileSpeed, gameObject);
     }
 
     private void OnDied()
@@ -103,7 +108,7 @@ public class RangedEnemy : MonoBehaviour
         dead = true;
         if (telegraph != null) telegraph.CancelWarning();
         if (loot != null) loot.Drop();
-        RunManager.Get().RegisterKill();
+        KillStreakManager.Get().RegisterKill(transform.position);
         Destroy(gameObject, 0.05f);
     }
 }

@@ -17,6 +17,14 @@ public class DamagePopup : MonoBehaviour
         popup.Setup(damage, color, isCritical);
     }
 
+    public static void SpawnText(Vector2 position, string text, Color color, float fontSize = 6.5f)
+    {
+        var go = new GameObject("TextPopup");
+        go.transform.position = position + Vector2.up * 0.9f;
+        var popup = go.AddComponent<DamagePopup>();
+        popup.SetupText(text, color, fontSize);
+    }
+
     private void Setup(float damage, Color color, bool isCritical)
     {
         tmp = gameObject.AddComponent<TextMeshPro>();
@@ -31,6 +39,19 @@ public class DamagePopup : MonoBehaviour
         float vx = Random.Range(-0.8f, 0.8f);
         float vy = isCritical ? 4.5f : 3f;
         velocity = new Vector3(vx, vy, 0f);
+    }
+
+    private void SetupText(string text, Color color, float fontSize)
+    {
+        tmp = gameObject.AddComponent<TextMeshPro>();
+        tmp.text = text;
+        tmp.fontSize = fontSize;
+        tmp.fontStyle = FontStyles.Bold;
+        tmp.alignment = TextAlignmentOptions.Center;
+        tmp.color = color;
+        tmp.sortingOrder = 115;
+
+        velocity = new Vector3(Random.Range(-0.4f, 0.4f), 3.6f, 0f);
     }
 
     private void Update()

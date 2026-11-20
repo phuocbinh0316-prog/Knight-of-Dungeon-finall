@@ -5,6 +5,7 @@ using UnityEngine;
 /// <summary>
 /// Kỹ năng Dậm đất từ trên không (Ground Slam / Dive Attack) phong cách Dead Cells.
 /// Nhấn [S + Space] hoặc [Xuống + Nhảy] khi đang ở trên không.
+/// - Phá khiên của ShieldedEnemy, gây Stun đỏ 1.0s, tạo sóng xung kích & kích hoạt Rally hồi máu.
 /// </summary>
 [RequireComponent(typeof(Rigidbody2D))]
 public class GroundSlam : MonoBehaviour
@@ -35,7 +36,7 @@ public class GroundSlam : MonoBehaviour
 
     private void Update()
     {
-        if (IsSlamming) return;
+        if (IsSlamming || Time.timeScale <= 0f) return;
 
         // Chỉ kích hoạt khi đang ở trên không
         bool isAirborne = player != null ? !player.IsGround : true;
@@ -51,14 +52,10 @@ public class GroundSlam : MonoBehaviour
         }
     }
 
-    /// <summary>
-    /// Kiểm tra xem nhân vật đã chạm sàn hay chưa (kết hợp cả Player.IsGround và Raycast đa lớp).
-    /// </summary>
     private bool IsHitGround()
     {
         if (player != null && player.IsGround) return true;
 
-        // Quét raycast xuống dưới 1.1m để phát hiện sàn
         RaycastHit2D[] hits = Physics2D.RaycastAll(transform.position, Vector2.down, 1.1f);
         foreach (var h in hits)
         {
@@ -88,7 +85,6 @@ public class GroundSlam : MonoBehaviour
             // 2. Lao thẳng xuống với vận tốc cao
             rb.linearVelocity = new Vector2(0f, -slamSpeed);
 
-            // Chờ cho đến khi chạm sàn (có timeout an toàn 1.2s tránh kẹt vĩnh viễn)
             float elapsed = 0f;
             const float MaxDiveDuration = 1.2f;
 
@@ -105,12 +101,10 @@ public class GroundSlam : MonoBehaviour
 
             PerformImpact();
 
-            // Độ trễ khựng nhẹ hồi phục sau cú nện đất (0.08s)
             yield return new WaitForSeconds(0.08f);
         }
         finally
         {
-            // Failsafe tuyệt đối: luôn khôi phục trọng lực và mở khóa di chuyển
             if (rb != null) rb.gravityScale = originalGravity;
             IsSlamming = false;
         }
@@ -120,21 +114,21 @@ public class GroundSlam : MonoBehaviour
     {
         Vector2 impactPos = transform.position;
 
-        // Rung màn hình và ngưng đọng thời gian (Hit-stop)
         CameraShake.Shake(0.45f);
         HitStop.Do(0.08f);
+        CombatVFX.SpawnShockwave(impactPos, new Color(1f, 0.72f, 0.2f, 0.95f), 0.35f, impactRadius * 1.35f, 0.28f);
+        CombatVFX.SpawnBurst(impactPos, new Color(1f, 0.78f, 0.3f, 0.95f), 16, 3f, 8.5f, 0.22f, 0.4f, 9f);
 
         if (AudioManager.Instance != null)
         {
             AudioManager.Instance.SFX_Hit();
         }
 
-        // Tìm tất cả kẻ địch trong bán kính nổ
         Collider2D[] hits = Physics2D.OverlapCircleAll(impactPos, impactRadius);
         var hitRoots = new HashSet<GameObject>();
 
         float baseDmg = player != null ? player.GetBaseDamage() : 5f;
-        float slamDamage = baseDmg * damageMultiplier * MetaUpgrades.DamageMultiplier;
+        float slamDamage = baseDmg * damageMultiplier * MetaUpgrades.DamageMultiplier * ScrollUpgradeUI.BrutalityDamageMultiplier;
 
         foreach (var h in hits)
         {
@@ -142,26 +136,28 @@ public class GroundSlam : MonoBehaviour
             GameObject root = h.attachedRigidbody != null ? h.attachedRigidbody.gameObject : h.gameObject;
             if (root == gameObject || !hitRoots.Add(root)) continue;
 
-            // Kiểm tra và áp dụng sát thương + Stun 1s lên kẻ địch
+            // Ground Slam phá khiên của kẻ địch!
+            var shield = root.GetComponent<ShieldedEnemy>();
+            if (shield != null) shield.BreakGuard(stunDuration);
+
             var telegraph = root.GetComponent<EnemyTelegraph>();
-            if (telegraph != null)
-            {
-                telegraph.Stun(stunDuration);
-            }
+            if (telegraph != null) telegraph.Stun(stunDuration);
 
             var e1 = root.GetComponent<PatrolEnemy1>();
             if (e1 != null)
             {
                 e1.Stun(stunDuration);
-                e1.takeDamageE(slamDamage, true);
+                e1.takeDamageE(slamDamage, true, impactPos, bypassShield: true);
+                if (player != null) player.NotifyDamageDealt(slamDamage);
                 continue;
             }
 
             var boss = root.GetComponent<PatrolBoss>();
             if (boss != null)
             {
-                boss.takeDamageE(slamDamage);
-                DamagePopup.Spawn(root.transform.position, slamDamage, Color.yellow, isCritical: true);
+                boss.Stun(stunDuration * 0.75f);
+                boss.takeDamageE(slamDamage, true);
+                if (player != null) player.NotifyDamageDealt(slamDamage);
                 continue;
             }
 
@@ -170,6 +166,7 @@ public class GroundSlam : MonoBehaviour
             {
                 dmgable.TakeDamage(slamDamage, root.transform.position);
                 DamagePopup.Spawn(root.transform.position, slamDamage, Color.yellow, isCritical: true);
+                if (player != null) player.NotifyDamageDealt(slamDamage);
             }
         }
     }

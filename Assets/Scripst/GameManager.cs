@@ -51,6 +51,7 @@ public class GameManager : MonoBehaviour
 
         score = 0;
         Time.timeScale = 0;
+        ProCombatHUD.ShowRunSummary(isVictory: false);
         if (gameOverUi != null) gameOverUi.SetActive(true);
     }
 
@@ -67,6 +68,7 @@ public class GameManager : MonoBehaviour
         RunManager.Get().BankCells();
         score = 0;
         Time.timeScale = 0;
+        ProCombatHUD.ShowRunSummary(isVictory: true);
         if (gameWinUi != null) gameWinUi.SetActive(true);
     }
 
@@ -78,6 +80,7 @@ public class GameManager : MonoBehaviour
         UpdateScore();
         //ko nhận inputs
         Time.timeScale = 1;
+        KillStreakManager.Get().ResetStats();
         if (SceneManager.GetActiveScene().name == "Run")
         {
             RunManager.Get().ResetRun();
@@ -94,6 +97,7 @@ public class GameManager : MonoBehaviour
         UpdateScore();
         //ko nhận inputs
         Time.timeScale = 1;
+        KillStreakManager.Get().ResetStats();
         SceneTransition.Load("MainMenu");
     }
 
