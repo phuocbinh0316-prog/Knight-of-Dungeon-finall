@@ -12,32 +12,35 @@ public class DamagePopup : MonoBehaviour
     public static void Spawn(Vector2 position, float damage, Color color, bool isCritical = false)
     {
         var go = new GameObject("DamagePopup");
-        go.transform.position = position + Vector2.up * 0.6f;
+        // Văng lệch ra 2 bên (trái hoặc phải) để không đè lên thân nhân vật hay quái vật
+        float side = Random.value < 0.5f ? -1f : 1f;
+        go.transform.position = position + new Vector2(side * 0.75f, 0.9f);
         var popup = go.AddComponent<DamagePopup>();
-        popup.Setup(damage, color, isCritical);
+        popup.Setup(damage, color, isCritical, side);
     }
 
     public static void SpawnText(Vector2 position, string text, Color color, float fontSize = 6.5f)
     {
         var go = new GameObject("TextPopup");
-        go.transform.position = position + Vector2.up * 0.9f;
+        go.transform.position = position + Vector2.up * 1.5f; // Hiện cao phía trên đỉnh đầu
         var popup = go.AddComponent<DamagePopup>();
         popup.SetupText(text, color, fontSize);
     }
 
-    private void Setup(float damage, Color color, bool isCritical)
+    private void Setup(float damage, Color color, bool isCritical, float side)
     {
         tmp = gameObject.AddComponent<TextMeshPro>();
         int dmgInt = Mathf.CeilToInt(damage);
         tmp.text = isCritical ? $"{dmgInt}!" : dmgInt.ToString();
-        tmp.fontSize = isCritical ? 9f : 6f;
+        tmp.fontSize = isCritical ? 9.5f : 6.8f;
         tmp.fontStyle = FontStyles.Bold;
         tmp.alignment = TextAlignmentOptions.Center;
         tmp.color = isCritical ? new Color(1f, 0.85f, 0.1f) : color;
-        tmp.sortingOrder = 100;
+        CombatVFX.ApplyVfxLayer(tmp.renderer, 100);
 
-        float vx = Random.Range(-0.8f, 0.8f);
-        float vy = isCritical ? 4.5f : 3f;
+        // Văng mạnh ra 2 bên theo đường cong parabol mượt mà
+        float vx = side * Random.Range(2.4f, 3.8f);
+        float vy = isCritical ? 4.8f : 3.8f;
         velocity = new Vector3(vx, vy, 0f);
     }
 
@@ -49,7 +52,7 @@ public class DamagePopup : MonoBehaviour
         tmp.fontStyle = FontStyles.Bold;
         tmp.alignment = TextAlignmentOptions.Center;
         tmp.color = color;
-        tmp.sortingOrder = 115;
+        CombatVFX.ApplyVfxLayer(tmp.renderer, 115);
 
         velocity = new Vector3(Random.Range(-0.4f, 0.4f), 3.6f, 0f);
     }
@@ -59,7 +62,7 @@ public class DamagePopup : MonoBehaviour
         float dt = Time.unscaledDeltaTime;
         timer += dt;
 
-        velocity.y -= 6f * dt; // trọng lực nhẹ
+        velocity.y -= 7.5f * dt; // trọng lực tạo đường cong văng ra 2 bên đẹp mắt
         transform.position += velocity * dt;
 
         float t = timer / Lifetime;

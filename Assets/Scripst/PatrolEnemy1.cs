@@ -18,7 +18,7 @@ public class PatrolEnemy1 : MonoBehaviour
     [SerializeField] private Transform attackPoint;
     [SerializeField] private float attackRadius = 1f;
     [SerializeField] LayerMask LayerPlayer;
-    [SerializeField] float damageE = 1f;
+    [SerializeField] float damageE = 2f; // Sát thương mặc định 2 damage (ảnh 2 và ảnh 3)
     [SerializeField] private float maxHealth = 5f;
     private float currentHp;
     [SerializeField] private Image hpBar;
@@ -35,9 +35,32 @@ public class PatrolEnemy1 : MonoBehaviour
     private StatusEffectController status;
     private Rigidbody2D rb;
     private bool isDead = false;
+    private bool lastHitWasCrit = false;
+    private bool isAttacking = false;
+    private float nextManualAttackTime = 0f;
 
     public bool IsFacingRight => facingRight;
     public bool IsDead => isDead;
+    public bool IsAttacking => isAttacking;
+    public float HpRatio => maxHealth > 0f ? currentHp / maxHealth : 0f;
+    public LayerMask GroundMask => layerMask;
+    /// <summary>Hệ số tốc độ cộng thêm (VD: quái mini nổi điên).</summary>
+    public float SpeedBonus { get; set; } = 1f;
+    /// <summary>Khi true, AI tuần tra/truy đuổi tạm dừng để script khác điều khiển (VD: chiêu lao giáo).</summary>
+    public bool ExternalControl { get; set; }
+
+    public void FaceDirection(float dir)
+    {
+        if (dir > 0f && !facingRight) { transform.eulerAngles = Vector3.zero; facingRight = true; }
+        else if (dir < 0f && facingRight) { transform.eulerAngles = new Vector3(0f, -180f, 0f); facingRight = false; }
+    }
+
+    public void ScaleMaxHealth(float multiplier)
+    {
+        if (multiplier <= 0f) return;
+        maxHealth *= multiplier;
+        currentHp = maxHealth;
+    }
 
     private void Awake()
     {
@@ -47,16 +70,64 @@ public class PatrolEnemy1 : MonoBehaviour
         shield = GetComponent<ShieldedEnemy>();
         if (hasFrontShield && shield == null) shield = gameObject.AddComponent<ShieldedEnemy>();
         status = GetComponent<StatusEffectController>();
+        if (layerMask.value == 0)
+        {
+            layerMask = LayerMask.GetMask("Ground");
+            if (layerMask.value == 0) layerMask = 128; // Layer 7 (Ground)
+        }
+        if (LayerPlayer.value == 0)
+        {
+            LayerPlayer = LayerMask.GetMask("Player");
+            if (LayerPlayer.value == 0) LayerPlayer = ~0;
+        }
+        EnsurePoints();
+    }
+
+    public void EnsurePoints()
+    {
+        if (checkPoint == null)
+        {
+            var cp = transform.Find("checkPoint");
+            if (cp != null) checkPoint = cp;
+            else
+            {
+                var go = new GameObject("checkPoint");
+                go.transform.SetParent(transform, false);
+                go.transform.localPosition = new Vector3(0.5f, -0.5f, 0f);
+                checkPoint = go.transform;
+            }
+        }
+        if (attackPoint == null)
+        {
+            var ap = transform.Find("attackPoint");
+            if (ap != null) attackPoint = ap;
+            else
+            {
+                var go = new GameObject("attackPoint");
+                go.transform.SetParent(transform, false);
+                go.transform.localPosition = new Vector3(0.8f, 0f, 0f);
+                attackPoint = go.transform;
+            }
+        }
+    }
+
+    public void SetDamage(float dmg)
+    {
+        damageE = dmg;
     }
 
     void Start()
     {
         currentHp = maxHealth;
+        // Đảm bảo quái đánh 2 damage theo yêu cầu cân bằng (kể cả quái ở ảnh 3)
+        if (damageE < 2f) damageE = 2f;
         if (player == null)
         {
             var p = FindAnyObjectByType<Player>();
             if (p != null) player = p.transform;
         }
+
+        EnsurePoints();
     }
 
     void Update()
@@ -65,9 +136,17 @@ public class PatrolEnemy1 : MonoBehaviour
 
         UpdateHpBar();
 
+        if (ExternalControl)
+        {
+            isAttacking = false;
+            if (animator != null) animator.SetBool("Attack1", false);
+            return;
+        }
+
         if (telegraph != null && telegraph.IsStunned)
         {
-            animator.SetBool("Attack1", false);
+            isAttacking = false;
+            if (animator != null) animator.SetBool("Attack1", false);
             if (rb != null) rb.linearVelocity = new Vector2(0f, rb.linearVelocity.y);
             return;
         }
@@ -79,6 +158,8 @@ public class PatrolEnemy1 : MonoBehaviour
         }
         else
         {
+            isAttacking = false;
+            if (animator != null) animator.SetBool("Attack1", false);
             if (telegraph != null) telegraph.CancelWarning();
             Patrol();
         }
@@ -87,11 +168,14 @@ public class PatrolEnemy1 : MonoBehaviour
     private float GetSpeedScale()
     {
         if (status == null) status = GetComponent<StatusEffectController>();
-        return status != null ? status.SpeedMultiplier : 1f;
+        return (status != null ? status.SpeedMultiplier : 1f) * SpeedBonus;
     }
 
     private void Chanse()
     {
+        if (checkPoint == null || attackPoint == null) EnsurePoints();
+        if (checkPoint == null) return;
+
         if (transform.position.x > player.position.x && facingRight == true)
         {
             transform.eulerAngles = new Vector3(0f, -180f, 0f);
@@ -104,6 +188,7 @@ public class PatrolEnemy1 : MonoBehaviour
         }
         if (Vector2.Distance(transform.position, player.position) > retrieveDistance)
         {
+            isAttacking = false;
             if (telegraph != null) telegraph.CancelWarning();
             RaycastHit2D hit = Physics2D.Raycast(checkPoint.position, Vector2.down, distance, layerMask);
 
@@ -115,20 +200,51 @@ public class PatrolEnemy1 : MonoBehaviour
             {
                 transform.position = Vector2.MoveTowards(transform.position, player.position, chaseSpeed * GetSpeedScale() * Time.deltaTime);
             }
-            animator.SetBool("Attack1", false);
+            if (animator != null) animator.SetBool("Attack1", false);
         }
         else
         {
-            if (telegraph != null && !telegraph.IsPreparingAttack)
+            if (animator != null)
             {
-                telegraph.ShowWarning(0.35f, null);
+                isAttacking = true;
+                if (telegraph != null && !telegraph.IsPreparingAttack)
+                {
+                    telegraph.ShowWarning(0.35f, null);
+                }
+                animator.SetBool("Attack1", true);
             }
-            animator.SetBool("Attack1", true);
+            else
+            {
+                // Quái không dùng Animator (VD: Infernal_Elite_Demon) -> tự động cảnh báo & chém định kỳ!
+                if (Time.time >= nextManualAttackTime && (telegraph == null || !telegraph.IsPreparingAttack))
+                {
+                    isAttacking = true;
+                    nextManualAttackTime = Time.time + 1.35f;
+                    if (telegraph != null)
+                    {
+                        telegraph.ShowWarning(0.38f, () =>
+                        {
+                            if (!isDead) Attack();
+                        });
+                    }
+                    else
+                    {
+                        Attack();
+                    }
+                }
+                else if (Time.time >= nextManualAttackTime - 0.55f)
+                {
+                    isAttacking = false;
+                }
+            }
         }
     }
 
     private void Patrol()
     {
+        if (checkPoint == null || attackPoint == null) EnsurePoints();
+        if (checkPoint == null || attackPoint == null) return;
+
         transform.Translate(Vector2.right * moveSpeed * GetSpeedScale() * Time.deltaTime);
         RaycastHit2D hit = Physics2D.Raycast(checkPoint.position, Vector2.down, distance, layerMask);
         Collider2D hit1 = Physics2D.OverlapCircle(attackPoint.position, 0.2f, layerMask);
@@ -147,23 +263,35 @@ public class PatrolEnemy1 : MonoBehaviour
     private void Attack()
     {
         if (isDead) return;
+        if (attackPoint == null) EnsurePoints();
         Collider2D collInfo = Physics2D.OverlapCircle(attackPoint.position, attackRadius, LayerPlayer);
         if (collInfo)
         {
-            var p = collInfo.gameObject.GetComponent<Player>();
+            var p = collInfo.gameObject.GetComponent<Player>() ?? collInfo.gameObject.GetComponentInParent<Player>();
             if (p != null)
             {
                 p.TakeDamageP(damageE, transform.position, gameObject);
+                return;
             }
+        }
+        // Fallback theo khoảng cách để đòn chém Quái Tinh Anh luôn trúng chuẩn xác
+        if (player != null && Vector2.Distance(attackPoint.position, player.position) <= attackRadius + 1.15f)
+        {
+            var p = player.GetComponent<Player>();
+            if (p != null) p.TakeDamageP(damageE, transform.position, gameObject);
         }
     }
 
     public void Stun(float duration = 1.0f)
     {
         if (isDead) return;
+        isAttacking = false;
         if (telegraph != null) telegraph.Stun(duration);
-        animator.SetBool("Attack1", false);
-        animator.SetTrigger("Hurt");
+        if (animator != null)
+        {
+            animator.SetBool("Attack1", false);
+            animator.SetTrigger("Hurt");
+        }
         if (rb != null) rb.linearVelocity = new Vector2(0f, rb.linearVelocity.y);
     }
 
@@ -187,13 +315,16 @@ public class PatrolEnemy1 : MonoBehaviour
             return false;
         }
 
+        bool wasInterrupted = false;
         if (telegraph != null)
         {
-            bool wasInterrupted = telegraph.TryInterrupt();
+            // Tỉ lệ STUN và ngắt đòn hạn chế ở mức 10%
+            wasInterrupted = telegraph.TryInterrupt(0.10f);
             if (wasInterrupted)
             {
                 isCritical = true; // Thưởng crit khi ngắt đòn đối thủ!
-                animator.SetBool("Attack1", false);
+                isAttacking = false;
+                if (animator != null) animator.SetBool("Attack1", false);
             }
         }
 
@@ -208,7 +339,12 @@ public class PatrolEnemy1 : MonoBehaviour
             rb.linearVelocity = new Vector2(pushDir * force, Mathf.Max(rb.linearVelocity.y, 1.5f));
         }
 
-        animator.SetTrigger("Hurt");
+        // Hạn chế giật khựng Hurt animation theo tỉ lệ stun 10%
+        if (wasInterrupted || (UnityEngine.Random.value < 0.10f))
+        {
+            if (animator != null) animator.SetTrigger("Hurt");
+        }
+        lastHitWasCrit = isCritical;
         currentHp -= damage;
         currentHp = Mathf.Max(currentHp, 0);
         if (currentHp <= 0) Die();
@@ -230,6 +366,14 @@ public class PatrolEnemy1 : MonoBehaviour
         isDead = true;
 
         if (telegraph != null) telegraph.CancelWarning();
+        RunManager.Get().AddGold(5);
+        CurseSystem.OnEnemyKilled();
+        bool afflicted = status != null && status.HasAnyAffliction;
+        MutationSystem.OnEnemyKilled(lastHitWasCrit || afflicted, transform.position);
+
+        var elite = GetComponent<EliteEnemy>();
+        if (elite != null) elite.OnEliteKilled();
+
         KillStreakManager.Get().RegisterKill(transform.position);
 
         if (coinPrefab != null)
@@ -244,7 +388,10 @@ public class PatrolEnemy1 : MonoBehaviour
             Instantiate(filePrefab, spawnPosFile, Quaternion.identity);
         }
 
-        animator.SetTrigger("Die");
+        if (animator != null)
+            animator.SetTrigger("Die");
+        else
+            Destroy(gameObject, 0.15f);
     }
 
     private void OnDieAnimationEnd()

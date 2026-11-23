@@ -108,6 +108,12 @@ public class RangedEnemy : MonoBehaviour
         dead = true;
         if (telegraph != null) telegraph.CancelWarning();
         if (loot != null) loot.Drop();
+        RunManager.Get().AddGold(6);
+        CurseSystem.OnEnemyKilled();
+        var st = GetComponent<StatusEffectController>();
+        MutationSystem.OnEnemyKilled(st != null && st.HasAnyAffliction, transform.position);
+        var elite = GetComponent<EliteEnemy>();
+        if (elite != null) elite.OnEliteKilled();
         KillStreakManager.Get().RegisterKill(transform.position);
         Destroy(gameObject, 0.05f);
     }

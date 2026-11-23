@@ -14,6 +14,7 @@ GameObject:
   - component: {fileID: 4018403057079150275}
   - component: {fileID: 3108605379930930116}
   - component: {fileID: 3824650842445355019}
+  - component: {fileID: 3108605379930930117}
   m_Layer: 8
   m_Name: Scarecrow 1
   m_TagString: Enemy
@@ -86,7 +87,7 @@ SpriteRenderer:
   m_SortingLayerID: 878364527
   m_SortingLayer: 3
   m_SortingOrder: 0
-  m_Sprite: {fileID: 21300772, guid: 838b1c6315c47364e8bd4123f3c575e0, type: 3}
+  m_Sprite: {fileID: 21300000, guid: 5452e570ea156504f97d44a26aec124d, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
@@ -427,3 +428,15 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: fe87c0e1cc204ed48ad3b37840f39efc, type: 3}
   m_Name: 
   m_EditorClassIdentifier: UnityEngine.UI::UnityEngine.UI.Image
+--- !u!114 &3108605379930930117
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1529955114073387492}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 6f0bea036fdb3f3419dc5d5c446306b5, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::MiniHellspawn

@@ -8,10 +8,12 @@ public class HitStop : MonoBehaviour
     private static HitStop instance;
     private static bool running;
 
+    public static bool IsRunning => running;
+
     public static void Do(float duration)
     {
         if (running) return;
-        if (Time.timeScale <= 0.01f) return; // đang pause / game over thì bỏ qua
+        if (Time.timeScale <= 0.1f) return; // đang pause / game over / modal thì bỏ qua
 
         if (instance == null)
         {
@@ -21,23 +23,38 @@ public class HitStop : MonoBehaviour
         instance.StartCoroutine(instance.Routine(duration));
     }
 
+    /// <summary>Hủy HitStop ngay lập tức khi mở bảng UI Pause / Scroll / Mutation để không bị kẹt Time.timeScale = 0.05!</summary>
+    public static void Cancel()
+    {
+        if (instance != null)
+        {
+            instance.StopAllCoroutines();
+        }
+        running = false;
+        if (Mathf.Approximately(Time.timeScale, SlowScale))
+        {
+            Time.timeScale = 1f;
+        }
+    }
+
     private IEnumerator Routine(float duration)
     {
         running = true;
-        float previous = Time.timeScale;
         Time.timeScale = SlowScale;
 
         yield return new WaitForSecondsRealtime(duration);
 
-        // Chỉ khôi phục nếu không ai khác (Pause, GameOver) đã đổi timeScale
+        // Chỉ khôi phục về 1f nếu không có menu nào khác đang pause (timeScale == 0)
         if (Mathf.Approximately(Time.timeScale, SlowScale))
-            Time.timeScale = previous;
+            Time.timeScale = 1f;
 
         running = false;
     }
 
     private void OnDestroy()
     {
+        if (running && Mathf.Approximately(Time.timeScale, SlowScale))
+            Time.timeScale = 1f;
         running = false;
         instance = null;
     }

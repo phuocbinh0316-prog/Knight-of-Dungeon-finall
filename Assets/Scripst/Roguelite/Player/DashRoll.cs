@@ -51,11 +51,18 @@ public class DashRoll : MonoBehaviour
         if (rb != null) originalGravity = rb.gravityScale > 0f ? rb.gravityScale : 1f;
     }
 
+    public bool TryTriggerDash()
+    {
+        if (IsDashing || Time.time < nextDashTime || Time.timeScale <= 0f) return false;
+        StartCoroutine(DashRoutine());
+        return true;
+    }
+
     private void Update()
     {
         bool pressed = Input.GetKeyDown(KeyCode.K) || Input.GetKeyDown(KeyCode.LeftShift);
-        if (pressed && !IsDashing && Time.time >= nextDashTime && Time.timeScale > 0f)
-            StartCoroutine(DashRoutine());
+        if (pressed)
+            TryTriggerDash();
 
         SetAlpha(IsInvulnerable ? ghostAlpha : 1f);
     }
@@ -92,6 +99,22 @@ public class DashRoll : MonoBehaviour
                 {
                     ghostTimer = 0f;
                     CombatVFX.SpawnAfterimage(primarySprite, afterimageColor, 0.22f);
+                }
+
+                // Kiểm tra lướt xuyên qua kẻ địch để kích hoạt Mutation Frost Dash!
+                if (MutationSystem.Has(MutationType.FrostDash))
+                {
+                    Collider2D[] passed = Physics2D.OverlapCircleAll(transform.position, 1.35f);
+                    foreach (var p in passed)
+                    {
+                        if (p == null || p.isTrigger) continue;
+                        GameObject r = p.attachedRigidbody != null ? p.attachedRigidbody.gameObject : p.gameObject;
+                        if (r == gameObject) continue;
+                        if (r.GetComponent<PatrolEnemy1>() != null || r.GetComponent<PatrolBoss>() != null || r.GetComponent<RangedEnemy>() != null)
+                        {
+                            MutationSystem.OnDashThroughEnemy(r);
+                        }
+                    }
                 }
                 yield return null;
             }

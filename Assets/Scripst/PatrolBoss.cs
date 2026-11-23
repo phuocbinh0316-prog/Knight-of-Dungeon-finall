@@ -254,7 +254,7 @@ public class PatrolBoss : MonoBehaviour
         var sr = go.AddComponent<SpriteRenderer>();
         sr.sprite = CombatVFX.GetCircleSprite();
         sr.color = new Color(0.95f, 0.2f, 0.65f, 1f);
-        sr.sortingOrder = 55;
+        CombatVFX.ApplyVfxLayer(sr, 55);
         go.transform.localScale = Vector3.one * 0.55f;
 
         var col = go.AddComponent<CircleCollider2D>();
@@ -372,6 +372,9 @@ public class PatrolBoss : MonoBehaviour
         ProCombatHUD.UnregisterBoss(this);
 
         RunManager.Get().AddCells(15);
+        RunManager.Get().AddGold(35);
+        CurseSystem.OnEnemyKilled();
+        MutationSystem.OnEnemyKilled(true, transform.position);
         KillStreakManager.Get().RegisterKill(transform.position);
         CombatVFX.SpawnShockwave(transform.position, new Color(1f, 0.85f, 0.25f, 0.95f), 0.4f, 4.5f, 0.45f);
 

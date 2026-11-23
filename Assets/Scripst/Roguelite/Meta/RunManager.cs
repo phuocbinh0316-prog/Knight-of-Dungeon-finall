@@ -10,6 +10,7 @@ public class RunManager : MonoBehaviour
 
     public int Depth { get; private set; } = 1;
     public int CellsThisRun { get; private set; }
+    public int Gold { get; private set; }
     public int Kills { get; private set; }
 
     public event Action onChanged;
@@ -29,6 +30,21 @@ public class RunManager : MonoBehaviour
     {
         CellsThisRun += amount;
         onChanged?.Invoke();
+    }
+
+    public void AddGold(int amount)
+    {
+        if (amount <= 0) return;
+        Gold += amount;
+        onChanged?.Invoke();
+    }
+
+    public bool TrySpendGold(int cost)
+    {
+        if (Gold < cost) return false;
+        Gold -= cost;
+        onChanged?.Invoke();
+        return true;
     }
 
     public void RegisterKill()
@@ -61,6 +77,7 @@ public class RunManager : MonoBehaviour
     {
         Depth = 1;
         CellsThisRun = 0;
+        Gold = 0;
         Kills = 0;
         onChanged?.Invoke();
     }

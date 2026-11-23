@@ -30,6 +30,7 @@ public class GameManager : MonoBehaviour
     public void AddScore(int points)
     {
         score += points;
+        RunManager.Get().AddGold(points * 5);
         UpdateScore();
     }
 
@@ -42,6 +43,7 @@ public class GameManager : MonoBehaviour
     {
         if (isGameOver) return; // chặn gọi lặp
         isGameOver = true;
+        CurseSystem.ResetCurse();
         RunManager.Get().BankCells();
 
         if (AudioManager.Instance != null)
@@ -81,12 +83,15 @@ public class GameManager : MonoBehaviour
         //ko nhận inputs
         Time.timeScale = 1;
         KillStreakManager.Get().ResetStats();
+        MutationSystem.ResetRun();
+        CurseSystem.ResetCurse();
         if (SceneManager.GetActiveScene().name == "Run")
         {
             RunManager.Get().ResetRun();
             SceneTransition.Load("Run");
             return;
         }
+        RunManager.Get().ResetRun();
         SceneTransition.Load("map 1");
     }
 
@@ -98,6 +103,9 @@ public class GameManager : MonoBehaviour
         //ko nhận inputs
         Time.timeScale = 1;
         KillStreakManager.Get().ResetStats();
+        MutationSystem.ResetRun();
+        CurseSystem.ResetCurse();
+        RunManager.Get().ResetRun();
         SceneTransition.Load("MainMenu");
     }
 
@@ -124,6 +132,7 @@ public class GameManager : MonoBehaviour
         }
         else
         {
+            RunManager.Get().NextDepth();
             SceneTransition.Load(System.IO.Path.GetFileNameWithoutExtension(SceneUtility.GetScenePathByBuildIndex(nextIndex)));
         }
     }

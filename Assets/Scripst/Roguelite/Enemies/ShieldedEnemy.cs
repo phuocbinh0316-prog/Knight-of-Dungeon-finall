@@ -31,7 +31,7 @@ public class ShieldedEnemy : MonoBehaviour
         shieldIconSr = shieldIconObj.AddComponent<SpriteRenderer>();
         shieldIconSr.sprite = CombatVFX.GetPixelSprite();
         shieldIconSr.color = new Color(0.75f, 0.82f, 0.95f, 0.9f);
-        shieldIconSr.sortingOrder = 35;
+        CombatVFX.ApplyVfxLayer(shieldIconSr, 35);
     }
 
     private void Update()

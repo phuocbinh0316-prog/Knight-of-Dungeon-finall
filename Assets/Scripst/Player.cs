@@ -77,6 +77,8 @@ public class Player : MonoBehaviour
     private bool doubleJumpPressed = false;
     private bool wallJumpPressed = false;
     private int wallJumpKickDir = 0;
+    private float hurtInvulnerableUntil = 0f;
+    private const float PostHitInvulnDuration = 0.45f;
 
     private void Awake()
     {
@@ -102,9 +104,10 @@ public class Player : MonoBehaviour
         currentHp = maxHealth;
         startPos = transform.position;
 
-        // Khởi tạo hệ thống Pro HUD & KillStreak tự động
+        // Khởi tạo hệ thống Pro HUD, KillStreak & gieo trải nghiệm Roguelite (Elite / Merchant / Cursed Chest)
         ProCombatHUD.EnsureExists(this);
         KillStreakManager.Get();
+        RogueliteSceneEnricher.EnrichCurrentScene(this);
     }
 
     public void Heal(float amount)
@@ -415,7 +418,7 @@ public class Player : MonoBehaviour
 
         if (Input.GetKeyDown(KeyCode.J) && Time.time >= nextAttackTime)
         {
-            nextAttackTime = Time.time + (weapons != null ? weapons.Cooldown : attackCooldown);
+            nextAttackTime = Time.time + (weapons != null ? weapons.Cooldown : attackCooldown) * MutationSystem.GetAttackCooldownMultiplier();
             isAttackingTimer = 0.35f;
             canDealDamage = true;
 
@@ -470,7 +473,10 @@ public class Player : MonoBehaviour
         if (!canDealDamage) return;
         canDealDamage = false;
 
-        float baseDmg = (weapons != null ? weapons.Damage : damageP) * MetaUpgrades.DamageMultiplier * ScrollUpgradeUI.BrutalityDamageMultiplier;
+        float baseDmg = (weapons != null ? weapons.Damage : damageP)
+                        * MetaUpgrades.DamageMultiplier
+                        * ScrollUpgradeUI.BrutalityDamageMultiplier
+                        * MutationSystem.GetDamageMultiplier(this);
         float radius = weapons != null ? weapons.Range : attackRadius;
 
         Vector2 origin = attackPoint != null ? (Vector2)attackPoint.position : (Vector2)transform.position;
@@ -499,8 +505,8 @@ public class Player : MonoBehaviour
                 isBackstab = (facingRight == e1.IsFacingRight);
             }
 
-            // Điều kiện chí mạng: Đòn Finisher thứ 3 HOẶC đánh sau lưng HOẶC đánh quái đang bị Stun
-            bool isCrit = (comboStep == 3) || isBackstab || isStunned;
+            // Điều kiện chí mạng: Đòn Finisher thứ 3 HOẶC đánh sau lưng HOẶC đánh quái Stun HOẶC Mutation Berserker!
+            bool isCrit = (comboStep == 3) || isBackstab || isStunned || MutationSystem.IsBerserkerCritActive(this);
             float finalDmg = baseDmg * (isCrit ? 1.75f : 1f);
 
             // Dead Cells Synergy: +40% sát thương khi đánh mục tiêu đang dính Bleed / Burn / Poison / Frost
@@ -528,6 +534,7 @@ public class Player : MonoBehaviour
                         var st = StatusEffectController.GetOrAdd(root);
                         if (st != null) st.Apply(StatusType.Bleed, 3.0f, 0.55f);
                     }
+                    MutationSystem.OnPlayerHitTarget(this, root, finalDmg, isCrit);
                     NotifyDamageDealt(finalDmg);
                 }
                 continue;
@@ -542,6 +549,7 @@ public class Player : MonoBehaviour
                     var st = StatusEffectController.GetOrAdd(root);
                     if (st != null) st.Apply(StatusType.Bleed, 3.0f, 0.65f);
                 }
+                MutationSystem.OnPlayerHitTarget(this, root, finalDmg, isCrit);
                 NotifyDamageDealt(finalDmg);
                 continue;
             }
@@ -556,6 +564,7 @@ public class Player : MonoBehaviour
                     var st = StatusEffectController.GetOrAdd(root);
                     if (st != null) st.Apply(StatusType.Bleed, 3.0f, 0.55f);
                 }
+                MutationSystem.OnPlayerHitTarget(this, root, finalDmg, isCrit);
                 NotifyDamageDealt(finalDmg);
             }
         }
@@ -570,12 +579,22 @@ public class Player : MonoBehaviour
     {
         if (dash != null && dash.IsInvulnerable) return;
         if (groundSlam != null && groundSlam.IsSlamming) return;
+        if (Time.time < hurtInvulnerableUntil) return; // Khung bất tử ngắn sau khi trúng đòn tránh bị quái đánh cộng dồn
 
         // Kiểm tra Parry trước khi nhận sát thương!
         if (parryShield != null && parryShield.TryInterceptDamage(damage, attacker))
         {
             return;
         }
+
+        // Nếu đang dính Lời Nguyền từ Rương Nguyền Rủa: nhận x2.5 sát thương (không còn lỗi 1 đòn chết ngay từ đầy máu!)
+        if (CurseSystem.IsCursed)
+        {
+            damage *= CurseSystem.DamageTakenMultiplier;
+            DamagePopup.SpawnText(transform.position + Vector3.up * 1.25f, "CURSED x2.5!", new Color(0.95f, 0.25f, 1f), 6.2f);
+        }
+
+        hurtInvulnerableUntil = Time.time + PostHitInvulnDuration;
 
         GameFeel.OnHit(transform.position, damage, gameObject);
         animator.SetTrigger("Hurt");
@@ -597,6 +616,7 @@ public class Player : MonoBehaviour
 
     private void Die()
     {
+        CurseSystem.ResetCurse();
         if (gameManager != null) gameManager.GameOver();
     }
 

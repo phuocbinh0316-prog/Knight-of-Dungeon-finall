@@ -40,9 +40,31 @@ public class EnemyTelegraph : MonoBehaviour
         tmp.fontStyle = FontStyles.Bold;
         tmp.alignment = TextAlignmentOptions.Center;
         tmp.color = warningColor;
-        tmp.sortingOrder = 120;
+        CombatVFX.ApplyVfxLayer(tmp.renderer, 120);
 
         indicatorObj.SetActive(false);
+    }
+
+    private EliteEnemy cachedElite;
+    private UnityEngine.UI.Image cachedHpImage;
+
+    private void UpdateIndicatorPosition()
+    {
+        if (indicatorObj == null) return;
+        indicatorObj.transform.rotation = Quaternion.identity;
+
+        if (cachedElite == null) cachedElite = GetComponent<EliteEnemy>();
+        if (cachedElite != null)
+        {
+            if (cachedHpImage == null) cachedHpImage = GetComponentInChildren<UnityEngine.UI.Image>();
+            float yPos = cachedHpImage != null ? cachedHpImage.transform.position.y : (transform.position.y + 2.45f);
+            // Hiện dấu chấm than bên trái thanh máu của quái tinh anh theo đúng yêu cầu
+            indicatorObj.transform.position = new Vector3(transform.position.x - 1.15f, yPos, transform.position.z);
+        }
+        else
+        {
+            indicatorObj.transform.localPosition = new Vector3(0f, telegraphOffset, 0f);
+        }
     }
 
     private void Update()
@@ -55,8 +77,9 @@ public class EnemyTelegraph : MonoBehaviour
             {
                 indicatorObj.SetActive(true);
                 tmp.text = "STUN";
-                tmp.fontSize = 6.5f;
+                tmp.fontSize = 6.0f;
                 tmp.color = stunColor;
+                UpdateIndicatorPosition();
                 // Hiệu ứng rung/nhấp nháy nhẹ của chữ STUN màu đỏ
                 float pulse = 1f + 0.15f * Mathf.Sin(Time.time * 20f);
                 indicatorObj.transform.localScale = Vector3.one * pulse;
@@ -70,10 +93,10 @@ public class EnemyTelegraph : MonoBehaviour
             }
         }
 
-        // Đảm bảo chữ dấu ! hoặc STUN không bị lật ngược theo hướng mặt của quái
+        // Đảm bảo dấu ! hoặc STUN luôn cập nhật vị trí chuẩn xác
         if (indicatorObj != null && indicatorObj.activeSelf)
         {
-            indicatorObj.transform.rotation = Quaternion.identity;
+            UpdateIndicatorPosition();
         }
     }
 
@@ -97,7 +120,9 @@ public class EnemyTelegraph : MonoBehaviour
         if (indicatorObj == null) CreateIndicator();
         tmp.text = "!";
         tmp.color = warningColor;
-        tmp.fontSize = 8.5f;
+        if (cachedElite == null) cachedElite = GetComponent<EliteEnemy>();
+        tmp.fontSize = cachedElite != null ? 7.0f : 8.5f;
+        UpdateIndicatorPosition();
         indicatorObj.SetActive(true);
 
         float elapsed = 0f;
@@ -112,6 +137,7 @@ public class EnemyTelegraph : MonoBehaviour
             }
 
             elapsed += Time.deltaTime;
+            UpdateIndicatorPosition();
             // Hiệu ứng giật nảy / nhấp nháy báo động
             float pulse = 1f + 0.35f * Mathf.Sin(elapsed * 25f);
             indicatorObj.transform.localScale = baseScale * pulse;
@@ -144,31 +170,35 @@ public class EnemyTelegraph : MonoBehaviour
     }
 
     /// <summary>
-    /// Làm choáng quái vật trong khoảng thời gian duration (mặc định 1 giây, chữ STUN màu đỏ).
+    /// Làm choáng quái vật trong khoảng thời gian duration (mặc định 0.75s, chữ STUN màu đỏ).
     /// </summary>
-    public void Stun(float duration = 1.0f)
+    public void Stun(float duration = 0.75f)
     {
         CancelWarning();
         stunTimer = duration;
 
         if (indicatorObj == null) CreateIndicator();
         tmp.text = "STUN";
-        tmp.fontSize = 6.5f;
+        tmp.fontSize = 6.0f;
         tmp.fontStyle = FontStyles.Bold;
         tmp.color = stunColor;
+        UpdateIndicatorPosition();
         indicatorObj.SetActive(true);
     }
 
     /// <summary>
-    /// Ngắt chiêu khi bị đánh trúng lúc đang chuẩn bị tấn công.
+    /// Ngắt chiêu khi bị đánh trúng lúc đang chuẩn bị tấn công. Giới hạn tỉ lệ stun ở mức 10%.
     /// </summary>
-    public bool TryInterrupt()
+    public bool TryInterrupt(float stunChance = 0.10f)
     {
         if (IsPreparingAttack)
         {
-            CancelWarning();
-            Stun(1.0f); // Làm choáng 1.0s khi bị ngắt đòn
-            return true;
+            if (UnityEngine.Random.value < stunChance)
+            {
+                CancelWarning();
+                Stun(0.75f); // Làm choáng khi tỉ lệ 10% kích hoạt
+                return true;
+            }
         }
         return false;
     }

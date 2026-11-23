@@ -1,3 +1,4 @@
+using System;
 using System.Collections.Generic;
 using TMPro;
 using UnityEngine;
@@ -5,12 +6,9 @@ using UnityEngine.UI;
 
 /// <summary>
 /// Giao diện HUD Chiến Đấu Chuyên Nghiệp kiểu Dead Cells (tự khởi tạo runtime, không làm hỏng UI cũ):
-/// - Thanh Máu + Thanh Máu Cam (Rally) + Bình Máu [H]
-/// - 4 Ô Kỹ Năng (Dash, Parry, Fire Grenade [Q], Frost Wave [E]) có hiển thị hồi chiêu thời gian thực
-/// - Chỉ số Brutality / Tactics / Survival + Huy hiệu Kill Streak
-/// - Minimap Radar góc trên bên phải (Player, Quái, Boss, Vật phẩm/Chìa khóa)
-/// - Thanh máu Boss khổng lồ ở đáy màn hình khi giao chiến
-/// - Bảng Tổng Kết Run (Run Summary) khi kết thúc màn chơi
+/// - Góc trên bên trái lùi phải gọn gàng để hiển thị rõ đủ thông tin Scroll, Gold, Kill Streak & Mutations.
+/// - Góc dưới bên trái nâng cao lên trên để thấy rõ đủ thanh HP + Máu Cam Rally, Flask [H] và 4 ô kỹ năng (Click được hoặc bấm phím!).
+/// - Minimap Radar góc trên phải, Thanh máu Boss đáy màn hình, Banner Lời Nguyền & Run Summary.
 /// </summary>
 public class ProCombatHUD : MonoBehaviour
 {
@@ -34,31 +32,31 @@ public class ProCombatHUD : MonoBehaviour
     private Image dashCdMask, parryCdMask, qCdMask, eCdMask;
     private TextMeshProUGUI dashCdTxt, parryCdTxt, qCdTxt, eCdTxt;
 
-    // Top-left Stats & Streak
+    // Top-left Stats, Gold, Streak & Mutations
     private TextMeshProUGUI scrollStatsTxt;
+    private TextMeshProUGUI goldTxt;
     private TextMeshProUGUI streakTxt;
     private GameObject streakBadge;
+    private TextMeshProUGUI mutationsTxt;
 
-    // Bottom-center Boss Bar
+    // Top-center Curse Warning Banner
+    private GameObject curseBanner;
+    private TextMeshProUGUI curseBannerTxt;
+
+    // Bottom-center/right Boss Bar
     private GameObject bossBarRoot;
     private TextMeshProUGUI bossNameTxt;
     private Image bossHpFill;
     private Image bossTrailFill;
     private float bossTrailAmount = 1f;
 
-    // Top-right Minimap
-    private RectTransform minimapContainer;
-    private readonly List<Image> minimapDots = new List<Image>();
-    private float minimapTimer;
-    private const float MinimapRangeX = 28f;
-    private const float MinimapRangeY = 16f;
-
-    // Run Summary Banner (on GameOver / GameWin)
+    // Run Summary Banner
     private GameObject summaryBanner;
     private TextMeshProUGUI summaryTxt;
 
     public static void EnsureExists(Player targetPlayer)
     {
+        activeBoss = null;
         if (instance == null)
         {
             var go = new GameObject("ProCombatHUD");
@@ -67,6 +65,7 @@ public class ProCombatHUD : MonoBehaviour
         }
         instance.BindPlayer(targetPlayer);
         instance.HideRunSummary();
+        if (instance.bossBarRoot != null) instance.bossBarRoot.SetActive(false);
     }
 
     public static void RegisterActiveBoss(PatrolBoss boss)
@@ -112,58 +111,68 @@ public class ProCombatHUD : MonoBehaviour
         var scaler = gameObject.AddComponent<CanvasScaler>();
         scaler.uiScaleMode = CanvasScaler.ScaleMode.ScaleWithScreenSize;
         scaler.referenceResolution = new Vector2(1280, 720);
+        scaler.screenMatchMode = CanvasScaler.ScreenMatchMode.MatchWidthOrHeight;
+        scaler.matchWidthOrHeight = 0.5f;
+        gameObject.AddComponent<GraphicRaycaster>();
 
         BuildBottomLeftCombatBar();
         BuildTopLeftStats();
-        BuildTopRightMinimap();
         BuildBossBar();
         BuildRunSummaryBanner();
     }
 
     private void BuildBottomLeftCombatBar()
     {
+        // Lùi phải nhẹ & đẩy LÊN TRÊN (y = 64) để hiển thị rõ 100% thanh máu + cả 4 ô kỹ năng & phím tắt
         var root = CreatePanel(transform, "BottomLeftHUD", new Vector2(0, 0), new Vector2(0, 0), new Vector2(0, 0),
-            new Vector2(20, 18), new Vector2(430, 112), new Color(0.06f, 0.05f, 0.12f, 0.78f));
-        AddOutline(root, new Color(0.35f, 0.28f, 0.58f, 0.9f));
+            new Vector2(128, 64), new Vector2(400, 104), new Color(0.06f, 0.05f, 0.12f, 0.84f));
+        AddOutline(root, new Color(0.35f, 0.28f, 0.58f, 0.92f));
 
-        // 1. Thanh HP + Rally Cam ở phía trên khung
+        // 1. Thanh HP + Rally Cam
         var barBg = CreatePanel(root.transform, "HpBarBg", new Vector2(0, 1), new Vector2(0, 1), new Vector2(0, 1),
-            new Vector2(12, -12), new Vector2(290, 24), new Color(0.12f, 0.08f, 0.14f, 0.95f));
+            new Vector2(10, -10), new Vector2(266, 24), new Color(0.12f, 0.08f, 0.14f, 0.96f));
         AddOutline(barBg, new Color(0.02f, 0.02f, 0.04f, 1f));
 
-        // Thanh Máu Cam (nằm sau thanh máu thật)
         rallyFill = CreateBarImage(barBg.transform, "RallyFill", new Color(1f, 0.58f, 0.1f, 0.95f));
-        // Thanh Máu Thật (đỏ thẫm sang tươi)
         hpFill = CreateBarImage(barBg.transform, "HpFill", new Color(0.88f, 0.18f, 0.24f, 1f));
+        hpLabel = CreateText(barBg.transform, "HP 3 / 3", 13, Color.white, Vector2.zero, new Vector2(256, 22), TextAlignmentOptions.Center);
 
-        hpLabel = CreateText(barBg.transform, "HP 3 / 3", 14, Color.white, Vector2.zero, new Vector2(280, 22), TextAlignmentOptions.Center);
+        // 2. Nút Bình Máu [H] (Click được!)
+        var flaskGo = CreatePanel(root.transform, "FlaskBox", new Vector2(0, 1), new Vector2(0, 1), new Vector2(0, 1),
+            new Vector2(284, -9), new Vector2(106, 26), new Color(0.08f, 0.34f, 0.2f, 0.94f));
+        flaskBg = flaskGo.GetComponent<Image>();
+        AddOutline(flaskGo, new Color(0.25f, 0.92f, 0.48f, 0.92f));
+        var flaskBtn = flaskGo.AddComponent<Button>();
+        flaskBtn.onClick.AddListener(() => { if (rallyFlask != null) rallyFlask.TryUseFlask(); });
+        flaskLabel = CreateText(flaskGo.transform, "[H] FLASK 2/2", 12, new Color(0.75f, 1f, 0.82f), Vector2.zero, new Vector2(102, 22), TextAlignmentOptions.Center);
 
-        // 2. Nút Bình Máu [H] bên cạnh thanh HP
-        flaskBg = CreatePanel(root.transform, "FlaskBox", new Vector2(0, 1), new Vector2(0, 1), new Vector2(0, 1),
-            new Vector2(312, -10), new Vector2(106, 28), new Color(0.08f, 0.34f, 0.2f, 0.92f)).GetComponent<Image>();
-        AddOutline(flaskBg.gameObject, new Color(0.25f, 0.92f, 0.48f, 0.9f));
-        flaskLabel = CreateText(flaskBg.transform, "[H] FLASK 2/2", 13, new Color(0.75f, 1f, 0.82f), Vector2.zero, new Vector2(102, 24), TextAlignmentOptions.Center);
-
-        // 3. 4 Ô Kỹ năng (Dash, Parry, Q Bomb, E Wave)
-        CreateSkillSlot(root.transform, new Vector2(12, 12), "SHIFT/K", "DASH", new Color(0.16f, 0.48f, 0.62f), out dashCdMask, out dashCdTxt);
-        CreateSkillSlot(root.transform, new Vector2(114, 12), "L / RMB", "PARRY", new Color(0.24f, 0.42f, 0.78f), out parryCdMask, out parryCdTxt);
-        CreateSkillSlot(root.transform, new Vector2(216, 12), "[Q]", "BOMB", new Color(0.72f, 0.3f, 0.12f), out qCdMask, out qCdTxt);
-        CreateSkillSlot(root.transform, new Vector2(318, 12), "[E]", "WAVE", new Color(0.18f, 0.56f, 0.72f), out eCdMask, out eCdTxt);
+        // 3. 4 Ô Kỹ năng (Dash, Parry, Q Bomb, E Wave — hỗ trợ cả BẤM PHÍM lẫn CLICK CHUỘT!)
+        CreateSkillSlot(root.transform, new Vector2(10, 10), "SHIFT/K", "DASH", new Color(0.16f, 0.48f, 0.62f),
+            () => { if (dash != null) dash.TryTriggerDash(); }, out dashCdMask, out dashCdTxt);
+        CreateSkillSlot(root.transform, new Vector2(107, 10), "L / RMB", "PARRY", new Color(0.24f, 0.42f, 0.78f),
+            () => { if (parry != null) parry.TryTriggerParry(); }, out parryCdMask, out parryCdTxt);
+        CreateSkillSlot(root.transform, new Vector2(204, 10), "[Q] / [U]", "BOMB", new Color(0.76f, 0.32f, 0.12f),
+            () => { if (skills != null) skills.TryCastBomb(); }, out qCdMask, out qCdTxt);
+        CreateSkillSlot(root.transform, new Vector2(301, 10), "[E]", "WAVE", new Color(0.18f, 0.56f, 0.72f),
+            () => { if (skills != null) skills.TryCastWave(); }, out eCdMask, out eCdTxt);
     }
 
-    private void CreateSkillSlot(Transform parent, Vector2 pos, string keyHint, string skillName, Color accent, out Image cdMask, out TextMeshProUGUI cdTxt)
+    private void CreateSkillSlot(Transform parent, Vector2 pos, string keyHint, string skillName, Color accent, Action onClick, out Image cdMask, out TextMeshProUGUI cdTxt)
     {
         var slot = CreatePanel(parent, "Slot_" + skillName, new Vector2(0, 0), new Vector2(0, 0), new Vector2(0, 0),
-            pos, new Vector2(94, 54), new Color(accent.r * 0.42f, accent.g * 0.42f, accent.b * 0.42f, 0.95f));
+            pos, new Vector2(89, 52), new Color(accent.r * 0.44f, accent.g * 0.44f, accent.b * 0.44f, 0.96f));
         AddOutline(slot, accent);
 
-        CreateText(slot.transform, skillName, 14, Color.white, new Vector2(0, 9), new Vector2(88, 22), TextAlignmentOptions.Center);
-        CreateText(slot.transform, keyHint, 11, new Color(0.85f, 0.9f, 1f, 0.85f), new Vector2(0, -13), new Vector2(88, 18), TextAlignmentOptions.Center);
+        var btn = slot.AddComponent<Button>();
+        btn.onClick.AddListener(() => onClick?.Invoke());
 
-        // Lớp phủ tối thể hiện hồi chiêu
+        CreateText(slot.transform, skillName, 13.5f, Color.white, new Vector2(0, 9), new Vector2(84, 20), TextAlignmentOptions.Center);
+        CreateText(slot.transform, keyHint, 10.5f, new Color(0.88f, 0.93f, 1f, 0.92f), new Vector2(0, -12), new Vector2(84, 16), TextAlignmentOptions.Center);
+
         var maskGo = new GameObject("CdMask");
         maskGo.transform.SetParent(slot.transform, false);
         cdMask = maskGo.AddComponent<Image>();
+        cdMask.raycastTarget = false;
         cdMask.color = new Color(0.02f, 0.02f, 0.05f, 0.75f);
         var mr = cdMask.rectTransform;
         mr.anchorMin = Vector2.zero;
@@ -175,62 +184,53 @@ public class ProCombatHUD : MonoBehaviour
         cdMask.fillOrigin = (int)Image.OriginVertical.Bottom;
         cdMask.fillAmount = 0f;
 
-        cdTxt = CreateText(slot.transform, "", 16, new Color(1f, 0.92f, 0.4f), Vector2.zero, new Vector2(88, 30), TextAlignmentOptions.Center);
+        cdTxt = CreateText(slot.transform, "", 15, new Color(1f, 0.92f, 0.4f), Vector2.zero, new Vector2(84, 28), TextAlignmentOptions.Center);
+        cdTxt.raycastTarget = false;
     }
 
     private void BuildTopLeftStats()
     {
+        // Lùi ra bên phải (x = 128) để hiển thị trọn vẹn B / T / S, Gold, Kill Streak và Mutations!
         var box = CreatePanel(transform, "TopLeftStats", new Vector2(0, 1), new Vector2(0, 1), new Vector2(0, 1),
-            new Vector2(20, -68), new Vector2(250, 34), new Color(0.06f, 0.05f, 0.12f, 0.72f));
-        AddOutline(box, new Color(0.35f, 0.28f, 0.58f, 0.75f));
+            new Vector2(128, -22), new Vector2(296, 32), new Color(0.06f, 0.05f, 0.12f, 0.84f));
+        AddOutline(box, new Color(0.35f, 0.28f, 0.58f, 0.85f));
 
-        scrollStatsTxt = CreateText(box.transform, "<color=#FF4C55>B:0</color>   <color=#C378FF>T:0</color>   <color=#4CE880>S:0</color>",
-            15, Color.white, Vector2.zero, new Vector2(236, 28), TextAlignmentOptions.Center);
+        scrollStatsTxt = CreateText(box.transform, "<color=#FF4C55>B:0</color>  <color=#C378FF>T:0</color>  <color=#4CE880>S:0</color>",
+            13.5f, Color.white, new Vector2(-46, 0), new Vector2(184, 26), TextAlignmentOptions.Left);
+
+        goldTxt = CreateText(box.transform, "0 G", 14.5f, new Color(1f, 0.86f, 0.22f), new Vector2(92, 0), new Vector2(92, 26), TextAlignmentOptions.Right);
 
         streakBadge = CreatePanel(transform, "KillStreakBadge", new Vector2(0, 1), new Vector2(0, 1), new Vector2(0, 1),
-            new Vector2(20, -108), new Vector2(250, 30), new Color(0.24f, 0.15f, 0.04f, 0.85f));
-        AddOutline(streakBadge, new Color(1f, 0.78f, 0.2f, 0.9f));
-        streakTxt = CreateText(streakBadge.transform, "STREAK: 0 (0/5 SCROLL)", 13, new Color(1f, 0.9f, 0.45f), Vector2.zero, new Vector2(240, 26), TextAlignmentOptions.Center);
-    }
+            new Vector2(128, -60), new Vector2(296, 26), new Color(0.24f, 0.15f, 0.04f, 0.88f));
+        AddOutline(streakBadge, new Color(1f, 0.78f, 0.2f, 0.92f));
+        streakTxt = CreateText(streakBadge.transform, "STREAK: 0x  (0/5 SCROLL)", 12.5f, new Color(1f, 0.9f, 0.45f), Vector2.zero, new Vector2(282, 22), TextAlignmentOptions.Center);
 
-    private void BuildTopRightMinimap()
-    {
-        var frame = CreatePanel(transform, "MinimapFrame", new Vector2(1, 1), new Vector2(1, 1), new Vector2(1, 1),
-            new Vector2(-20, -20), new Vector2(184, 108), new Color(0.05f, 0.04f, 0.11f, 0.82f));
-        AddOutline(frame, new Color(0.45f, 0.35f, 0.72f, 0.95f));
+        var mutBox = CreatePanel(transform, "MutationSlotsBar", new Vector2(0, 1), new Vector2(0, 1), new Vector2(0, 1),
+            new Vector2(128, -92), new Vector2(296, 28), new Color(0.11f, 0.05f, 0.18f, 0.86f));
+        AddOutline(mutBox, new Color(0.7f, 0.35f, 0.95f, 0.88f));
+        mutationsTxt = CreateText(mutBox.transform, "MUTATIONS: (Hạ Elite / Shop [F])", 11, new Color(0.86f, 0.8f, 0.97f), Vector2.zero, new Vector2(284, 22), TextAlignmentOptions.Center);
+        mutationsTxt.enableAutoSizing = true;
+        mutationsTxt.fontSizeMin = 9f;
+        mutationsTxt.fontSizeMax = 12f;
 
-        CreateText(frame.transform, "RADAR MAP", 10, new Color(0.72f, 0.68f, 0.92f, 0.85f), new Vector2(0, 44), new Vector2(170, 16), TextAlignmentOptions.Center);
-
-        var inner = new GameObject("DotsArea");
-        inner.transform.SetParent(frame.transform, false);
-        minimapContainer = inner.AddComponent<RectTransform>();
-        minimapContainer.anchorMin = new Vector2(0.5f, 0.5f);
-        minimapContainer.anchorMax = new Vector2(0.5f, 0.5f);
-        minimapContainer.sizeDelta = new Vector2(168, 82);
-        minimapContainer.anchoredPosition = new Vector2(0, -6);
-
-        // Tạo sẵn 32 chấm tái sử dụng (object pool) để không gây rác bộ nhớ GC
-        for (int i = 0; i < 32; i++)
-        {
-            var dotGo = new GameObject("Dot_" + i);
-            dotGo.transform.SetParent(minimapContainer, false);
-            var img = dotGo.AddComponent<Image>();
-            img.rectTransform.sizeDelta = new Vector2(6, 6);
-            dotGo.SetActive(false);
-            minimapDots.Add(img);
-        }
+        curseBanner = CreatePanel(transform, "CurseWarningBanner", new Vector2(0, 1), new Vector2(0, 1), new Vector2(0, 1),
+            new Vector2(128, -126), new Vector2(296, 28), new Color(0.28f, 0.03f, 0.28f, 0.94f));
+        AddOutline(curseBanner, new Color(1f, 0.22f, 0.95f, 1f));
+        curseBannerTxt = CreateText(curseBanner.transform, "CURSED: 5 KILLS (x2.5 DMG)", 12, new Color(1f, 0.55f, 1f), Vector2.zero, new Vector2(284, 24), TextAlignmentOptions.Center);
+        curseBanner.SetActive(false);
     }
 
     private void BuildBossBar()
     {
-        bossBarRoot = CreatePanel(transform, "BossHealthBar", new Vector2(0.5f, 0), new Vector2(0.5f, 0), new Vector2(0.5f, 0),
-            new Vector2(200, 145), new Vector2(540, 56), new Color(0.08f, 0.03f, 0.08f, 0.88f));
+        // Đặt thanh máu Boss ở GÓC DƯỚI BÊN PHẢI, ngang bằng độ cao (y = 64) với HUD thanh máu nhân vật để không cản tầm nhìn!
+        bossBarRoot = CreatePanel(transform, "BossHealthBar", new Vector2(1, 0), new Vector2(1, 0), new Vector2(1, 0),
+            new Vector2(-128, 64), new Vector2(440, 56), new Color(0.08f, 0.03f, 0.08f, 0.9f));
         AddOutline(bossBarRoot, new Color(0.85f, 0.18f, 0.32f, 0.95f));
 
-        bossNameTxt = CreateText(bossBarRoot.transform, "THE CONCIERGE WARDEN", 16, new Color(1f, 0.82f, 0.85f), new Vector2(0, 15), new Vector2(520, 22), TextAlignmentOptions.Center);
+        bossNameTxt = CreateText(bossBarRoot.transform, "THE CONCIERGE WARDEN", 14.5f, new Color(1f, 0.82f, 0.85f), new Vector2(0, 14), new Vector2(420, 22), TextAlignmentOptions.Center);
 
         var barBg = CreatePanel(bossBarRoot.transform, "BossHpBg", new Vector2(0.5f, 0), new Vector2(0.5f, 0), new Vector2(0.5f, 0),
-            new Vector2(0, 10), new Vector2(510, 18), new Color(0.14f, 0.05f, 0.08f, 1f));
+            new Vector2(0, 10), new Vector2(414, 18), new Color(0.14f, 0.05f, 0.08f, 1f));
 
         bossTrailFill = CreateBarImage(barBg.transform, "BossTrail", new Color(1f, 0.92f, 0.85f, 0.85f));
         bossHpFill = CreateBarImage(barBg.transform, "BossHp", new Color(0.88f, 0.12f, 0.28f, 1f));
@@ -241,10 +241,10 @@ public class ProCombatHUD : MonoBehaviour
     private void BuildRunSummaryBanner()
     {
         summaryBanner = CreatePanel(transform, "RunSummaryBanner", new Vector2(0.5f, 1), new Vector2(0.5f, 1), new Vector2(0.5f, 1),
-            new Vector2(0, -18), new Vector2(680, 96), new Color(0.06f, 0.04f, 0.12f, 0.92f));
+            new Vector2(0, -18), new Vector2(660, 96), new Color(0.06f, 0.04f, 0.12f, 0.92f));
         AddOutline(summaryBanner, new Color(1f, 0.82f, 0.25f, 0.95f));
 
-        summaryTxt = CreateText(summaryBanner.transform, "", 16, Color.white, Vector2.zero, new Vector2(650, 84), TextAlignmentOptions.Center);
+        summaryTxt = CreateText(summaryBanner.transform, "", 15.5f, Color.white, Vector2.zero, new Vector2(630, 84), TextAlignmentOptions.Center);
         summaryBanner.SetActive(false);
     }
 
@@ -281,13 +281,6 @@ public class ProCombatHUD : MonoBehaviour
         UpdateSkillSlots();
         UpdateTopLeftStats();
         UpdateBossBar();
-
-        minimapTimer -= Time.unscaledDeltaTime;
-        if (minimapTimer <= 0f)
-        {
-            minimapTimer = 0.1f;
-            UpdateMinimap();
-        }
     }
 
     private void UpdateHealthAndFlask()
@@ -330,9 +323,14 @@ public class ProCombatHUD : MonoBehaviour
     {
         if (scrollStatsTxt != null)
         {
-            scrollStatsTxt.text = $"<color=#FF4C55>BRUT:{ScrollUpgradeUI.BrutalityLevel}</color>  " +
-                                  $"<color=#C378FF>TACT:{ScrollUpgradeUI.TacticsLevel}</color>  " +
-                                  $"<color=#4CE880>SURV:{ScrollUpgradeUI.SurvivalLevel}</color>";
+            scrollStatsTxt.text = $"<color=#FF4C55>B:{ScrollUpgradeUI.BrutalityLevel}</color>  " +
+                                  $"<color=#C378FF>T:{ScrollUpgradeUI.TacticsLevel}</color>  " +
+                                  $"<color=#4CE880>S:{ScrollUpgradeUI.SurvivalLevel}</color>";
+        }
+
+        if (goldTxt != null)
+        {
+            goldTxt.text = $"{RunManager.Get().Gold} G";
         }
 
         if (streakTxt != null)
@@ -340,9 +338,38 @@ public class ProCombatHUD : MonoBehaviour
             var ks = KillStreakManager.Get();
             int mod = ks.CurrentStreak % KillStreakManager.ScrollMilestoneInterval;
             streakTxt.text = $"STREAK: {ks.CurrentStreak}x  ({mod}/{KillStreakManager.ScrollMilestoneInterval} SCROLL)";
-            if (streakBadge != null)
+            if (streakBadge != null) streakBadge.SetActive(true);
+        }
+
+        if (mutationsTxt != null)
+        {
+            if (MutationSystem.ActiveMutations.Count == 0 && !MutationSystem.HasElementalCoating)
             {
-                streakBadge.SetActive(true);
+                mutationsTxt.text = "MUTATIONS: (Hạ Elite / Shop [F])";
+            }
+            else
+            {
+                var parts = new List<string>();
+                foreach (var m in MutationSystem.ActiveMutations)
+                {
+                    string hex = ColorUtility.ToHtmlStringRGB(MutationSystem.GetColor(m));
+                    string extra = (m == MutationType.ComboFrenzy && MutationSystem.FrenzyStacks > 0) ? $" x{MutationSystem.FrenzyStacks}" : "";
+                    parts.Add($"<color=#{hex}>[{MutationSystem.GetShortName(m)}{extra}]</color>");
+                }
+                if (MutationSystem.HasElementalCoating) parts.Add("<color=#FF8833>[BLADE+]</color>");
+                mutationsTxt.text = string.Join(" ", parts);
+            }
+        }
+
+        if (curseBanner != null)
+        {
+            bool cursed = CurseSystem.IsCursed;
+            if (curseBanner.activeSelf != cursed) curseBanner.SetActive(cursed);
+            if (cursed && curseBannerTxt != null)
+            {
+                float pulse = 0.7f + 0.3f * Mathf.Sin(Time.unscaledTime * 8f);
+                curseBannerTxt.text = $"CURSED: {CurseSystem.CurseKillsRemaining} KILLS  (x2.5 DMG TAKEN)";
+                curseBannerTxt.color = new Color(1f, 0.38f * pulse, 1f, 1f);
             }
         }
     }
@@ -375,80 +402,6 @@ public class ProCombatHUD : MonoBehaviour
         }
     }
 
-    private void UpdateMinimap()
-    {
-        if (minimapContainer == null || player == null) return;
-
-        int idx = 0;
-        Vector3 pPos = player.transform.position;
-
-        // 1. Chấm Player ở chính giữa
-        PlaceDot(ref idx, Vector2.zero, new Color(0.3f, 0.95f, 1f, 1f), 8f);
-
-        // 2. Quái cận chiến
-        var enemies = FindObjectsByType<PatrolEnemy1>(FindObjectsSortMode.None);
-        foreach (var e in enemies)
-        {
-            if (e == null || e.IsDead) continue;
-            PlaceWorldDot(ref idx, e.transform.position - pPos, new Color(1f, 0.28f, 0.28f, 0.95f), 6f);
-        }
-
-        // 3. Quái bắn xa
-        var ranged = FindObjectsByType<RangedEnemy>(FindObjectsSortMode.None);
-        foreach (var r in ranged)
-        {
-            if (r == null) continue;
-            PlaceWorldDot(ref idx, r.transform.position - pPos, new Color(1f, 0.55f, 0.2f, 0.95f), 6f);
-        }
-
-        // 4. Boss
-        var bosses = FindObjectsByType<PatrolBoss>(FindObjectsSortMode.None);
-        foreach (var b in bosses)
-        {
-            if (b == null || !b.IsAlive) continue;
-            PlaceWorldDot(ref idx, b.transform.position - pPos, new Color(0.95f, 0.25f, 0.95f, 1f), 9f);
-        }
-
-        // 5. Power Scrolls
-        var scrolls = FindObjectsByType<PowerScrollPickup>(FindObjectsSortMode.None);
-        foreach (var s in scrolls)
-        {
-            if (s == null) continue;
-            PlaceWorldDot(ref idx, s.transform.position - pPos, new Color(1f, 0.9f, 0.2f, 1f), 7f);
-        }
-
-        // 6. Chìa khóa qua màn (Tag Key)
-        var keys = GameObject.FindGameObjectsWithTag("Key");
-        foreach (var k in keys)
-        {
-            if (k == null) continue;
-            PlaceWorldDot(ref idx, k.transform.position - pPos, new Color(1f, 0.85f, 0.15f, 1f), 8f);
-        }
-
-        // Ẩn các chấm dư
-        for (int i = idx; i < minimapDots.Count; i++)
-        {
-            minimapDots[i].gameObject.SetActive(false);
-        }
-    }
-
-    private void PlaceWorldDot(ref int idx, Vector3 delta, Color col, float size)
-    {
-        float nx = Mathf.Clamp(delta.x / MinimapRangeX, -1f, 1f) * (minimapContainer.sizeDelta.x * 0.46f);
-        float ny = Mathf.Clamp(delta.y / MinimapRangeY, -1f, 1f) * (minimapContainer.sizeDelta.y * 0.44f);
-        PlaceDot(ref idx, new Vector2(nx, ny), col, size);
-    }
-
-    private void PlaceDot(ref int idx, Vector2 pos, Color col, float size)
-    {
-        if (idx >= minimapDots.Count) return;
-        var dot = minimapDots[idx++];
-        dot.gameObject.SetActive(true);
-        dot.color = col;
-        dot.rectTransform.anchoredPosition = pos;
-        dot.rectTransform.sizeDelta = new Vector2(size, size);
-    }
-
     private GameObject CreatePanel(Transform parent, string name, Vector2 anchorMin, Vector2 anchorMax, Vector2 pivot, Vector2 pos, Vector2 size, Color color)
     {
         var go = new GameObject(name);
@@ -469,6 +422,7 @@ public class ProCombatHUD : MonoBehaviour
         var go = new GameObject(name);
         go.transform.SetParent(parent, false);
         var img = go.AddComponent<Image>();
+        img.raycastTarget = false;
         img.sprite = CombatVFX.GetPixelSprite();
         img.color = color;
         img.type = Image.Type.Filled;

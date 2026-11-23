@@ -43,8 +43,15 @@ public class ParryShield : MonoBehaviour
         shieldVisualSr = shieldVisualObj.AddComponent<SpriteRenderer>();
         shieldVisualSr.sprite = CombatVFX.GetRingSprite();
         shieldVisualSr.color = new Color(0.35f, 0.85f, 1f, 0.9f);
-        shieldVisualSr.sortingOrder = 65;
+        CombatVFX.ApplyVfxLayer(shieldVisualSr, 65);
         shieldVisualObj.SetActive(false);
+    }
+
+    public bool TryTriggerParry()
+    {
+        if (Time.timeScale <= 0f || IsParrying || Time.time < nextParryTime) return false;
+        StartCoroutine(ParryRoutine());
+        return true;
     }
 
     private void Update()
@@ -52,9 +59,9 @@ public class ParryShield : MonoBehaviour
         if (Time.timeScale <= 0f) return;
 
         bool pressed = Input.GetKeyDown(KeyCode.L) || Input.GetMouseButtonDown(1);
-        if (pressed && !IsParrying && Time.time >= nextParryTime)
+        if (pressed)
         {
-            StartCoroutine(ParryRoutine());
+            TryTriggerParry();
         }
 
         // Quét đạn đang bay tới trong khung Parry để phản ngược ngay lập tức

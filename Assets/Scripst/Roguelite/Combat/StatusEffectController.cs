@@ -75,7 +75,7 @@ public class StatusEffectController : MonoBehaviour
         statusLabel.fontSize = 4.2f;
         statusLabel.fontStyle = FontStyles.Bold;
         statusLabel.alignment = TextAlignmentOptions.Center;
-        statusLabel.sortingOrder = 118;
+        CombatVFX.ApplyVfxLayer(statusLabel.renderer, 118);
         labelObj.SetActive(false);
     }
 

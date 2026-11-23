@@ -13,12 +13,15 @@ public class HitFlash : MonoBehaviour
 
     private void Awake()
     {
-        if (renderers == null || renderers.Length == 0)
-            renderers = GetComponentsInChildren<SpriteRenderer>();
+        RefreshRenderers();
+    }
 
+    public void RefreshRenderers()
+    {
+        renderers = GetComponentsInChildren<SpriteRenderer>();
         originalColors = new Color[renderers.Length];
         for (int i = 0; i < renderers.Length; i++)
-            originalColors[i] = renderers[i].color;
+            originalColors[i] = renderers[i] != null ? renderers[i].color : Color.white;
     }
 
     public void Flash()
