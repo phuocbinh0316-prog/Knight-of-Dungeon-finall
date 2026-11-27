@@ -168,12 +168,13 @@ public class PatrolBoss : MonoBehaviour
         transform.Translate(Vector2.left * moveSpeed * GetSpeedScale() * Time.deltaTime);
         RaycastHit2D hit = Physics2D.Raycast(checkPoint.position, Vector2.down, distance, layerMask);
         Collider2D hit1 = Physics2D.OverlapCircle(attackPoint.position, 0.2f, layerMask);
-        if ((hit == false || hit1 == true) && facingRight == true)
+        bool hitSolidWall = hit1 != null && !hit1.isTrigger;
+        if ((hit == false || hitSolidWall) && facingRight == true)
         {
             transform.eulerAngles = new Vector3(0, 0, 0);
             facingRight = false;
         }
-        else if ((hit == false || hit1 == true) && facingRight == false)
+        else if ((hit == false || hitSolidWall) && facingRight == false)
         {
             transform.eulerAngles = new Vector3(0, -180, 0);
             facingRight = true;

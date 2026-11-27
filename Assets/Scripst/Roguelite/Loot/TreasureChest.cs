@@ -30,6 +30,7 @@ public class TreasureChest : MonoBehaviour
 
     private void Start()
     {
+        gameObject.layer = 2;
         var col = GetComponent<Collider2D>();
         col.isTrigger = true;
 

@@ -134,7 +134,8 @@ TextureImporter:
     secondaryTextures: []
     spriteCustomMetadata:
       entries: []
-    nameFileIdTable: {}
+    nameFileIdTable:
+      hell_walk_0: 8096603217961627623
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 

@@ -14,6 +14,8 @@ public class PowerScrollPickup : MonoBehaviour
 
     private void Start()
     {
+        // Đặt sang layer Ignore Raycast (2) + isTrigger để mọi quái vật & Boss luôn đi xuyên qua không bị chặn
+        gameObject.layer = 2;
         basePos = transform.position;
         var col = GetComponent<Collider2D>();
         col.isTrigger = true;

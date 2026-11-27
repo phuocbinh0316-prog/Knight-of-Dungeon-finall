@@ -38,6 +38,7 @@ public class PatrolEnemy1 : MonoBehaviour
     private bool lastHitWasCrit = false;
     private bool isAttacking = false;
     private float nextManualAttackTime = 0f;
+    private float nextFlipTime = 0f;
 
     public bool IsFacingRight => facingRight;
     public bool IsDead => isDead;
@@ -93,10 +94,16 @@ public class PatrolEnemy1 : MonoBehaviour
             {
                 var go = new GameObject("checkPoint");
                 go.transform.SetParent(transform, false);
-                go.transform.localPosition = new Vector3(0.5f, -0.5f, 0f);
+                go.transform.localPosition = new Vector3(0.65f, 0.45f, 0f);
                 checkPoint = go.transform;
             }
         }
+        // Đảm bảo checkPoint nằm phía trên mặt đất để Raycast xuống không bị xuyên sàn gây xoay qua xoay lại
+        if (checkPoint.localPosition.y <= 0.05f)
+        {
+            checkPoint.localPosition = new Vector3(Mathf.Max(0.55f, Mathf.Abs(checkPoint.localPosition.x)), 0.45f, 0f);
+        }
+
         if (attackPoint == null)
         {
             var ap = transform.Find("attackPoint");
@@ -105,9 +112,14 @@ public class PatrolEnemy1 : MonoBehaviour
             {
                 var go = new GameObject("attackPoint");
                 go.transform.SetParent(transform, false);
-                go.transform.localPosition = new Vector3(0.8f, 0f, 0f);
+                go.transform.localPosition = new Vector3(0.9f, 0.9f, 0f);
                 attackPoint = go.transform;
             }
+        }
+        // Đảm bảo attackPoint nằm ngang thân (không chạm sàn đất gây kích hoạt lật mặt liên tục)
+        if (attackPoint.localPosition.y <= 0.25f)
+        {
+            attackPoint.localPosition = new Vector3(Mathf.Max(0.8f, Mathf.Abs(attackPoint.localPosition.x)), 0.9f, 0f);
         }
     }
 
@@ -176,12 +188,13 @@ public class PatrolEnemy1 : MonoBehaviour
         if (checkPoint == null || attackPoint == null) EnsurePoints();
         if (checkPoint == null) return;
 
-        if (transform.position.x > player.position.x && facingRight == true)
+        float dx = player.position.x - transform.position.x;
+        if (dx < -0.35f && facingRight == true)
         {
             transform.eulerAngles = new Vector3(0f, -180f, 0f);
             facingRight = false;
         }
-        else if (transform.position.x < player.position.x && facingRight == false)
+        else if (dx > 0.35f && facingRight == false)
         {
             transform.eulerAngles = new Vector3(0f, 0f, 0f);
             facingRight = true;
@@ -246,17 +259,23 @@ public class PatrolEnemy1 : MonoBehaviour
         if (checkPoint == null || attackPoint == null) return;
 
         transform.Translate(Vector2.right * moveSpeed * GetSpeedScale() * Time.deltaTime);
-        RaycastHit2D hit = Physics2D.Raycast(checkPoint.position, Vector2.down, distance, layerMask);
+        float rayLen = Mathf.Max(distance, 1.5f);
+        RaycastHit2D hit = Physics2D.Raycast(checkPoint.position, Vector2.down, rayLen, layerMask);
         Collider2D hit1 = Physics2D.OverlapCircle(attackPoint.position, 0.2f, layerMask);
-        if ((hit == false || hit1 == true) && facingRight)
+        bool hitSolidWall = hit1 != null && !hit1.isTrigger;
+        if (Time.time >= nextFlipTime && (hit == false || hitSolidWall))
         {
-            transform.eulerAngles = new Vector3(0, -180, 0);
-            facingRight = false;
-        }
-        else if ((hit == false || hit1 == true) && facingRight == false)
-        {
-            transform.eulerAngles = new Vector3(0, 0, 0);
-            facingRight = true;
+            nextFlipTime = Time.time + 0.35f;
+            if (facingRight)
+            {
+                transform.eulerAngles = new Vector3(0, -180, 0);
+                facingRight = false;
+            }
+            else
+            {
+                transform.eulerAngles = new Vector3(0, 0, 0);
+                facingRight = true;
+            }
         }
     }
 
@@ -374,6 +393,9 @@ public class PatrolEnemy1 : MonoBehaviour
         var elite = GetComponent<EliteEnemy>();
         if (elite != null) elite.OnEliteKilled();
 
+        var reaper = GetComponent<Map2ReaperElite>();
+        if (reaper != null) reaper.OnReaperKilled();
+
         KillStreakManager.Get().RegisterKill(transform.position);
 
         if (coinPrefab != null)
@@ -403,7 +425,8 @@ public class PatrolEnemy1 : MonoBehaviour
     {
         if (hpBar != null)
         {
-            hpBar.fillAmount = maxHealth > 0f ? currentHp / maxHealth : 0f;
+            float target = maxHealth > 0f ? Mathf.Clamp01(currentHp / maxHealth) : 0f;
+            hpBar.fillAmount = Mathf.MoveTowards(hpBar.fillAmount, target, Time.deltaTime * 1.25f);
         }
     }
 

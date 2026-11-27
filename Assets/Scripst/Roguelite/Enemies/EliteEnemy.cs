@@ -37,10 +37,14 @@ public class EliteEnemy : MonoBehaviour
     private GameObject eliteBadgeObj;
     private GameObject eliteHpBarRoot;
     private Transform eliteHpFill;
+    private SpriteRenderer eliteHpBgSr;
+    private SpriteRenderer eliteHpFillSr;
+    private float displayedHpRatio = 1f;
     private GameObject visualObj;
     private SpriteRenderer visualSr;
     private readonly Transform[] orbitOrbs = new Transform[2];
 
+    private Vector3 spawnOrigin;
     private Vector3 lastPosition;
     private float walkAnimTimer;
     private float attackAnimTimer;
@@ -71,6 +75,7 @@ public class EliteEnemy : MonoBehaviour
 
         hostAnimator = GetComponent<Animator>();
         patrolEnemy = GetComponent<PatrolEnemy1>();
+        spawnOrigin = transform.position;
         lastPosition = transform.position;
 
         // Nạp bộ sprite Ác Quỷ Địa Ngục Hi-bit và thay thế ngoại hình sạch sẽ
@@ -117,8 +122,23 @@ public class EliteEnemy : MonoBehaviour
     {
         if (eliteBadgeObj != null) return;
 
-        // Tự tạo thanh HP pixel-art cho Quái Tinh Anh nếu chưa có sẵn UI HpBar
-        if (GetComponentInChildren<UnityEngine.UI.Image>() == null && eliteHpBarRoot == null)
+        // Tận dụng EliteHpBar đã bake sẵn trên Scene (hoặc tự tạo nếu chưa có)
+        var existingBar = transform.Find("EliteHpBar");
+        if (existingBar != null)
+        {
+            eliteHpBarRoot = existingBar.gameObject;
+            var bgT = existingBar.Find("Bg");
+            var pivT = existingBar.Find("FillPivot");
+            if (bgT != null) eliteHpBgSr = bgT.GetComponent<SpriteRenderer>();
+            if (pivT != null)
+            {
+                eliteHpFill = pivT;
+                var fillT = pivT.Find("Fill");
+                if (fillT != null) eliteHpFillSr = fillT.GetComponent<SpriteRenderer>();
+            }
+            displayedHpRatio = 1f;
+        }
+        else if (GetComponentInChildren<UnityEngine.UI.Image>() == null && eliteHpBarRoot == null)
         {
             eliteHpBarRoot = new GameObject("EliteHpBar");
             eliteHpBarRoot.transform.SetParent(transform, false);
@@ -126,25 +146,26 @@ public class EliteEnemy : MonoBehaviour
 
             var bgObj = new GameObject("Bg");
             bgObj.transform.SetParent(eliteHpBarRoot.transform, false);
-            var bgSr = bgObj.AddComponent<SpriteRenderer>();
-            bgSr.sprite = GetSolidSprite();
-            bgSr.color = new Color(0.06f, 0.06f, 0.08f, 0.92f);
-            bgObj.transform.localScale = new Vector3(1.65f, 0.24f, 1f);
-            CombatVFX.ApplyVfxLayer(bgSr, 110);
+            eliteHpBgSr = bgObj.AddComponent<SpriteRenderer>();
+            eliteHpBgSr.sprite = GetSolidSprite();
+            eliteHpBgSr.color = Color.black; // Viền đen sắc nét giống thanh máu quái thường
+            bgObj.transform.localScale = new Vector3(1.68f, 0.28f, 1f);
+            CombatVFX.ApplyVfxLayer(eliteHpBgSr, 110);
 
             var fillPivot = new GameObject("FillPivot");
             fillPivot.transform.SetParent(eliteHpBarRoot.transform, false);
-            fillPivot.transform.localPosition = new Vector3(-0.77f, 0f, 0f);
+            fillPivot.transform.localPosition = new Vector3(-0.76f, 0f, 0f);
 
             var fillObj = new GameObject("Fill");
             fillObj.transform.SetParent(fillPivot.transform, false);
-            fillObj.transform.localPosition = new Vector3(0.77f, 0f, 0f);
-            var fillSr = fillObj.AddComponent<SpriteRenderer>();
-            fillSr.sprite = GetSolidSprite();
-            fillSr.color = new Color(0.95f, 0.14f, 0.14f, 1f);
-            fillObj.transform.localScale = new Vector3(1.54f, 0.14f, 1f);
-            CombatVFX.ApplyVfxLayer(fillSr, 111);
+            fillObj.transform.localPosition = new Vector3(0.76f, 0f, 0f);
+            eliteHpFillSr = fillObj.AddComponent<SpriteRenderer>();
+            eliteHpFillSr.sprite = GetSolidSprite();
+            eliteHpFillSr.color = new Color(1f, 0.06f, 0.06f, 1f); // Đỏ tươi cố định giống ảnh 1
+            fillObj.transform.localScale = new Vector3(1.52f, 0.16f, 1f);
+            CombatVFX.ApplyVfxLayer(eliteHpFillSr, 111);
             eliteHpFill = fillPivot.transform;
+            displayedHpRatio = 1f;
         }
 
         eliteBadgeObj = new GameObject("EliteExclamationBadge");
@@ -257,20 +278,27 @@ public class EliteEnemy : MonoBehaviour
 
         if (labelObj != null) labelObj.transform.rotation = Quaternion.identity;
 
+        float topY = visualSr != null ? (visualSr.bounds.max.y + 0.30f) : (transform.position.y + 3.25f);
+
         if (eliteHpBarRoot != null)
         {
             eliteHpBarRoot.transform.rotation = Quaternion.identity;
-            eliteHpBarRoot.transform.position = transform.position + new Vector3(0f, 2.75f, 0f);
+            eliteHpBarRoot.transform.position = new Vector3(transform.position.x, topY, transform.position.z);
+            if (eliteHpBgSr != null) eliteHpBgSr.color = Color.black;
+            if (eliteHpFillSr != null) eliteHpFillSr.color = new Color(1f, 0.06f, 0.06f, 1f);
             if (eliteHpFill != null && patrolEnemy != null)
             {
-                eliteHpFill.localScale = new Vector3(Mathf.Clamp01(patrolEnemy.HpRatio), 1f, 1f);
+                // Máu tụt xuống từ từ mượt mà, không đổi màu khi bị đánh trúng
+                float targetRatio = Mathf.Clamp01(patrolEnemy.HpRatio);
+                displayedHpRatio = Mathf.MoveTowards(displayedHpRatio, targetRatio, Time.deltaTime * 1.15f);
+                eliteHpFill.localScale = new Vector3(displayedHpRatio, 1f, 1f);
             }
         }
 
         if (eliteBadgeObj != null)
         {
             eliteBadgeObj.transform.rotation = Quaternion.identity;
-            float yWorld = transform.position.y + 2.75f;
+            float yWorld = topY;
             var hpImg = GetComponentInChildren<UnityEngine.UI.Image>();
             if (hpImg != null) yWorld = hpImg.transform.position.y;
             eliteBadgeObj.transform.position = new Vector3(transform.position.x - 1.12f, yWorld, transform.position.z);
@@ -291,9 +319,16 @@ public class EliteEnemy : MonoBehaviour
         if (player == null || (telegraph != null && telegraph.IsStunned)) return;
 
         float dist = Vector2.Distance(transform.position, player.position);
-        if (dist > 14f) return;
+        float dy = Mathf.Abs(transform.position.y - player.position.y);
+        if (dist > 10f) return;
 
-        if (affix == EliteAffix.Teleporter && Time.time >= nextTeleportTime && dist > 3.2f)
+        // Chỉ dịch chuyển khi người chơi đang giao chiến trên CÙNG tầng đất & khu vực của Quái Tinh Anh
+        // (Tuyệt đối không dịch chuyển xuyên vách đá hay bỏ vị trí về đầu map!)
+        bool sameFloor = dy <= 2.2f
+                      && Mathf.Abs(player.position.y - spawnOrigin.y) <= 2.5f
+                      && Mathf.Abs(player.position.x - spawnOrigin.x) <= 12f;
+
+        if (affix == EliteAffix.Teleporter && sameFloor && Time.time >= nextTeleportTime && dist > 3.2f && dist <= 8.5f)
         {
             nextTeleportTime = Time.time + 5.2f;
             StartCoroutine(TeleportBehindPlayerRoutine());
@@ -398,7 +433,11 @@ public class EliteEnemy : MonoBehaviour
         float behindDir = (pComp != null && pComp.IsFacingRight) ? -1f : 1f;
         Vector3 dest = player.position + new Vector3(behindDir * 2.2f, 0.15f, 0f);
 
-        if (Physics2D.Raycast(dest, Vector2.down, 2.5f))
+        // Kiểm tra điểm đến vẫn nằm trên cùng nền đất & lãnh thổ của Quái Tinh Anh
+        if (Mathf.Abs(dest.y - spawnOrigin.y) > 2.5f || Mathf.Abs(dest.x - spawnOrigin.x) > 13f) yield break;
+
+        LayerMask groundMask = patrolEnemy != null ? patrolEnemy.GroundMask : (LayerMask)128;
+        if (Physics2D.Raycast(dest + Vector3.up * 0.5f, Vector2.down, 2.5f, groundMask))
         {
             transform.position = dest;
             CombatVFX.SpawnShockwave(dest + Vector3.up * 1.1f, new Color(1f, 0.35f, 0.1f, 0.95f), 0.3f, 2.4f, 0.28f);

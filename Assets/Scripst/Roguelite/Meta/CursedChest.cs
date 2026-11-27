@@ -20,6 +20,20 @@ public class CursedChest : MonoBehaviour
 
     private void Start()
     {
+        // Tự động tăng thưởng Vàng & Cells cho Rương Nguyền Rủa ở Map 2 và Map 3
+        string sceneName = UnityEngine.SceneManagement.SceneManager.GetActiveScene().name.ToLowerInvariant();
+        if (sceneName.Contains("map 3") || sceneName.Contains("map3"))
+        {
+            bonusGold = Mathf.Max(bonusGold, 50);
+            bonusCells = Mathf.Max(bonusCells, 20);
+        }
+        else if (sceneName.Contains("map 2") || sceneName.Contains("map2"))
+        {
+            bonusGold = Mathf.Max(bonusGold, 35);
+            bonusCells = Mathf.Max(bonusCells, 15);
+        }
+
+        gameObject.layer = 2;
         var col = GetComponent<Collider2D>();
         col.isTrigger = true;
 
@@ -55,7 +69,7 @@ public class CursedChest : MonoBehaviour
         CombatVFX.ApplyVfxLayer(bgSr, 114);
 
         var tmp = promptObj.AddComponent<TextMeshPro>();
-        tmp.text = $"<color=#FF2A6D><b>[F]</b></color> <color=#FFFFFF><b>CURSED CHEST</b></color>\n<size=76%><color=#FFB2D9><b>(Scroll + {bonusGold}G | Nguyền rủa x2.5 Sát thương)</b></color></size>";
+        tmp.text = $"<color=#FF2A6D><b>[F]</b></color> <color=#FFFFFF><b>CURSED CHEST</b></color>\n<size=76%><color=#FFB2D9><b>(Skill Bị Động Nguyền Rủa + {bonusGold}G)</b></color></size>";
         tmp.fontSize = 3.6f;
         tmp.fontStyle = FontStyles.Bold;
         tmp.alignment = TextAlignmentOptions.Center;
@@ -146,7 +160,7 @@ public class CursedChest : MonoBehaviour
             CombatVFX.SpawnBurst(transform.position + Vector3.up * 0.55f, new Color(0.85f, 0.2f, 1f, 0.75f), 1, 0.5f, 1.5f, 0.14f, 0.4f, -1.5f);
         }
 
-        if (playerNear && Input.GetKeyDown(KeyCode.F) && !ScrollUpgradeUI.IsOpen && !MutationSystem.IsPickerOpen)
+        if (playerNear && Input.GetKeyDown(KeyCode.F) && !ScrollUpgradeUI.IsOpen && !MutationSystem.IsPickerOpen && !CursedSkillUI.IsOpen)
         {
             OpenChest();
         }
@@ -167,7 +181,7 @@ public class CursedChest : MonoBehaviour
         DamagePopup.SpawnText(transform.position + Vector3.up * 1.1f, $"+{bonusGold}G  +{bonusCells} CELLS!", new Color(1f, 0.85f, 0.2f), 6.2f);
         CombatVFX.SpawnBurst(transform.position + Vector3.up * 0.5f, new Color(0.95f, 0.25f, 1f, 1f), 16, 2.5f, 7f, 0.2f, 0.45f, 4f);
 
-        ScrollUpgradeUI.ShowScrollChoice("CURSED CHEST REWARD!");
+        CursedSkillUI.ShowSkillChoice("CURSED CHEST — CHỌN KỸ NĂNG BỊ ĐỘNG!");
     }
 
     private void OnTriggerEnter2D(Collider2D other)

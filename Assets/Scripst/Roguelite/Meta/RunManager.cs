@@ -79,6 +79,7 @@ public class RunManager : MonoBehaviour
         CellsThisRun = 0;
         Gold = 0;
         Kills = 0;
+        CursedPassiveSystem.ResetAll();
         onChanged?.Invoke();
     }
 }

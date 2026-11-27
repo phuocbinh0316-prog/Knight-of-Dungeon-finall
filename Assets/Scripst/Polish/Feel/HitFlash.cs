@@ -18,7 +18,28 @@ public class HitFlash : MonoBehaviour
 
     public void RefreshRenderers()
     {
-        renderers = GetComponentsInChildren<SpriteRenderer>();
+        var all = GetComponentsInChildren<SpriteRenderer>();
+        var list = new System.Collections.Generic.List<SpriteRenderer>(all.Length);
+        foreach (var sr in all)
+        {
+            if (sr == null) continue;
+            // Không nháy màu lên thanh HP bar, khung Prompt hay dấu cảnh báo
+            bool isUiOrBar = false;
+            Transform cur = sr.transform;
+            while (cur != null && cur != transform)
+            {
+                string n = cur.name;
+                if (n.Contains("HpBar") || n.Contains("Prompt") || n.Contains("Telegraph") || n.Contains("Badge"))
+                {
+                    isUiOrBar = true;
+                    break;
+                }
+                cur = cur.parent;
+            }
+            if (!isUiOrBar) list.Add(sr);
+        }
+
+        renderers = list.ToArray();
         originalColors = new Color[renderers.Length];
         for (int i = 0; i < renderers.Length; i++)
             originalColors[i] = renderers[i] != null ? renderers[i].color : Color.white;

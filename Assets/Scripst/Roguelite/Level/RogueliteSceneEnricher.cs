@@ -322,6 +322,7 @@ public static class RogueliteSceneEnricher
     private static void SpawnPowerScroll(Vector3 pos, int idx)
     {
         var go = new GameObject("PowerScroll_Random_" + idx);
+        go.layer = 2; // Ignore Raycast để quái luôn đi xuyên qua
         go.transform.position = pos;
         var col = go.AddComponent<BoxCollider2D>();
         col.isTrigger = true;
@@ -332,6 +333,7 @@ public static class RogueliteSceneEnricher
     private static void SpawnTreasureChest(Vector3 pos, int mapTier, int idx)
     {
         var go = new GameObject("TreasureChest_Random_" + idx);
+        go.layer = 2;
         go.transform.position = pos;
         var col = go.AddComponent<BoxCollider2D>();
         col.isTrigger = true;
@@ -343,6 +345,7 @@ public static class RogueliteSceneEnricher
     private static void SpawnCursedChest(Vector3 pos, int idx)
     {
         var go = new GameObject("CursedChest_Random_" + idx);
+        go.layer = 2;
         go.transform.position = pos;
         var col = go.AddComponent<BoxCollider2D>();
         col.isTrigger = true;
@@ -352,9 +355,14 @@ public static class RogueliteSceneEnricher
 
     private static void PromoteRandomElites(Player player, int targetElites)
     {
-        int existing = Object.FindObjectsByType<EliteEnemy>(FindObjectsSortMode.None).Length;
+        // Đếm cả Elite Map 1/3 (EliteEnemy) lẫn Tử Thần Tinh Anh Map 2 (Map2ReaperElite)
+        int existing = Object.FindObjectsByType<EliteEnemy>(FindObjectsSortMode.None).Length
+                     + Object.FindObjectsByType<Map2ReaperElite>(FindObjectsSortMode.None).Length;
         int needed = targetElites - existing;
         if (needed <= 0) return;
+
+        bool isMap2 = UnityEngine.SceneManagement.SceneManager.GetActiveScene().name.ToLowerInvariant().Contains("map 2")
+                   || UnityEngine.SceneManagement.SceneManager.GetActiveScene().name.ToLowerInvariant().Contains("map2");
 
         var enemies = Object.FindObjectsByType<PatrolEnemy1>(FindObjectsSortMode.None);
         if (enemies == null || enemies.Length == 0) return;
@@ -364,12 +372,15 @@ public static class RogueliteSceneEnricher
             Vector2.Distance(player.transform.position, a.transform.position)
             .CompareTo(Vector2.Distance(player.transform.position, b.transform.position)));
 
-        // Giữ con quái gần điểm spawn nhất là quái thường, chọn NGẪU NHIÊN các con còn lại thành ★ ELITE ★!
+        // Giữ con quái gần điểm spawn nhất là quái thường, không đè lên Phù Thủy hay Tinh Anh có sẵn
         var pool = new List<PatrolEnemy1>();
         int startIdx = sorted.Count > 1 ? 1 : 0;
         for (int i = startIdx; i < sorted.Count; i++)
         {
-            if (sorted[i] != null && sorted[i].GetComponent<EliteEnemy>() == null)
+            if (sorted[i] != null
+                && sorted[i].GetComponent<EliteEnemy>() == null
+                && sorted[i].GetComponent<Map2ReaperElite>() == null
+                && sorted[i].GetComponent<DarkWitchEnemy>() == null)
             {
                 pool.Add(sorted[i]);
             }
@@ -379,7 +390,8 @@ public static class RogueliteSceneEnricher
         int count = Mathf.Min(needed, pool.Count);
         for (int i = 0; i < count; i++)
         {
-            pool[i].gameObject.AddComponent<EliteEnemy>();
+            if (isMap2) pool[i].gameObject.AddComponent<Map2ReaperElite>();
+            else pool[i].gameObject.AddComponent<EliteEnemy>();
         }
     }
 
